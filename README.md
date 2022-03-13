@@ -14,4 +14,3 @@ Detta är känt;
 * Det förekommer fel och det åligger användaren att verifiera uppgifterna innan något Swishas till mottagaren.
 * I de fall felaktigheter förekommer, anmäl detta genom att öppna en issue eller skicka mail till christopher.isene@gmail.com
 * Projektet [Swish-123](https://github.com/cisene/swish-123) accepterar Pull-Requests för att ändra/förbättra data.
-
