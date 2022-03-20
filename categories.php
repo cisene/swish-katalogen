@@ -1,0 +1,93 @@
+<?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors','On');
+
+include_once "class.SqliteDB.php";
+include_once "class.SwishFormat.php";
+include_once "class.SwishKatalogen.php";
+
+$sf = new SwishFormat();
+$db = new SqliteDB();
+$ui = new SwishKatalogen();
+
+$db->connectDB('./__database/swish-123-data.sqlite');
+
+// header("Content-Type: text/plain");
+
+$cat_route = $ui->getCategoryRouting();
+$cat_ranked = $db->getCategoriesAll();
+
+if($cat_route != null) {
+  $category_list = $ui->getCategoriesTagCloud($cat_ranked, $cat_route);
+
+  $category_items = $db->getEntriesByCategory($cat_route);
+  $category_item_listing = $ui->getEntriesCategoryListing($category_items);
+
+} else {
+  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "notselected");
+}
+
+
+
+?><!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>'</title>
+
+    <meta name="theme-color" content="#f0f">
+    <meta name="theme-color" content="#f0f">
+    <meta name="msapplication-TileColor" content="#f0f">
+
+    <meta name="msapplication-TileImage" content="/favicon/favicon_150x150.jpg?v=1">
+    <link rel="apple-touch-icon" href="/favicon/favicon_192x192.jpg?v=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon_32x32.jpg?v=1">
+
+    <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
+
+    <meta property="og:title" content="Swish-Katalogen">
+    <meta property="og:description" content="Swish-Katalog">
+    <meta property="og:image" content="/favicon/favicon_512x512.jpg">
+    <meta property="og:url" content="https://b19.local/swish-katalogen/">
+    <meta property="og:site_name" content="Swish-Katalogen">
+
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="swish-katalogen">
+
+    <link href="css/screen.css?nocache=<?php echo(time()); ?>" rel="prefetch">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/app.js?nocache=<?php echo(time()); ?>"></script>
+    <link rel="manifest" href="manifest/manifest.json?v=1">
+  </head>
+  <body>
+
+    <section id="pageheader">
+      <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
+    </section>
+
+    <section id="pagebody">
+      
+      <aside class="blurb">
+        <h2>Organisationer i kategorin '<?php echo($cat_route); ?>'</h2>
+        <table>
+          <?php echo($category_item_listing); ?>
+        </table>
+      </aside>
+
+      <aside class="categories">
+        <h2>Kategorier</h2>
+        <ul id="categories-list"><?php echo($category_list); ?></ul>
+      </aside>
+
+    </section -->
+
+    <section id="pagefooter">
+      <?php include_once "include.pagefooter.php"; ?>
+    </section>
+
+  </body>
+</html>

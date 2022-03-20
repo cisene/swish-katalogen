@@ -45,12 +45,43 @@ class SqliteDB {
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
             var_dump($row);
         }
-
-
       }
     }
+  }
 
+  public function getEntryByID($entry_id) {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
 
+        $query = "SELECT entry, orgName, orgNumber, web FROM swish WHERE entry = " . $entry_id . ";";
+        // echo($query . "\n");
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+          $entry = array(
+            'entry'       => strval($row['entry']),
+            'orgName'     => strval($row['orgName']),
+            'orgNumber'   => strval($row['orgNumber']),
+            'web'         => strval($row['web']),
+            'categories'  => array()
+          );
+        }
+
+        // var_dump($result);
+
+        $query = "SELECT category FROM categories WHERE entry = " . $entry_id . ";";
+        // echo($query . "\n");
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+          // var_dump($row);
+          $entry['categories'][] = $row['category'];
+        }
+
+        $result = $entry;
+      }
+    }
+    // var_dump($result);
+    return $result;
   }
 
   public function getSingleRandomFromCategories($category) {
@@ -88,6 +119,53 @@ class SqliteDB {
     return $result;
   }
 
+  public function getCategoriesAll() {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY cnt DESC, category ASC;";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
+        }
+      }
+    }
+    return $result;
+  }
+
+
+// array(4) {
+//   ["entry"]=>
+//   int(1230492983)
+//   ["orgName"]=>
+//   string(22) "Strålskyddsstiftelsen"
+//   ["orgNumber"]=>
+//   string(11) "802477-4484"
+//   ["web"]=>
+//   string(37) "https://www.stralskyddsstiftelsen.se/"
+// }
+
+
+
+  public function getEntriesByCategory($category) {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT entry, orgName, orgNumber, web FROM swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+          // echo("<pre>");var_dump($row);echo("</pre>");
+            $result[] = array(
+              'entry'       => strval($row['entry']),
+              'orgName'     => strval($row['orgName']),
+              'orgNumber'   => strval($row['orgNumber']),
+              'web'         => strval($row['web']),
+            );
+        }
+      }
+    }
+    return $result;
+  }
 
 
   private function _sqlsafe($data) {

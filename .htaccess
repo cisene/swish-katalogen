@@ -18,7 +18,7 @@ FileEtag MTime
 Options -MultiViews +FollowSymLinks
 
 RewriteEngine On
-RewriteBase /swish-roulette
+RewriteBase /swish-katalogen
 
 # remove www...
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
@@ -27,6 +27,11 @@ RewriteRule ^(.*)$ http://%1/swish-katalogen/$1 [R=301,L]
 
 # Top page
 RewriteRule ^$ index.php [L]
+
+RewriteRule ^k/(.*)$ categories.php?cat=$1 [L,NC]
+
+# Trigger on whole 
+RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
 
 # API proxy
 #RewriteRule ^api$ api.php [L,NC]
