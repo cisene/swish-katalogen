@@ -136,6 +136,45 @@ class SwishKatalogen {
   }
 
 
+  public function EntryJSON($obj) {
+    $result = null;
+    $temp = array();
+
+    $temp['@context'] = strval('https://schema.org');
+    $temp['@type'] = strval('Organization');
+
+    $temp['name'] = strval($obj['orgName']);
+    $temp['taxid'] = strval($obj['orgNumber']);
+    $temp['url'] = strval($obj['web']);
+
+    $temp['keywords'] = array();
+
+    foreach($obj['categories'] as $cat) {
+      $temp['keywords'][] = strval($cat);
+    }
+
+    $result = $this->_jsonPrettify(json_encode($temp));
+    return $result;
+  }
+
+
+  private function _jsonPrettify($json) {
+    $json = preg_replace('/\x7b\x22/six', "{ \"", strval($json));
+    $json = preg_replace('/\x22\x7d/six', "\" }", strval($json));
+
+    $json = preg_replace('/\x5b\x22/six', "[ \"", strval($json));
+    $json = preg_replace('/\x22\x5d/six', "\" ]", strval($json));
+
+    $json = preg_replace('/\x5d\x7d/six', "] }", strval($json));
+
+
+    $json = preg_replace('/\x22\x2c\x22/six', "\", \"", strval($json));
+
+    $json = preg_replace('/\x22\x3a\x22/six', "\": \"", strval($json));
+
+
+    return $json;
+  }
 
   private function _calculateTagFontSize($rank_diff, $quantity) {
 

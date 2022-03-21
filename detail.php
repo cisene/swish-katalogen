@@ -21,6 +21,8 @@ if($cat_route != null) {
   if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
 
     $entry = $db->getEntryByID($cat_route);
+    $entry_json = $ui->EntryJSON($entry);
+
     $orgName = $entry['orgName'];
 
     $entry_categories = $ui->getEntryCategories($entry['categories']);
@@ -69,10 +71,12 @@ if($cat_route != null) {
     <link href="css/screen.css?nocache=<?php echo(time()); ?>" rel="prefetch">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/app.js?nocache=<?php echo(time()); ?>"></script>
+    <!-- script src="js/app.js?nocache=<?php echo(time()); ?>"></script -->
     <link rel="manifest" href="manifest/manifest.json?v=1">
   </head>
   <body>
+
+    <script type="application/ld+json"><?php echo($entry_json); ?></script>
 
     <section id="pageheader">
       <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
