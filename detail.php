@@ -120,7 +120,7 @@ if($cat_route != null) {
 
       </aside>
 
-    </section -->
+    </section>
 
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
