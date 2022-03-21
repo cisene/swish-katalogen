@@ -1,6 +1,6 @@
 # Swish-Katalogen
 
-Swish-Katalogen är en söktjänst för Swish-123 nummer.
+Swish-Katalogen är en söktjänst för Swish-123 nummer, den existerar på https://b19.se/swish-katalogen/
 
 
 
