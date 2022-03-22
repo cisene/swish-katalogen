@@ -2,6 +2,8 @@
 
 class SwishKatalogen {
   
+  var $domain_prefix = 'https://b19.se';
+
   var $url_prefix = '/swish-katalogen/';
   var $cat_prefix = '/swish-katalogen/k/';
 
@@ -155,6 +157,15 @@ class SwishKatalogen {
 
     $result = $this->_jsonPrettify(json_encode($temp));
     return $result;
+  }
+
+
+  public function getSitemapCatURL($data) {
+    return strval($this->domain_prefix) . strval($this->cat_prefix) . strval($data);
+  }
+
+  public function getSitemapEntryURL($data) {
+    return strval($this->domain_prefix) . strval($this->url_prefix) . strval($data);
   }
 
 
