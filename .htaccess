@@ -22,69 +22,63 @@ RewriteBase /swish-katalogen
 
 # remove www...
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ http://%1/swish-katalogen/$1 [R=301,L]
+RewriteRule ^(.*)$ https://%1/swish-katalogen/$1 [R=301,L]
 
 
 # Top page
 RewriteRule ^$ index.php [L]
 
+# Sitemap
+RewriteRule ^sitemap\x2exml$ sitemap.php [L]
+
+# Categories
 RewriteRule ^k/(.*)$ categories.php?cat=$1 [L,NC]
 
-# Trigger on whole 
+# Details
 RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
 
-# API proxy
-#RewriteRule ^api$ api.php [L,NC]
 
-# Get all categories
-RewriteRule ^api/getCategories$ api.php?action=getCategories [L,NC]
-
-# Random entry from category
-RewriteRule ^api/getRandomInCategory/(.*)$ api.php?action=getRandomInCategory&term=$1 [L,NC]
-
-# Handle Swish presentation
-RewriteRule ^api/getFancyPresentation/(.*)$ api.php?action=getFancyPresentation&term=$1 [L,NC]
 
 # BEGIN EXPIRES
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresDefault "access plus 1 days"
-    ExpiresByType text/css "access plus 1 week"
-    ExpiresByType text/plain "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType application/x-javascript "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 week"
-    ExpiresByType application/x-icon "access plus 1 year"
-</IfModule>
+#<IfModule mod_expires.c>
+#    ExpiresActive On
+#    ExpiresDefault "access plus 1 days"
+#    ExpiresByType text/css "access plus 1 week"
+#    ExpiresByType text/plain "access plus 1 month"
+#    ExpiresByType image/gif "access plus 1 month"
+#    ExpiresByType image/png "access plus 1 month"
+#    ExpiresByType image/jpeg "access plus 1 month"
+#    ExpiresByType application/x-javascript "access plus 1 month"
+#    ExpiresByType application/javascript "access plus 1 week"
+#    ExpiresByType application/x-icon "access plus 1 year"
+#</IfModule>
 
-<IfModule mod_headers.c>
-    <FilesMatch "\.(js|css|xml|gz)$">
-        Header append Vary Accept-Encoding
-    </FilesMatch>
-    <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">
-        Header set Cache-Control "public"
-    </FilesMatch>
-    <FilesMatch "\.(css)$">
-        Header set Cache-Control "public"
-    </FilesMatch>
-    <FilesMatch "\.(js)$">
-        Header set Cache-Control "private"
-    </FilesMatch>
-    <FilesMatch "\.(x?html?|php)$">
-        Header set Cache-Control "private, must-revalidate"
-    </FilesMatch>
-</IfModule>
+#<IfModule mod_headers.c>
+#    <FilesMatch "\.(js|css|xml|gz)$">
+#        Header append Vary Accept-Encoding
+#    </FilesMatch>
+#    <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">
+#        Header set Cache-Control "public"
+#    </FilesMatch>
+#    <FilesMatch "\.(css)$">
+#        Header set Cache-Control "public"
+#    </FilesMatch>
+#    <FilesMatch "\.(js)$">
+#        Header set Cache-Control "private"
+#    </FilesMatch>
+#    <FilesMatch "\.(x?html?|php)$">
+#        Header set Cache-Control "private, must-revalidate"
+#    </FilesMatch>
+#</IfModule>
 
 # Compression
-<ifModule mod_gzip.c>
-    mod_gzip_on Yes
-    mod_gzip_dechunk Yes
-    mod_gzip_item_include file .(css|js|jpg|jpeg|png|gif)$
-    mod_gzip_item_include mime ^text/.*
-    mod_gzip_item_include mime ^application/x-javascript.*
-    mod_gzip_item_include mime ^application/xml.*
-    mod_gzip_item_exclude mime ^image/.*
-    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
-</ifModule>
+#<ifModule mod_gzip.c>
+#    mod_gzip_on Yes
+#    mod_gzip_dechunk Yes
+#    mod_gzip_item_include file .(css|js|jpg|jpeg|png|gif)$
+#    mod_gzip_item_include mime ^text/.*
+#    mod_gzip_item_include mime ^application/x-javascript.*
+#    mod_gzip_item_include mime ^application/xml.*
+#    mod_gzip_item_exclude mime ^image/.*
+#    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+#</ifModule>

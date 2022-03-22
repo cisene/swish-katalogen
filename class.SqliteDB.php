@@ -55,7 +55,6 @@ class SqliteDB {
       if ($this->db_connection != null) {
 
         $query = "SELECT entry, orgName, orgNumber, web FROM swish WHERE entry = " . $entry_id . ";";
-        // echo($query . "\n");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
           $entry = array(
@@ -67,20 +66,16 @@ class SqliteDB {
           );
         }
 
-        // var_dump($result);
-
-        $query = "SELECT category FROM categories WHERE entry = " . $entry_id . ";";
-        // echo($query . "\n");
-        $results = $this->db_connection->query($query);
-        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
-          // var_dump($row);
-          $entry['categories'][] = $row['category'];
+        if($entry) {
+          $query = "SELECT category FROM categories WHERE entry = " . $entry_id . ";";
+          $results = $this->db_connection->query($query);
+          while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $entry['categories'][] = $row['category'];
+          }
+          $result = $entry;
         }
-
-        $result = $entry;
       }
     }
-    // var_dump($result);
     return $result;
   }
 
@@ -133,6 +128,34 @@ class SqliteDB {
     return $result;
   }
 
+
+  public function getSitemapEntriesAll() {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT DISTINCT entry FROM swish ORDER BY entry ASC;";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array('entry' => $row['entry']);
+        }
+      }
+    }
+    return $result;
+  }
+
+  public function getSitemapCategoriesAll() {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT DISTINCT category FROM categories ORDER BY category ASC;";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array('category' => $row['category']);
+        }
+      }
+    }
+    return $result;
+  }
 
 // array(4) {
 //   ["entry"]=>

@@ -21,16 +21,21 @@ if($cat_route != null) {
   if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
 
     $entry = $db->getEntryByID($cat_route);
-    $entry_json = $ui->EntryJSON($entry);
+    if(sizeof($entry) > 0) {
 
-    $orgName = $entry['orgName'];
+      $entry_json = $ui->EntryJSON($entry);
 
-    $entry_categories = $ui->getEntryCategories($entry['categories']);
-    $other_categories = $ui->getOtherCategories($cat_ranked, $entry['categories']);
+      $orgName = $entry['orgName'];
+
+      $entry_categories = $ui->getEntryCategories($entry['categories']);
+      $other_categories = $ui->getOtherCategories($cat_ranked, $entry['categories']);
 
 
-    $number_variants = $sf->getSwishAllFormats($cat_route);
-    $variants = $ui->getFormattedSwishNumberList($number_variants);
+      $number_variants = $sf->getSwishAllFormats($cat_route);
+      $variants = $ui->getFormattedSwishNumberList($number_variants);
+    } else {
+      header("HTTP/1.1 404 NOT FOUND");
+      die("");
 
   } else {
     header("HTTP/1.1 404 NOT FOUND");
