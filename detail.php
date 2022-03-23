@@ -36,7 +36,7 @@ if($cat_route != null) {
     } else {
       header("HTTP/1.1 404 NOT FOUND");
       die("");
-
+    }
   } else {
     header("HTTP/1.1 404 NOT FOUND");
     die("");
