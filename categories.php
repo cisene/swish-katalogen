@@ -12,8 +12,6 @@ $ui = new SwishKatalogen();
 
 $db->connectDB('./__database/swish-123-data.sqlite');
 
-// header("Content-Type: text/plain");
-
 $cat_route = $ui->getCategoryRouting();
 $cat_ranked = $db->getCategoriesAll();
 
@@ -26,6 +24,24 @@ if($cat_route != null) {
 } else {
   $category_list = $ui->getCategoriesTagCloud($cat_ranked, "notselected");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,10 +73,8 @@ if($cat_route != null) {
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="swish-katalogen">
 
-    <link href="css/screen.css?nocache=<?php echo(time()); ?>" rel="prefetch">
+    <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/app.js?nocache=<?php echo(time()); ?>"></script>
     <link rel="manifest" href="manifest/manifest.json?v=1">
   </head>
   <body>
@@ -71,19 +85,19 @@ if($cat_route != null) {
 
     <section id="pagebody">
       
-      <aside class="blurb">
+      <div id="blurb">
         <h2>Organisationer i kategorin '<?php echo($cat_route); ?>'</h2>
         <table>
           <?php echo($category_item_listing); ?>
         </table>
-      </aside>
+      </div>
 
-      <aside class="categories">
+      <div id="categories">
         <h2>Kategorier</h2>
         <ul id="categories-list"><?php echo($category_list); ?></ul>
-      </aside>
+      </div>
 
-    </section -->
+    </section>
 
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>

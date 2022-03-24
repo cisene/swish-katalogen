@@ -18,6 +18,15 @@ $cat_ranked = $db->getCategoriesAll();
 $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
 
+
+
+
+
+
+
+
+
+
 ?><!doctype html>
 <html lang="sv">
   <head>
@@ -46,11 +55,8 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="swish-katalogen">
 
-    <!-- link href="css/screen.css?nocache=<?php echo(time()); ?>" rel="prefetch" -->
-    <link rel="stylesheet" href="css/screen.css?nocache=<?php echo(time()); ?>">
+    <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/app.js?nocache=<?php echo(time()); ?>"></script>
     <link rel="manifest" href="manifest/manifest.json?v=1">
   </head>
   <body>
@@ -61,17 +67,17 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
     <section id="pagebody">
       
-      <aside id="blurb">
+      <div id="blurb">
         <h2>Swish-Katalogen</h2>
         <p>Swish-Katalogen är en katalog eller enkel sök-motor, genom att alla samlade Swish-123 nummer är kategorieserade med minst en kategori, kan dessa sökas fram genom att klicka runt i tag-molnet.<br>Katalogen har skapats på grund av bristen av sökbarhet och ren nyfikenhet, "vem har Swish-nummer 123 xxx xx xx?!".<br>Om du gillar tjänsten eller bara vill skänka mig en slant som tack för hjälpen, Swisha mig på nummer 070<span></span>3852<span></span>166 - Ingen peng är för liten.</p>
         <p>Vill du hjälpa till att lägga till fler nummer, eller har ändringar går det alldeles utmärkt att göra det genom att göra en Pull-Request på Github. Mer info nedan.</p>
         <p></p>
-      </aside>
+      </div>
 
-      <aside id="categories">
+      <div id="categories">
         <h2>Kategorier</h2>
         <ul id="categories-list"><?php echo($category_list); ?></ul>
-      </aside>
+      </div>
 
     </section>
 

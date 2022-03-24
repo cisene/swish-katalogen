@@ -73,10 +73,8 @@ if($cat_route != null) {
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="swish-katalogen">
 
-    <link href="css/screen.css?nocache=<?php echo(time()); ?>" rel="prefetch">
+    <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- script src="js/app.js?nocache=<?php echo(time()); ?>"></script -->
     <link rel="manifest" href="manifest/manifest.json?v=1">
   </head>
   <body>
@@ -89,7 +87,7 @@ if($cat_route != null) {
 
     <section id="pagebody">
       
-      <aside class="blurb">
+      <div id="blurb">
         <div itemscope itemtype="https://schema.org/Organization">
           <span class="kv-pair">
             <span class="kv-pair-key">Organisation:</span>
@@ -118,12 +116,10 @@ if($cat_route != null) {
           <div><?php echo($variants); ?></div>
         </div>
 
-        <div class="other-categories">
-          <h3>Övriga kategorier:</h3>
-          <ul><?php echo($other_categories); ?></ul>
-        </div>
-
-      </aside>
+      <div id="categories">
+        <h2>Övriga kategorier:</h3>
+        <ul id="categories-list"><?php echo($other_categories); ?></ul>
+      </div>
 
     </section>
 
