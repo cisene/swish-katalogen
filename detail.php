@@ -112,7 +112,7 @@ if($cat_route != null) {
         </div>
 
         <div class="swish-number-variants">
-          <h2>Swish-nummer: <?php echo($cat_route); ?></h2>
+          <h2>Swish-nummer: <a href="swish://<?php echo($cat_route); ?>" rel="swish://"><?php echo($cat_route); ?></a></h2>
           <div><?php echo($variants); ?></div>
         </div>
 
