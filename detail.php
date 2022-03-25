@@ -51,7 +51,7 @@ if($cat_route != null) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - <?php echo($cat_route . ' - ' . $orgName); ?></title>
+    <title>Swish-Katalogen - <?php echo($cat_route . ' - ' . $orgName); ?> - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
     <meta name="theme-color" content="#f0f">
     <meta name="theme-color" content="#f0f">
@@ -101,7 +101,7 @@ if($cat_route != null) {
           <br>
           <span class="kv-pair">
             <span class="kv-pair-key">Hemsida:</span>
-            <span class="kv-pair-value"><a itemprop="url" href="<?php echo($entry['web']); ?>"><?php echo($entry['web']); ?></a></span>
+            <span class="kv-pair-value"><a itemprop="url" href="<?php echo($entry['web']); ?>" target="_blank"><?php echo($entry['web']); ?></a></span>
           </span>
           <br>
           <span class="kv-pair">

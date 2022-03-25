@@ -51,7 +51,7 @@ if($cat_route != null) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>'</title>
+    <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
     <meta name="theme-color" content="#f0f">
     <meta name="theme-color" content="#f0f">
