@@ -116,6 +116,12 @@ if($cat_route != null) {
           <div><?php echo($variants); ?></div>
         </div>
 
+        <div>
+          <a href="swish://A<?php echo($cat_route); ?>" rel="swish://">A</a>
+          <br>
+          <a href="swish://C<?php echo($cat_route); ?>" rel="swish://">C</a>
+        </div>
+
       <div id="categories">
         <h2>Övriga kategorier:</h3>
         <ul id="categories-list"><?php echo($other_categories); ?></ul>
