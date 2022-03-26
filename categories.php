@@ -22,7 +22,7 @@ if($cat_route != null) {
   $category_item_listing = $ui->getEntriesCategoryListing($category_items);
 
 } else {
-  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "notselected");
+  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 }
 
 
@@ -53,9 +53,9 @@ if($cat_route != null) {
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
-    <meta name="theme-color" content="#f0f">
-    <meta name="theme-color" content="#f0f">
-    <meta name="msapplication-TileColor" content="#f0f">
+    <!-- meta name="theme-color" content="#f0f" -->
+    <!-- meta name="theme-color" content="#f0f" -->
+    <!--  meta name="msapplication-TileColor" content="#f0f" -->
 
     <meta name="msapplication-TileImage" content="/favicon/favicon_150x150.jpg?v=1">
     <link rel="apple-touch-icon" href="/favicon/favicon_192x192.jpg?v=1">
