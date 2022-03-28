@@ -25,6 +25,10 @@ if($cat_route != null) {
   $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 }
 
+if(sizeof($category_items) < 1) {
+  header("HTTP/1.1 404 NOT FOUND");
+  die("");
+}
 
 
 

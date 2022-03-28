@@ -17,9 +17,12 @@ Detta är känt;
 
 
 Todo:
-* Detalj-vyn, tag-cloud skall vara sorterat i bokstavsordning
-* Sökvy, fritext sök (swish nummer, organisationsnamn och nummer och kategori) - saknas helt
-* Alias för sitemap.xml (/swish-katalogen/sitemap.xml) - lista alla Swish-nummer + kategorier för genomsökning av webspindlar
-* Lägga till en last-visited mojäng widget som samlar/visar de nummer/kategorier som senast besökts
-* Lägga till fritext sökning, sök-ruta samt resultat-sida /s/<terms> typ -- last-visited/last-searched?
-* Lägga till Google Analytics på alla sidor för att få heltäckande bild av vad som händer
+* [ ] Lägga till Open Graph taggar för att snygga till furls på sociala media
+* [ ] Detalj-vyn, tag-cloud skall vara sorterat i bokstavsordning
+* [ ] Lägga till 404-hantering i categories.php - 0 results från db -> 404
+* [ ] Lägga till en last-visited mojäng widget som samlar/visar de nummer/kategorier som senast besökts
+* [ ] Lägga till fritext sökning, sök-ruta samt resultat-sida /s/<terms> typ -- last-visited/last-searched?
+* [ ] Sökvy, fritext sök (swish nummer, organisationsnamn och nummer och kategori) - saknas helt
+* [X] Alias för sitemap.xml (/swish-katalogen/sitemap.xml) - lista alla Swish-nummer + kategorier för genomsökning av webspindlar
+* [X] Lägga till Google Analytics på alla sidor för att få heltäckande bild av vad som händer
+* [X] SEO-trim, få sidor att ranka på Google/Bing för relevanta sökord. 
