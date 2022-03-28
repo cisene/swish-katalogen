@@ -127,6 +127,6 @@ if($cat_route != null) {
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>
-
+    <?php include_once "include.analytics.php"; ?>
   </body>
 </html>

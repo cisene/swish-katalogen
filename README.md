@@ -17,11 +17,13 @@ Detta är känt;
 
 
 Todo:
-* [ ] Lägga till Open Graph taggar för att snygga till furls på sociala media
-* [ ] Detalj-vyn, tag-cloud skall vara sorterat i bokstavsordning
+
+* [ ] Detalj-vyn, tag-cloud skall vara sorterat i bokstavsordning på kategori-sidan
 * [ ] Lägga till 404-hantering i categories.php - 0 results från db -> 404
-* [ ] Lägga till en last-visited mojäng widget som samlar/visar de nummer/kategorier som senast besökts
 * [ ] Lägga till fritext sökning, sök-ruta samt resultat-sida /s/<terms> typ -- last-visited/last-searched?
+* [ ] Lägga till Open Graph taggar för att snygga till furls på sociala media
+* [ ] Lägga till widget för nummer/kategorier som senast besökts
+* [ ] Lägga till widget för Top-10 kategorier på första-sidan
 * [ ] Sökvy, fritext sök (swish nummer, organisationsnamn och nummer och kategori) - saknas helt
 * [X] Alias för sitemap.xml (/swish-katalogen/sitemap.xml) - lista alla Swish-nummer + kategorier för genomsökning av webspindlar
 * [X] Lägga till Google Analytics på alla sidor för att få heltäckande bild av vad som händer

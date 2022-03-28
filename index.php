@@ -85,6 +85,6 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>
-
+    <?php include_once "include.analytics.php"; ?>
   </body>
 </html>

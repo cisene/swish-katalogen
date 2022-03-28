@@ -8,6 +8,3 @@
       <div class="disclaimer">
         <p>Disclaimer: <a href="https://github.com/cisene/swish-katalogen" target="_blank">Swish-Katalogen</a> har inget att göra med företaget Swish, <a href="https://github.com/cisene/swish-katalogen" target="_blank">Swish-Katalogen</a> är helt och hållet en skapelse av en <a href="https://christopherisene.se/?utm_source=swish-katalogen" target="_blank">privatperson</a>.</p>
       </div>
-
-      <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-728601-16"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-728601-16');</script>
-    

@@ -12,32 +12,10 @@ $ui = new SwishKatalogen();
 
 $db->connectDB('./__database/swish-123-data.sqlite');
 
-$cat_route = $ui->getCategoryRouting();
+// $cat_ranked = $db->getCategoriesRanked();
 $cat_ranked = $db->getCategoriesAll();
 
-if($cat_route != null) {
-  $category_list = $ui->getCategoriesTagCloud($cat_ranked, $cat_route);
-
-  $category_items = $db->getEntriesByCategory($cat_route);
-  $category_item_listing = $ui->getEntriesCategoryListing($category_items);
-
-} else {
-  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
-}
-
-if(sizeof($category_items) < 1) {
-  header("HTTP/1.1 404 NOT FOUND");
-  die("");
-}
-
-
-
-
-
-
-
-
-
+$category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
 
 
@@ -55,7 +33,7 @@ if(sizeof($category_items) < 1) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
+    <title>Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
     <!-- meta name="theme-color" content="#f0f" -->
     <!-- meta name="theme-color" content="#f0f" -->
@@ -67,9 +45,9 @@ if(sizeof($category_items) < 1) {
 
     <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
 
-    <meta property="og:locale" content="sv_SE">
+    <meta property="og:locale" content="sv_SE" />
     <meta property="og:title" content="Swish-Katalogen">
-    <meta property="og:description" content="Swish-Katalogen, kategori '<?php echo($cat_route); ?>'">
+    <meta property="og:description" content="Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.">
     <meta property="og:image" content="/favicon/favicon_512x512.jpg">
     <meta property="og:url" content="https://b19.se/swish-katalogen/">
     <meta property="og:site_name" content="Swish-Katalogen">
@@ -91,10 +69,10 @@ if(sizeof($category_items) < 1) {
     <section id="pagebody">
       
       <div id="blurb">
-        <h2>Organisationer i kategorin '<?php echo($cat_route); ?>'</h2>
-        <table>
-          <?php echo($category_item_listing); ?>
-        </table>
+        <h2>Swish-Katalogen</h2>
+        <p>Swish-Katalogen är en katalog eller enkel sök-motor, genom att alla samlade Swish-123 nummer är kategorieserade med minst en kategori, kan dessa sökas fram genom att klicka runt i tag-molnet.<br>Katalogen har skapats på grund av bristen av sökbarhet och ren nyfikenhet, "vem har Swish-nummer 123 xxx xx xx?!" eller bara kolla swish nummer.<br>Om du gillar tjänsten eller bara vill skänka mig en slant som tack för hjälpen, Swisha mig på nummer 070<span></span>3852<span></span>166 - Ingen peng är för liten.</p>
+        <p>Vill du hjälpa till att lägga till fler nummer, eller har ändringar går det alldeles utmärkt att göra det genom att göra en Pull-Request på Github. Mer info nedan.</p>
+        <p></p>
       </div>
 
       <div id="categories">
@@ -107,6 +85,6 @@ if(sizeof($category_items) < 1) {
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>
-    <?php include_once "include.analytics.php"; ?>
+
   </body>
 </html>
