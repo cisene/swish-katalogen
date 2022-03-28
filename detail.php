@@ -63,8 +63,9 @@ if($cat_route != null) {
 
     <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
 
+    <meta property="og:locale" content="sv_SE">
     <meta property="og:title" content="Swish-Katalogen">
-    <meta property="og:description" content="Swish-Katalogen">
+    <meta property="og:description" content="Swish-Katalogen, <?php echo($cat_route . ' - ' . $orgName); ?>">
     <meta property="og:image" content="/favicon/favicon_512x512.jpg">
     <meta property="og:url" content="https://b19.se/swish-katalogen/">
     <meta property="og:site_name" content="Swish-Katalogen">
