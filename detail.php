@@ -41,7 +41,7 @@ if($cat_route != null) {
     header("HTTP/1.1 404 NOT FOUND");
     die("");
   }
-
+}
 
 
 
