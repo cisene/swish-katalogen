@@ -45,12 +45,15 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
     <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
 
-    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:locale" content="sv_SE">
     <meta property="og:title" content="Swish-Katalogen">
     <meta property="og:description" content="Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.">
     <meta property="og:image" content="/favicon/favicon_512x512.jpg">
     <meta property="og:url" content="https://b19.se/swish-katalogen/">
     <meta property="og:site_name" content="Swish-Katalogen">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@cisene" />
 
     <meta name="apple-mobile-web-app-capable" content="no">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -70,7 +73,7 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
       
       <div id="blurb">
         <h2>Swish-Katalogen</h2>
-        <p>Swish-Katalogen är en katalog eller enkel sök-motor, genom att alla samlade Swish-123 nummer är kategorieserade med minst en kategori, kan dessa sökas fram genom att klicka runt i tag-molnet.<br>Katalogen har skapats på grund av bristen av sökbarhet och ren nyfikenhet, "vem har Swish-nummer 123 xxx xx xx?!" eller bara kolla swish nummer.<br>Om du gillar tjänsten eller bara vill skänka mig en slant som tack för hjälpen, Swisha mig på nummer 070<span></span>3852<span></span>166 - Ingen peng är för liten.</p>
+        <p>Swish-Katalogen är en katalog eller enkel sök-motor, genom att alla samlade Swish-123 nummer är kategorieserade med minst en kategori, kan dessa sökas fram genom att klicka runt i tag-molnet.<br>Katalogen har skapats på grund av bristen av sökbarhet och ren nyfikenhet, "vem har Swish-nummer 123 xxx xx xx?!" eller bara kolla swish nummer.</p>
         <p>Vill du hjälpa till att lägga till fler nummer, eller har ändringar går det alldeles utmärkt att göra det genom att göra en Pull-Request på Github. Mer info nedan.</p>
         <p></p>
       </div>

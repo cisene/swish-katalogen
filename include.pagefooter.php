@@ -3,6 +3,7 @@
         <h3>Swish 123-nummer</h3>
         <p>Alla samlade <a href="https://github.com/cisene/swish-123" target="_blank">Swish-123</a>-nummer kommer från ett litet projekt på Github. Alla nummer har samlats av individer eftersom Swish själva inte tillhandahåller möjligheten att söka eller ta reda på vem/vilka dessa nummer tillhör.</p>
         <p>Läs mer eller bidra här: <a href="https://github.com/cisene/swish-123" target="_blank">Swish-123</a>.</p>
+        <p>Om du gillar tjänsten eller bara vill skänka mig en slant som tack för hjälpen, Swisha mig på nummer 070<span></span>3852<span></span>166 - Ingen peng är för liten.</p>
       </div>
 
       <div class="disclaimer">

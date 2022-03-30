@@ -43,7 +43,20 @@ if($cat_route != null) {
   }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?><!doctype html>
 <html lang="sv">
@@ -69,6 +82,9 @@ if($cat_route != null) {
     <meta property="og:image" content="/favicon/favicon_512x512.jpg">
     <meta property="og:url" content="https://b19.se/swish-katalogen/">
     <meta property="og:site_name" content="Swish-Katalogen">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@cisene" />
 
     <meta name="apple-mobile-web-app-capable" content="no">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
