@@ -142,6 +142,11 @@ class SwishKatalogen {
     $result = null;
     $temp = array();
 
+    $taxid = $this->getTaxID($obj['orgNumber']);
+    if ($taxid != null) {
+      $obj['orgNumber'] = $taxid;
+    }
+
     $temp['@context'] = strval('https://schema.org');
     $temp['@type'] = strval('Organization');
 
@@ -156,6 +161,15 @@ class SwishKatalogen {
     }
 
     $result = $this->_jsonPrettify(json_encode($temp));
+    return $result;
+  }
+
+  public function getTaxID($data) {
+    $result = null;
+    if(preg_match('/^(\d{6})\x2d(\d{4})$/six', strval($data))) {
+      $result = preg_replace('/^(\d{6})\x2d(\d{4})$/six', "SE $1 $2 01", strval($data));
+      $result = preg_replace('/\x20/six', "", strval($result));
+    }
     return $result;
   }
 

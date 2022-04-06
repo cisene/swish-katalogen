@@ -33,6 +33,7 @@ if($cat_route != null) {
 
       $number_variants = $sf->getSwishAllFormats($cat_route);
       $variants = $ui->getFormattedSwishNumberList($number_variants);
+
     } else {
       header("HTTP/1.1 404 NOT FOUND");
       die("");
@@ -103,7 +104,7 @@ if($cat_route != null) {
     </section>
 
     <section id="pagebody">
-      
+
       <div id="blurb">
         <div itemscope itemtype="https://schema.org/Organization">
           <span class="kv-pair">
