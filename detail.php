@@ -64,7 +64,7 @@ if($cat_route != null) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - Vem har Swish-nummer <?php echo($cat_route . '? Svar: ' . $orgName); ?> - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
+    <title><?php echo($orgName . ' - ' . $cat_route); ?> - Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
     <!-- meta name="theme-color" content="#f0f" -->
     <!-- meta name="theme-color" content="#f0f" -->
@@ -74,11 +74,11 @@ if($cat_route != null) {
     <link rel="apple-touch-icon" href="/favicon/favicon_192x192.jpg?v=1">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon_32x32.jpg?v=1">
 
-    <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
+    <meta name="description" content="<?php echo($orgName . ' - ' . $cat_route); ?> - Swish-Katalogen">
 
     <meta property="og:locale" content="sv_SE">
     <meta property="og:title" content="Swish-Katalogen">
-    <meta property="og:description" content="Swish-Katalogen, <?php echo($cat_route . ' - ' . $orgName); ?>">
+    <meta property="og:description" content="<?php echo($orgName . ' - ' . $cat_route); ?> - Swish-Katalogen">
     <meta property="og:image" content="/favicon/favicon_512x512.jpg">
     <meta property="og:url" content="https://b19.se/swish-katalogen/">
     <meta property="og:site_name" content="Swish-Katalogen">
