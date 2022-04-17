@@ -13,6 +13,9 @@ class SwishKatalogen {
     if(isset($_SERVER['REQUEST_URI'])) {
       $uri = urldecode($_SERVER['REQUEST_URI']);
 
+      /* Strip off trailing slash - blindly */
+      $uri = preg_replace('/\x2f$/six', "", strval($uri));
+
       $mask = $this->_regexify($this->cat_prefix);
       $re = "/^" . $mask . "/six";
       if(preg_match($re, strval($uri))) {

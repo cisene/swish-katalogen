@@ -16,6 +16,7 @@ $cat_route = $ui->getCategoryRouting();
 $cat_ranked = $db->getCategoriesAll();
 
 $category_items = array();
+$category_item_listing = "";
 
 if($cat_route != null) {
   $category_list = $ui->getCategoriesTagCloud($cat_ranked, $cat_route);
@@ -28,9 +29,13 @@ if($cat_route != null) {
 }
 
 if(sizeof($category_items) < 1) {
-  header("HTTP/1.1 404 NOT FOUND");
-  die("");
+  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 }
+
+// if(sizeof($category_items) < 1) {
+//   header("HTTP/1.1 404 NOT FOUND");
+//   die("");
+// }
 
 
 
@@ -57,7 +62,7 @@ if(sizeof($category_items) < 1) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
+    <title><?php if($cat_route != null) { ?>Swish-Katalogen - Kategori '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer<?php } else { ?>Swish-Katalogen - Kategorier - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer<?php } ?></title>
 
     <!-- meta name="theme-color" content="#f0f" -->
     <!-- meta name="theme-color" content="#f0f" -->
@@ -96,10 +101,12 @@ if(sizeof($category_items) < 1) {
     <section id="pagebody">
       
       <div id="blurb">
+        <?php if($cat_route != null) { ?>
         <h2>Organisationer i kategorin '<?php echo($cat_route); ?>'</h2>
         <table>
           <?php echo($category_item_listing); ?>
         </table>
+        <?php } ?>
       </div>
 
       <div id="categories">

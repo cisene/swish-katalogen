@@ -20,10 +20,12 @@ Options -MultiViews +FollowSymLinks
 RewriteEngine On
 RewriteBase /swish-katalogen
 
+ErrorDocument 404 /swish-katalogen/404.php
+ErrorDocument 410 /swish-katalogen/410.php
+
 # remove www...
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/swish-katalogen/$1 [R=301,L]
-
 
 # Top page
 RewriteRule ^$ index.php [L]
@@ -39,6 +41,10 @@ RewriteRule ^k/(.*)$ categories.php?cat=$1 [L,NC]
 
 # Details
 RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
+
+# Details with slash
+RewriteRule ^(123\d{7})/$ /swish-katalogen/$1 [R=301,L]
+
 
 
 
