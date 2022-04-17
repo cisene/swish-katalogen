@@ -31,6 +31,9 @@ RewriteRule ^$ index.php [L]
 # Sitemap
 RewriteRule ^sitemap\x2exml$ sitemap.php [L]
 
+# Categories - Empty
+RewriteRule ^k/$ categories.php?cat=$1 [L,NC]
+
 # Categories
 RewriteRule ^k/(.*)$ categories.php?cat=$1 [L,NC]
 
