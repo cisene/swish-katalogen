@@ -15,6 +15,8 @@ $db->connectDB('./__database/swish-123-data.sqlite');
 $cat_route = $ui->getCategoryRouting();
 $cat_ranked = $db->getCategoriesAll();
 
+$category_items = array();
+
 if($cat_route != null) {
   $category_list = $ui->getCategoriesTagCloud($cat_ranked, $cat_route);
 
