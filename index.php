@@ -85,6 +85,8 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
     </section>
 
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Sök Swish-nummer","dateCreated":"2022-03-24","breadcrumb":"Swish-Katalogen - Sök Swish-nummer"}</script>
+
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>

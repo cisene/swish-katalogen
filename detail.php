@@ -97,7 +97,6 @@ if($cat_route != null) {
   </head>
   <body>
 
-    <script type="application/ld+json"><?php echo($entry_json); ?></script>
 
     <section id="pageheader">
       <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
@@ -140,6 +139,8 @@ if($cat_route != null) {
       </div>
 
     </section>
+
+    <script type="application/ld+json"><?php echo($entry_json); ?></script>
 
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
