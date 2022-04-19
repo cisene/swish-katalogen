@@ -157,6 +157,9 @@ class SwishKatalogen {
     $temp['taxid'] = strval($obj['orgNumber']);
     $temp['url'] = strval($obj['web']);
 
+    $temp['dateCreated'] = strval("2022-03-24");
+    $temp['breadcrumb'] = strval("Swish-Katalogen - Sök Swish-nummer - " . $obj['orgName']);
+
     $temp['keywords'] = array();
 
     foreach($obj['categories'] as $cat) {
