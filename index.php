@@ -83,6 +83,15 @@ $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
         <ul id="categories-list"><?php echo($category_list); ?></ul>
       </div>
 
+
+      <div id="search-terms">
+        <p>swish-nummer som börjar på <b>123</b>?</p>
+        <p>Sök swishnummer företag</p>
+        <p>Hur hittar man Swishnummer?</p>
+        <p>Söka swishnummer</p>
+        <p>söka swishnummer företag</p>
+        <p>Swisha till 123 nummer</p>
+      </div>
     </section>
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Sök Swish-nummer","dateCreated":"2022-03-24","breadcrumb":"Swish-Katalogen - Sök Swish-nummer"}</script>
