@@ -1,17 +1,35 @@
-/* Welcome to Compass. In this file you should write your main styles. (or centralize your imports) Import this file using the following HTML or equivalent: <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* @import "compass/reset"; */
 html { display: inline-block; }
-html body { background-color: #fff; font-size: 1.0em; font-weight: 400; font-family: Verdana, Geneva, Helvetica, sanserif, arial; margin: 0px; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
-html body #pageheader { display: inline-block; margin: 0px; padding: 15px; }
-html body #pageheader a { text-decoration: none; }
-html body #pageheader a h1 { font-size: 3.0em; font-weight: 700; }
-html body #pagebody { display: inline-block; margin: 0px; padding: 15px; }
-html body #pagebody #blurb { display: inline-block; margin: 0px; padding: 15px; }
-html body #pagebody #categories { display: inline-block; margin: 0px; padding: 15px; }
-html body #pagebody #categories h2 { color: #000; }
-html body #pagebody #categories ul { margin: 0px; padding: 15px; align-items: center; display: flex; flex-wrap: wrap; list-style: none; overflow: auto; }
-html body #pagebody #categories ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding: 5px; margin: 5px; background-color: #ddd; border: 1px solid #999; border-radius: 7px 7px 7px; }
-html body #pagebody #categories ul li a { color: #00d; text-decoration: none; }
-html body #pagebody #categories ul li a:hover { text-decoration: underline; }
-html body #pagebody #categories ul li:hover { color: #00f; }
-html body #pagefooter { display: inline-block; margin: 0px; padding: 15px; background-color: #fff; }
+html body { background-color: #fff; font-size: 1.2em; font-weight: 400; font-family: Verdana, Geneva, Helvetica, sanserif, arial; margin: 0px; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
+html body #pageheader { display: inline-block; width: 100%; margin: 0px; padding: 15px; float: left; clear: both; background-color: #33e; border: 1px dotted #f0f; }
+html body #pageheader a { text-decoration: none; color: #fff; }
+html body #pageheader a h1 { font-size: 3.0em; font-weight: 700; margin: 0px; padding: 0px; }
+html body #pagesearch { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; background-color: #cce; border: 1px dotted #f0f; }
+html body #pagesearch #pagesearch-breadcrumbs { float: left; }
+html body #pagesearch #pagesearch-searchbox { float: right; }
+html body #pagesearch #pagesearch-searchbox input[type="text"] { font-size: larger; border-radius: 7px 7px 7px; padding: 15px; }
+html body #pagesearch #pagesearch-searchbox button { font-size: larger; border-radius: 7px 7px 7px; padding: 15px; }
+html body #pagebody { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-intro { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-categories { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-categories h2 { color: #000; }
+html body #pagebody #pagebody-categories ul { display: inline-flex; margin: 0px; padding: 0px; float: left; clear: both; flex-wrap: wrap; flex-direction: row; align-content: space-around; justify-content: space-between; align-items: center; }
+html body #pagebody #pagebody-categories ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding: 5px; margin: 5px; background-color: #ddd; border: 1px solid #999; border-radius: 7px 7px 7px; }
+html body #pagebody #pagebody-categories ul li a { color: #00d; text-decoration: none; }
+html body #pagebody #pagebody-categories ul li a:hover { text-decoration: underline; }
+html body #pagebody #pagebody-categories ul li:hover { color: #00f; }
+html body #pagebody #pagebody-categories #pagebody-categories-list { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-categories-table { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
+html body #pagebody #pagebody-categories-table table { width: 100%; }
+html body #pagebody #pagebody-categories-table table tbody tr th { text-align: left; font-size: 1.7em; }
+html body #pagebody #pagebody-categories-table table tbody tr td { font-size: 1.3em; }
+html body #pagebody #pagebody-categories-table table tbody tr td a { text-decoration: none; }
+html body #pagebody #pagebody-categories-table table tbody tr td a:hover { text-decoration: underline; }
+html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(1) { width: 10%; }
+html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(odd) { width: 5%; padding: 10px; margin: 0px; font-size: 1.7em; }
+html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(even) { padding: 10px; margin: 0px; font-size: 1.7em; }
+html body #pagebody #pagebody-search-terms { display: inline-block; margin: 0px; padding: 15px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-statistics { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; border: 1px dotted #f0f; }
+html body #pagebody #pagebody-statistics #pagebody-statistics-text .updated { font-weight: 700; }
+html body #pagebody #pagebody-statistics #pagebody-statistics-text .entries { font-weight: 700; }
+html body #pagebody #pagebody-statistics #pagebody-statistics-text .categories { font-weight: 700; }
+html body #pagefooter { display: inline-block; width: 100%; margin: 0px; padding: 15px; float: left; clear: both; border-top: 2px solid #000; background-color: #ccc; }

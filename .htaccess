@@ -45,7 +45,11 @@ RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
 # Details with slash
 RewriteRule ^(123\d{7})/$ /swish-katalogen/$1 [R=301,L]
 
+# Search - Empty
+RewriteRule ^s/$ search.php?term=$1 [L,NC]
 
+# Search - Term
+RewriteRule ^s/(.*)$ search.php?term=$1 [L,NC]
 
 
 # BEGIN EXPIRES

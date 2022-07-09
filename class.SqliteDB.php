@@ -104,7 +104,7 @@ class SqliteDB {
     $result = array();
     if ($this->sqlite_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category HAVING cnt >= 25 ORDER BY cnt DESC, category ASC;";
+        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category HAVING cnt >= 10 ORDER BY cnt DESC, category ASC LIMIT 50;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
             $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
@@ -157,17 +157,43 @@ class SqliteDB {
     return $result;
   }
 
-// array(4) {
-//   ["entry"]=>
-//   int(1230492983)
-//   ["orgName"]=>
-//   string(22) "Strålskyddsstiftelsen"
-//   ["orgNumber"]=>
-//   string(11) "802477-4484"
-//   ["web"]=>
-//   string(37) "https://www.stralskyddsstiftelsen.se/"
-// }
+  public function getItemsByTerm($term) {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        if (strlen($term) >= 2) {
+          $query = "SELECT entry, orgName, orgNumber, web, comment FROM swish ";
+          $query .= "WHERE ";
+          $query .= "(";
+          $query .= "entry LIKE '%:term%' ";
+          $query .= "OR ";
+          $query .= "orgName LIKE '%:term%' ";
+          $query .= "OR ";
+          $query .= "orgNumber LIKE '%:term%' ";
+          $query .= "OR ";
+          $query .= "web LIKE '%:term%' ";
+          $query .= "OR ";
+          $query .= "comment LIKE '%:term%' ";
+          $query .= ") ";
+          $query .= "ORDER BY entry ASC;";
 
+          $query = preg_replace('/\x3aterm/six', strval($this->_sqlsafe($term)), strval($query));
+
+          $results = $this->db_connection->query($query);
+          while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array(
+              'entry'       => strval($row['entry']),
+              'orgName'     => strval($row['orgName']),
+              'orgNumber'   => strval($row['orgNumber']),
+              'web'         => strval($row['web']),
+            );
+          }
+        }
+      }
+    }
+
+    return $result;
+  }
 
 
   public function getEntriesByCategory($category) {
@@ -189,6 +215,9 @@ class SqliteDB {
     }
     return $result;
   }
+
+
+
 
 
   private function _sqlsafe($data) {

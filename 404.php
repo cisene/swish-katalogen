@@ -11,6 +11,6 @@
   </head>
   <body>
     <h1>404 - Sidan hittades inte</h1>
-    <p>Återgå till <a href="/swish-katalogen/">Swish-Katalogen</a>.</p>
+    <p>Återgå till <a href="/swish-katalogen/">Swish-Katalogen</a> eller sök <a href="/swish-katalogen/s/">här</a>.</p>
   </body>
 </html>

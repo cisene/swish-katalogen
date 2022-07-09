@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Swish-Katalogen</ShortName>
+  <Description>Sök Swish-Katalogen: Sök bland Swish 123-nummer</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="32" height="32" type="image/x-icon">https://b19.se/favicon/favicon_32x32.jpg</Image>
+  <Url type="text/html" method="get" template="https://b19.se/swish-katalogen/s/{searchTerms}"></Url>
+</OpenSearchDescription>

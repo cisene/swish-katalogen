@@ -6,6 +6,56 @@ class SwishKatalogen {
 
   var $url_prefix = '/swish-katalogen/';
   var $cat_prefix = '/swish-katalogen/k/';
+  var $search_prefix = '/swish-katalogen/s/';
+
+
+  // var $local_base = $_SERVER['DOCUMENT_ROOT'];
+  //  . $url_prefix . "static/";
+
+  private $local_base = null;
+  private $local_base_static = null;
+
+  private $json_categories_unique = "categories-unique.json";
+  private $json_categories_weighted = "categories-weighted.json";
+  private $json_search_dictionary = "search-dictionary.json";
+  private $json_statistics = "statistics.json";
+  private $json_datasource = "swish-123-datasource.json";
+
+  public function __construct() {
+    $this->local_base = $_SERVER['DOCUMENT_ROOT'];
+    $this->local_base_static = $this->local_base . $this->url_prefix . "static/";
+    // echo($this->local_base . "\n");
+    // echo($this->local_base_static . "\n");
+  }
+
+
+  public function renderHTMLHeadMetas($metaslist) {
+    $result = array();
+    foreach($metaslist as $item) {
+      $element = "<meta";
+      foreach($item as $attribute_name => $attribute_value) {
+        $element .= " " . strval($attribute_name) . "=\"" . strval($attribute_value) . "\"";
+      }
+      $element .= ">";
+      $result[] = $element;
+    }
+    return implode(" ", $result);
+  }
+
+  public function renderHTMLHeadLinks($linkslist) {
+    $result = array();
+    foreach($linkslist as $item) {
+      $element = "<link";
+      foreach($item as $attribute_name => $attribute_value) {
+        $element .= " " . strval($attribute_name) . "=\"" . strval($attribute_value) . "\"";
+      }
+      $element .= ">";
+      $result[] = $element;
+    }
+    return implode(" ", $result);
+  }
+
+
 
 
   public function getCategoryRouting() {
@@ -26,6 +76,14 @@ class SwishKatalogen {
       $re = "/^" . $mask . "(123(\d{7}))$/six";
       if(preg_match($re, strval($uri))) {
         $result = preg_replace($re, "$1", strval($uri));
+      }
+
+      /* Search */
+      $mask = $this->_regexify($this->search_prefix);
+      $re = "/^" . $mask . "([a-z0-9ÅÄÖåäöÉéËë]{1,})$/six";
+      if(preg_match($re, strval($uri))) {
+        $result = preg_replace($re, "$1", strval($uri));
+        $result = $this->_unrollEncoding($result);
       }
 
     }
@@ -186,6 +244,17 @@ class SwishKatalogen {
 
   public function getSitemapEntryURL($data) {
     return strval($this->domain_prefix) . strval($this->url_prefix) . strval($data);
+  }
+
+
+  public function LoadJson($filepath) {
+    $result = array();
+
+    if(file_exists($filepath)) {
+      $file_contents = file_get_contents($filepath);
+      $result = json_decode($file_contents, true);
+    }
+    return $result;
   }
 
 
