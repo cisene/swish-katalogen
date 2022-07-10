@@ -23,9 +23,30 @@ RewriteBase /swish-katalogen
 ErrorDocument 404 /swish-katalogen/404.php
 ErrorDocument 410 /swish-katalogen/410.php
 
+
+# BLOCK UNNECESSARY REQUEST METHODS
+RewriteCond %{REQUEST_METHOD} ^(CONNECT|DEBUG|DELETE|MOVE|PUT|TRACE|TRACK) [NC]
+RewriteRule .* - [F,L]
+
+# Preflight response common
+#RewriteCond %{REQUEST_METHOD} ^(OPTIONS) [NC]
+#Header always set Access-Control-Allow-Origin "*" 
+#Header always set Access-Control-Allow-Credentials "true"
+#Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+#Header always set Access-Control-Allow-Headers "X-AuthTokenHeader,Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since"
+#Header always set Access-Control-Max-Age "1728000"
+# Header always set Content-Type "text/plain charset=UTF-8"
+# Header always set Content-Length "0"
+#RewriteRule .* - [R=204,NC,L]
+
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate" env=LONGCACHE
+# Header set Pragma "no-cache" env=LONGCACHE
+# Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT" env=LONGCACHE 
+
 # remove www...
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/swish-katalogen/$1 [R=301,L]
+
 
 # Top page
 RewriteRule ^$ index.php [L]

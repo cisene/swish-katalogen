@@ -128,6 +128,34 @@ class SqliteDB {
     return $result;
   }
 
+  public function getCategoriesLimited($limit) {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY cnt DESC, category ASC LIMIT " . strval($limit) . ";";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
+        }
+      }
+    }
+    return $result;
+  }
+
+  public function getCategoriesAscending() {
+    $result = array();
+    if ($this->sqlite_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY category ASC;";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
+        }
+      }
+    }
+    return $result;
+  }
+
 
   public function getSitemapEntriesAll() {
     $result = array();

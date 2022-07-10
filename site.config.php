@@ -106,6 +106,9 @@ $config = array(
         ),
       ),
     ),
+    "categories" => array(
+      "index-categories" => 100,
+    ),
   ),
   "static" => array(
     "statistics" => "./static/statistics.json",

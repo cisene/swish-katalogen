@@ -198,6 +198,16 @@ class SwishKatalogen {
     return $result;
   }
 
+  public function getLIFormattedSwishNumberList($list) {
+    $result = null;
+    $elem = array();
+    foreach($list as $item) {
+      $elem[] = '<li>' . $item . '</li>';
+    }
+    $result = join($elem);
+    return $result;
+  }
+
 
   public function EntryJSON($obj) {
     $result = null;

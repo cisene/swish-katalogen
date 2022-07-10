@@ -1,6 +1,7 @@
 <?php
 
-$cat_ranked = $db->getCategoriesAll();
+// $cat_ranked = $db->getCategoriesAll();
+$cat_ranked = $db->getCategoriesAscending();
 $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
 
 ?>

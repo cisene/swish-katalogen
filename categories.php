@@ -14,7 +14,6 @@ $ui = new SwishKatalogen();
 
 $db->connectDB($config["db"]["sqlite"]["filepath"]);
 
-
 ?><!doctype html>
 <html lang="sv">
   <head>
