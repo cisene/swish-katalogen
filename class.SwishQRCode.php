@@ -1,5 +1,8 @@
 <?php
 
+/* heavily borrowed from https://github.com/splitbrain/php-qrcode/blob/master/src/QRCode.php */
+
+
 class QRCode {
   protected $data;
   protected $options;
