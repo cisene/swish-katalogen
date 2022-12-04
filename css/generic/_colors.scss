@@ -1,0 +1,27 @@
+
+/* Default Colors */
+$text-color: #494746 !default;
+$color-white: #fff !default;
+$color-black: #000 !default;
+$color-gray-base: #ccc !default;
+$color-gray-lightest: #eee !default;
+$color-gray-lighter: #ddd !default;
+$color-gray-light: #f4f4f4 !default;
+$color-gray-darkest: #999 !default;
+
+/* Alert Colors */
+$color-default: $color-gray-darkest !default;
+$color-success: #e7f4e4 !default;
+$color-warning: #fff1d2 !default;
+$color-error: #f9dede !default;
+$color-info: #e1f3f8 !default;
+
+/* Default Theme Colors */
+$theme-color: #005c95 !default;
+$theme-on-color: #fff !default;
+$theme-color-dark: #094e79 !default;
+$theme-color-darkest: #06304a !default;
+$theme-color-light: #06304a !default;
+$theme-link-color: $theme-color !default;
+$theme-focus-color: #fabb00 !default;
+$theme-color-complementary: #278900 !default;
