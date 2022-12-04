@@ -72,6 +72,12 @@ RewriteRule ^s/$ search.php?term=$1 [L,NC]
 # Search - Term
 RewriteRule ^s/(.*)$ search.php?term=$1 [L,NC]
 
+# QR-Code
+RewriteRule ^qr/123(\d{7})$ qrcode-generator.php?code=123$1 [L,NC]
+
+# QR-Code - special for Christopher
+RewriteRule ^qr/0703852166$ qrcode-generator.php?code=0703852166 [L,NC]
+
 
 # BEGIN EXPIRES
 #<IfModule mod_expires.c>

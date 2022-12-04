@@ -1,6 +1,19 @@
 <?php
 
+$protocol = $_SERVER['REQUEST_SCHEME'];
+$http_host = $_SERVER['HTTP_HOST'];
+$http_uri = $_SERVER['REQUEST_URI'];
+
 $config = array(
+
+  "site" => array(
+    "url" => $protocol . "://" . $http_host . "/swish-katalogen/",
+    "title" => "Swish-Katalogen",
+    "description" => "Swish-Katalogen - Sök och hitta Swish-nummer",
+    "dateCreated" => "2022-03-24",
+    "dateModified" => date("Y-m-d", time()),
+  ),
+
   "db" => array(
     "sqlite" => array(
       "filepath" => "./__database/swish-123-data.sqlite",
@@ -14,19 +27,45 @@ $config = array(
         "description" => "Swish-Katalogen - Sök och hitta Swish-nummer",
 
         "link" => array(
+
+          array(
+            "rel"       => "sitemap",
+            "type"      =>  "application/xml",
+            "href"      => $protocol ."://" . $http_host . "/swish-katalogen/sitemap.xml",
+          ),
+
           array(
             "rel"       =>  "apple-touch-icon",
-            "href"      =>  "https://b19.se/favicon/favicon_192x192.jpg?v=1",
+            "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_192x192.jpg?v=1",
           ),
+
           array(
             "rel"       =>  "icon",
             "type"      =>  "image/png",
             "sizes"     =>  "32x32",
-            "href"      =>  "https://b19.se/favicon/favicon_32x32.jpg?v=1",
+            "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_32x32.jpg?v=1",
           ),
+
+          array(
+            "rel"       =>  "canonical",
+            "href"      =>  $protocol ."://" . $http_host . $http_uri,
+          ),
+
+          array(
+            "rel"       =>  "categories",
+            "title"     =>  "Kategorier",
+            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/k/",
+          ),
+
+          array(
+            "rel"       =>  "index",
+            "title"     =>  "Index",
+            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/",
+          ),
+
           array(
             "rel"       =>  "manifest",
-            "href"      =>  "https://b19.se/swish-katalogen/manifest/manifest.json?v=1",
+            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/manifest/manifest.json?v=1",
           ),
 
           // Here we declare a LINK element to enable autodiscovery of OpenSearch capabilities within Swish-Katalogen :)
@@ -34,23 +73,76 @@ $config = array(
             "rel"       =>  "search",
             "type"      =>  "application/opensearchdescription+xml",
             "title"     =>  "Swish-Katalogen",
-            "href"      =>  "https://b19.se/swish-katalogen/opensearch.xml",
+            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/opensearch.xml",
           )
         ),
 
         "meta" => array(
 
           array(
-            "charset"   =>  "utf-8",
+            "charset"     =>  "utf-8",
           ),
+
           array(
-            "http-equiv" => "X-UA-Compatible",
-            "content"   =>  "IE=edge",
+            "name"        =>  "robots",
+            "content"     =>  "index,follow",
           ),
+
+          array(
+            "name"        =>  "sitemap",
+            "content"     =>  $protocol . "://" . $http_host . "/swish-katalogen/sitemap.xml",
+          ),
+
+          array(
+            "http-equiv"  =>  "content-type",
+            "content"     =>  "text/html; charset=utf-8",
+          ),
+
+          array(
+            "http-equiv"  =>  "content-language",
+            "content"     =>  "sv",
+          ),
+
+          array(
+            "http-equiv"  =>  "pragma",
+            "content"     =>  "no-cache",
+          ),
+
+          array(
+            "http-equiv"  =>  "X-UA-Compatible",
+            "content"     =>  "IE=edge",
+          ),
+
+          array(
+            "http-equiv"  =>  "refresh",
+            "content"     =>  "600",
+          ),
+
+          array(
+            "name"        =>  "content",
+            "content"     =>  "general",
+          ),
+
+          array(
+            "name"        =>  "distribution",
+            "content"     =>  "global",
+          ),
+
+          array(
+            "name"        =>  "revisit-after",
+            "content"     =>  "1 day",
+          ),
+          
+          array(
+            "name"        =>  "application-name",
+            "content"     =>  "Swish-Katalogen",
+          ),
+
           array(
             "name"      =>  "viewport",
-            "content"   =>  "width=device-width,initial-scale=1",
+            "content"   =>  "width=device-width, initial-scale=1.0, shrink-to-fit=no",
           ),
+
           array(
             "name"      => "apple-mobile-web-app-capable",
             "content"   => "no",
@@ -69,7 +161,7 @@ $config = array(
           ),
           array(
             "name"      =>  "msapplication-TileImage",
-            "content"   =>  "/favicon/favicon_150x150.jpg?v=1"
+            "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_150x150.jpg?v=1",
           ),
           array(
             "name"      =>  "twitter:card",
@@ -85,7 +177,7 @@ $config = array(
           ),
           array(
             "property"  =>  "og:image",
-            "content"   =>  "https://b19.se/favicon/favicon_512x512.jpg",
+            "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_512x512.jpg",
           ),
           array(
             "property"  =>  "og:locale",
@@ -101,8 +193,57 @@ $config = array(
           ),
           array(
             "property"  =>  "og:url",
-            "content"   =>  "https://b19.se/swish-katalogen/",
+            "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
           ),
+
+          // array(
+          //   "name"      =>  "color-scheme",
+          //   "content"   =>  "dark light",
+          // ),
+
+          array(
+            "name"      =>  "expected-hostname",
+            "content"   =>  $http_host,
+          ),
+          array(
+            "name"      =>  "hostname",
+            "content"   =>  $http_host,
+          ),
+          array(
+            "name"      =>  "HandheldFriendly",
+            "content"   =>  "true",
+          ),
+          array(
+            "name"      =>  "referrer",
+            "content"   =>  "same-origin",
+          ),
+
+          // array(
+          //   "name"      =>  "theme-color",
+          //   "content"   =>  "#1e2327",
+          // ),
+
+          array(
+            "name"      =>  "dc.description",
+            "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
+          ),
+          
+          array(
+            "name"      =>  "description",
+            "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
+          ),
+
+          array(
+            "name"      =>  "msapplication-starturl",
+            "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
+          ),
+
+          array(
+            "name"      =>  "msapplication-task",
+            "content"   =>  "name=Swish-Katalogen;action-uri=" . $protocol ."://" . $http_host . "/swish-katalogen/;icon-uri=" . $protocol ."://" . $http_host . "/favicon/favicon.ico",
+          ),
+
+
         ),
       ),
     ),

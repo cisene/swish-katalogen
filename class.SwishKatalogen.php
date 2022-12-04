@@ -24,8 +24,22 @@ class SwishKatalogen {
   public function __construct() {
     $this->local_base = $_SERVER['DOCUMENT_ROOT'];
     $this->local_base_static = $this->local_base . $this->url_prefix . "static/";
-    // echo($this->local_base . "\n");
-    // echo($this->local_base_static . "\n");
+
+    $this->_insertRuntimeMeta();
+
+  }
+
+  private function _insertRuntimeMeta() {
+    global $config;
+
+
+    if($config) {
+
+      $config["content"]["html"]["header"]["meta"][] = array(
+        "x-charset"   =>  "utf-8",
+      );
+
+    }
   }
 
 
@@ -39,7 +53,7 @@ class SwishKatalogen {
       $element .= ">";
       $result[] = $element;
     }
-    return implode(" ", $result);
+    return implode("", $result);
   }
 
   public function renderHTMLHeadLinks($linkslist) {
@@ -52,7 +66,7 @@ class SwishKatalogen {
       $element .= ">";
       $result[] = $element;
     }
-    return implode(" ", $result);
+    return implode("", $result);
   }
 
 
@@ -267,6 +281,22 @@ class SwishKatalogen {
     return $result;
   }
 
+  public function _entryPrettify($data) {
+    if(preg_match("/^None$/", strval($data))) {
+      return "";
+    }
+
+    $data = $this->_fullTrim($data);
+    return $data;
+  }
+
+
+  private function _fullTrim($data) {
+    $data = preg_replace("/^\s{1,}/six", "", strval($data));
+    $data = preg_replace("/\s{1,}$/six", "", strval($data));
+    $data = preg_replace("/\s{2,}/six", " ", strval($data));
+    return $data;
+  }
 
   private function _jsonPrettify($json) {
     $json = preg_replace('/\x7b\x22/six', "{ \"", strval($json));

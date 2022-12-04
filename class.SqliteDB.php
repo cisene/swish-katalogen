@@ -54,20 +54,21 @@ class SqliteDB {
     if ($this->sqlite_module_loaded == true) {
       if ($this->db_connection != null) {
 
-        $query = "SELECT entry, orgName, orgNumber, web FROM swish WHERE entry = " . $entry_id . ";";
+        $query = "SELECT entry, orgName, orgNumber, comment, web FROM swish WHERE entry = " . $entry_id . ";";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
           $entry = array(
             'entry'       => strval($row['entry']),
             'orgName'     => strval($row['orgName']),
             'orgNumber'   => strval($row['orgNumber']),
+            'comment'     => strval($row['comment']),
             'web'         => strval($row['web']),
             'categories'  => array()
           );
         }
 
         if($entry) {
-          $query = "SELECT category FROM categories WHERE entry = " . $entry_id . ";";
+          $query = "SELECT category FROM categories WHERE entry = " . $entry_id . " ORDER BY category ASC;";
           $results = $this->db_connection->query($query);
           while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
             $entry['categories'][] = $row['category'];
