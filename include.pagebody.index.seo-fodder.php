@@ -1,5 +1,5 @@
 
-      <div id="pagebody-statistics">
+      <div id="pagebody-seo-fodder">
         <p>De som hamnar på denna sida har oftast sökt på följande fraser;</p>
         <ul>
           <li value="sök swishnummer">sök swishnummer</li>
