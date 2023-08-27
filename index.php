@@ -51,6 +51,8 @@ $db->connectDB($config["db"]["sqlite"]["filepath"]);
       
 <?php include_once "include.pagebody.index.intro.php"; ?>
 
+<?php include_once "include.pagebody.index.seo-fodder.php"; ?>
+
 <?php include_once "include.pagebody.index.categories.php"; ?>
 
 <?php include_once "include.pagebody.index.statistics.php"; ?>
