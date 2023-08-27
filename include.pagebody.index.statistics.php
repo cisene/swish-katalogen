@@ -12,6 +12,6 @@ $text = preg_replace("/\x7b\x7bstatistics\x2ecategories\x7d\x7d/six", $data["cat
 
 ?>
 
-      <!-- div id="pagebody-statistics">
+      <div id="pagebody-statistics">
         <div id="pagebody-statistics-text"><?php echo($text); ?></div>
-      </div -->
+      </div>
