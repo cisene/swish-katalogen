@@ -186,6 +186,9 @@ class SqliteDB {
     return $result;
   }
 
+  // $query = "SELECT * FROM swish s LEFT JOIN categories c ON c.entry = s.entry WHERE c.category = '" . $category_clean . "' ORDER BY RANDOM() ASC LIMIT 1;";
+
+
   public function getItemsByTerm($term) {
     $result = array();
     if ($this->sqlite_module_loaded == true) {
@@ -210,11 +213,29 @@ class SqliteDB {
 
           $results = $this->db_connection->query($query);
           while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+            
+            $entry = strval($row['entry']);
+            $comment = strval($row['comment']);
+
+            if ($comment == "None") {
+              $comment = "";
+            }
+
+            $categories = array();
+            
+            $query = "SELECT category FROM categories WHERE entry = '" . $entry . "' ORDER BY category ASC;";
+            $category_results = $this->db_connection->query($query);
+            while ($category_row = $category_results->fetchArray(SQLITE3_ASSOC)) {
+              $categories[] = strval($category_row['category']);
+            }
+
             $result[] = array(
               'entry'       => strval($row['entry']),
               'orgName'     => strval($row['orgName']),
               'orgNumber'   => strval($row['orgNumber']),
+              'comment'     => strval($comment),
               'web'         => strval($row['web']),
+              'categories'  => $categories,
             );
           }
         }
@@ -229,7 +250,7 @@ class SqliteDB {
     $result = array();
     if ($this->sqlite_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT entry, orgName, orgNumber, web FROM swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
+        $query = "SELECT entry, orgName, orgNumber, web, comment FROM swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
           // echo("<pre>");var_dump($row);echo("</pre>");
@@ -237,6 +258,7 @@ class SqliteDB {
               'entry'       => strval($row['entry']),
               'orgName'     => strval($row['orgName']),
               'orgNumber'   => strval($row['orgNumber']),
+              'comment'     => strval($row['comment']),
               'web'         => strval($row['web']),
             );
         }

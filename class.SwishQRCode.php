@@ -12,6 +12,7 @@ class QRCode {
   public function __construct($data, $options = []) {
     $defaults = [
         's' => 'qrl'
+        // 's' => 'qrm'
     ];
     if (!is_array($options)) $options = [];
 
@@ -25,26 +26,104 @@ class QRCode {
 
   public function createSVG() {
     $code = $this->dispatch_encode($this->data, $this->options);
-    $svg = sprintf('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d">', $code['s'][0], $code['s'][1]);
+    // echo("<pre>"); var_dump($code); echo("</pre>");
+    // die();
 
-    $svg .= '<style>';
-    $svg .= 'svg { font-size: 10px; }';
-    $svg .= '.small { font: 0.2em sans-serif; fill: red; }';
-    $svg .= '</style>';
+    $svg = '<?xml version="1.0" encoding="UTF-8"?>';
+    $svg .= "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>";
+    $svg .= sprintf('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 %d %d">', $code['s'][0] + 1, $code['s'][1] + 1);
 
+    // $svg = sprintf('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d">', $code['s'][0], $code['s'][1]);
+    // $svg .= '<!-- Source: Swish-Katalogen -->';
+
+    $svg .= '  <defs>';
+    $svg .= '    <linearGradient gradientUnits="userSpaceOnUse" id="grad" x1="0%" x2="100%" y1="100%" y2="0%">';
+
+    // $svg .= '      <stop offset="0%" stop-color="#b43092"/>';
+    // $svg .= '      <stop offset="100%" stop-color="#ef4123"/>';
+
+    $svg .= '      <stop offset="0%" stop-color="#00c"/>';
+    $svg .= '      <stop offset="100%" stop-color="#99c"/>';
+
+    $svg .= '    </linearGradient>';
+    $svg .= '  </defs>';
+
+    $svg .= '  <rect name="back-plate" fill="none" height="100%" stroke-width="0" width="100%" x="0" y="0"/>';
+    $svg .= '  <g fill="url(#grad)">';
+
+    $supress_timing = array(
+      "0:0", "0:1", "0:2", "0:3", "0:4", "0:5", "0:6",
+      "1:0", "1:6",
+      "2:0", "2:2", "2:3", "2:4", "2:6",
+      "3:0", "3:2", "3:3", "3:4", "3:6",
+      "4:0", "4:2", "4:3", "4:4", "4:6",
+      "5:0", "5:6",
+      "6:0", "6:1", "6:2", "6:3", "6:4", "6:5", "6:6",
+
+      "0:18", "0:19", "0:20", "0:21", "0:22", "0:23", "0:24",
+      "1:18", "1:24",
+      "2:18", "2:20", "2:21", "2:22", "2:24",
+      "3:18", "3:20", "3:21", "3:22", "3:24",
+      "4:18", "4:20", "4:21", "4:22", "4:24",
+      "5:18", "5:24",
+      "6:18", "6:19", "6:20", "6:21", "6:22", "6:23", "6:24",
+
+      "18:0", "18:1", "18:2", "18:3", "18:4", "18:5", "18:6",
+      "19:0", "19:6",
+      "20:0", "20:2", "20:3", "20:4", "20:6",
+      "21:0", "21:2", "21:3", "21:4", "21:6",
+      "22:0", "22:2", "22:3", "22:4", "22:6",
+      "23:0", "23:6",
+      "24:0", "24:1", "24:2", "24:3", "24:4", "24:5", "24:6",
+    );
 
     foreach ($code['b'] as $y => $row) {
       foreach ($row as $x => $val) {
         if ($val) {
-          $svg .= sprintf('<rect x="%d" y="%d" width="1" height="1" />', $x, $y);
+          $timing_key = sprintf("%s:%s", $y, $x);
+          // if (!in_array($timing_key, $supress_timing)) {
+            $svg .= sprintf('    <circle cx="%s" cy="%s" r="0.45"/>', $x, $y);
+          // }
         }
       }
     }
 
+    $svg .= '  </g>';
 
-    $svg .= sprintf('<text x="0" y="%d" class="small">Swish-Katalogen</text>', $x, $y);
+
+    // $svg .= sprintf('<text x="0" y="%d" class="small">Swish-Katalogen</text>', $x, $y);
+
+    $svg .= sprintf('<!-- timer: %d -->', time());
+
+
+    /* Top left */
+    $px_outer = 0.0;
+    $py_outer = 6.0;
+    $px_inner = ($px_outer + 1.6);
+    $py_inner = ($py_outer - 1.4);
+
+    // $svg .= sprintf('  <path name="top-left-outer" d="M %s %s v -0.875 a 5.125 5.125 0 0 1 5.125 -5.125 h 0.875 v 6 Z" fill="none" stroke="url(#grad)" stroke-linejoin="round" stroke-width="1.0"/>', $px_outer, $py_outer);
+    // $svg .= sprintf('  <path name="top-left-inner" d="M %s %s a 3 3 0 0 1 3 -3 v 3 Z" fill="url(#grad)"/>', $px_inner, $py_inner);
+    
+    /* Bottom left */
+    $px_outer = 0.0;
+    $py_outer = 18.0;
+    $px_inner = ($px_outer + 1.6);
+    $py_inner = ($py_outer + 1.4);
+    // $svg .= sprintf('  <path name="bottom-left-outer" d="M %s %s v 0.875 a 5.125 5.125 0 0 0 5.125 5.125 h 0.875 v -6 Z" fill="none" stroke="url(#grad)" stroke-linejoin="round" stroke-width="1.0"/>', $px_outer, $py_outer);
+    // $svg .= sprintf('  <path name="bottom-left-inner" d="M %s %s a 3 3 0 0 0 3 3 v -3 Z" fill="url(#grad)"/>', $px_inner, $py_inner);
+
+    /* Top right */
+    $px_outer = 24.0;
+    $py_outer = 6.0;
+    $px_inner = ($px_outer - 1.6);
+    $py_inner = ($py_outer - 1.4);
+    // $svg .= sprintf('  <path name="top-right-outer" d="M %s %s v -0.875 a 5.125 5.125 0 0 0 -5.125 -5.125 h -0.875 v 6 Z" fill="none" stroke="url(#grad)" stroke-linejoin="round" stroke-width="1.0"/>', $px_outer, $py_outer);
+    // $svg .= sprintf('  <path name="top-right-inner" d="M %s %s a 3 3 0 0 0 -3 -3 v 3 Z" fill="url(#grad)"/>', $px_inner, $py_inner);
 
     $svg .= '</svg>';
+
+    $svg = preg_replace('/\x3e/six', ">\n", $svg);
     return $svg;
   }
 
@@ -472,13 +551,16 @@ class QRCode {
                 }
             }
         }
+        
         /* Timing patterns. */
         for ($i = $size - 9; $i >= 8; $i--) {
             $matrix[$i][6] = ($i & 1) ^ 3;
             $matrix[6][$i] = ($i & 1) ^ 3;
         }
+        
         /* Dark module. Such an ominous name for such an innocuous thing. */
         $matrix[$size - 8][8] = 3;
+
         /* Format information area. */
         for ($i = 0; $i <= 8; $i++) {
             if (!$matrix[$i][8]) $matrix[$i][8] = 1;
@@ -486,6 +568,7 @@ class QRCode {
             if ($i && !$matrix[$size - $i][8]) $matrix[$size - $i][8] = 1;
             if ($i && !$matrix[8][$size - $i]) $matrix[8][$size - $i] = 1;
         }
+        
         /* Version information area. */
         if ($version >= 7) {
             for ($i = 9; $i < 12; $i++) {
@@ -495,6 +578,7 @@ class QRCode {
                 }
             }
         }
+        
         /* Data. */
         $col = $size - 1;
         $row = $size - 1;
@@ -702,6 +786,7 @@ class QRCode {
       $matrix[8][$size - 3] = $format[12];
       $matrix[8][$size - 2] = $format[13];
       $matrix[8][$size - 1] = $format[14];
+
       /* Version Info */
       if ($version >= 7) {
         $version = $this->qr_version_info[$version - 7];
@@ -712,6 +797,7 @@ class QRCode {
           $matrix[$c][$r] = $version[$i];
         }
       }
+
       /* Patterns & Data */
       for ($i = 0; $i < $size; $i++) {
         for ($j = 0; $j < $size; $j++) {

@@ -28,13 +28,11 @@ html body #pagebody #pagebody-details-other-categories ul li:hover { color: #00f
 html body #pagebody #pagebody-details-other-categories #pagebody-categories-list { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; }
 html body #pagebody #pagebody-categories-table { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
 html body #pagebody #pagebody-categories-table table { width: 100%; }
-html body #pagebody #pagebody-categories-table table tbody tr th { text-align: left; font-size: 1.3em; }
-html body #pagebody #pagebody-categories-table table tbody tr td { font-size: 1.3em; }
+html body #pagebody #pagebody-categories-table table tbody tr th { text-align: left; font-size: 1.0em; }
+html body #pagebody #pagebody-categories-table table tbody tr td { font-size: 1.0em; }
 html body #pagebody #pagebody-categories-table table tbody tr td a { text-decoration: none; }
 html body #pagebody #pagebody-categories-table table tbody tr td a:hover { text-decoration: underline; }
 html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(1) { width: 10%; }
-html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(odd) { width: 5%; padding: 10px; margin: 0px; font-size: 1.7em; }
-html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(even) { padding: 10px; margin: 0px; font-size: 1.7em; }
 html body #pagebody #pagebody-organization-details { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
 html body #pagebody #pagebody-organization-details h2 { font-size: 1.7em; margin: 0px; padding: 0px; }
 html body #pagebody #pagebody-organization-details div { display: inline-block; width: 100%; font-size: 1.7em; }

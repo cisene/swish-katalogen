@@ -21,6 +21,18 @@ $search_term = null;
 
 
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://b19.se/swish-katalogen/s/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://b19.se/swish-katalogen/s/{search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
 
     <section id="pagesearch">
 

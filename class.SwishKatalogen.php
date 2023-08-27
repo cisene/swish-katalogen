@@ -107,22 +107,48 @@ class SwishKatalogen {
   public function getEntriesCategoryListing($items) {
     $result = null;
     $table_rows = array();
-    $table_rows[] = "<tr><th>Nummer</th><th>Organisation</th></tr>";
+    $table_rows[] = "<tr><th>&nbsp;</th><th>Nummer</th><th>Organisation</th><th>Kommentar</th></tr>";
     foreach($items as $item) {
       $row = array();
       $entry = $item['entry'];
       $orgName = $item['orgName'];
+      $comment = $item['comment'];
+
+      if(preg_match('/None/six', $comment)) {
+        $comment = "&nbsp;";
+      }
+
       $row[] = "<tr>";
+
+      $row[] = "<td>";
+      if(preg_match('/^12390/six', $entry)) {
+
+        $row[] = '<svg width="32" height="32">';
+        $row[] = '<image xlink:href="/swish-katalogen/checkmark.svg" width="32" height="32" title="Insamlingskontroll"/>';
+        $row[] = '</svg>';
+
+      } else {
+        $row[] = "&nbsp;";
+      }
+      $row[] = "</td>";
+
+
       $row[] = "<td>";
       $row[] = '<a href="' . $this->url_prefix . $entry . '" title="Swish-nummer ' . $entry . ' för ' . $orgName . '">';
       $row[] = strval($entry);
       $row[] = '</a>';
       $row[] = "</td>";
+
       $row[] = "<td>";
       $row[] = '<a href="' . $this->url_prefix . $entry . '" title="Swish-nummer ' . $entry . ' för ' . $orgName . '">';
       $row[] = strval($orgName);
       $row[] = '</a>';
       $row[] = "</td>";
+
+      $row[] = "<td>";
+      $row[] = strval($comment);
+      $row[] = "</td>";
+
       $row[] = "</tr>";
       $row_fragment = join($row);
       $table_rows[] = $row_fragment;
@@ -201,6 +227,8 @@ class SwishKatalogen {
   }
 
   // array(10) { [0]=> string(10) "1234197026" [1]=> string(11) "12341 97026" [2]=> string(13) "123 41 970 26" [3]=> string(13) "123 419 70 26" [4]=> string(12) "123 419 7026" [5]=> string(12) "123 4197 026" [6]=> string(13) "123-419 70 26" [7]=> string(14) "123 41 97 02 6" [8]=> string(14) "123-41 97 02 6" [9]=> string(11) "123-4197026" }
+
+  // <a href="tel: +4690190600">+4690190600</a>
 
   public function getFormattedSwishNumberList($list) {
     $result = null;

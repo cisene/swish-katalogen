@@ -276,11 +276,11 @@ html {
             tr {
               th {
                 text-align: left;
-                font-size: 1.3em;
+                font-size: 1.0em;
               }
 
               td {
-                font-size: 1.3em;
+                font-size: 1.0em;
 
                 a {
                   text-decoration: none;
@@ -300,18 +300,18 @@ html {
 
               }
 
-              td:nth-child(odd) {  
-                width: 5%;
-                padding: 10px;
-                margin: 0px;
-                font-size: 1.7em;
-              }
+              // td:nth-child(odd) {  
+              //   width: 5%;
+              //   padding: 10px;
+              //   margin: 0px;
+              //   font-size: 1.7em;
+              // }
 
-              td:nth-child(even) {  
-                padding: 10px;
-                margin: 0px;
-                font-size: 1.7em;
-              }
+              // td:nth-child(even) {  
+              //   padding: 10px;
+              //   margin: 0px;
+              //   font-size: 1.7em;
+              // }
 
 
             }
