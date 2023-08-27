@@ -47,6 +47,6 @@ $db->connectDB($config["db"]["sqlite"]["filepath"]);
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Kategorier Swish-nummer","dateCreated":"2022-03-24","breadcrumb":"Swish-Katalogen - Kategorier Swish-nummer"}</script>
 
-<?php include_once "include.analytics.php"; ?>
+
   </body>
 </html>

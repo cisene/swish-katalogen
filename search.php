@@ -126,6 +126,6 @@ if(sizeof($category_items) < 1) {
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>
-    <?php include_once "include.analytics.php"; ?>
+
   </body>
 </html>
