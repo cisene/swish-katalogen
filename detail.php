@@ -50,13 +50,9 @@ if($cat_route != null) {
 
 <?php include_once "include.pagebody.detail.organization.details.php"; ?>
 
+<?php include_once "include.pagebody.detail.swish.number.swisha.php"; ?>
+
 <?php include_once "include.pagebody.detail.swish.number.variants.php"; ?>
-
-
-      <div id="pagebody-details-other-categories">
-        <h2>Övriga kategorier:</h3>
-        <ul id="categories-list"><?php echo($other_categories); ?></ul>
-      </div>
 
     </section>
 
