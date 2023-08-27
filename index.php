@@ -63,6 +63,6 @@ $db->connectDB($config["db"]["sqlite"]["filepath"]);
 <?php include_once "include.pagefooter.php"; ?>
     </section>
 
-<?php include_once "include.analytics.php"; ?>
+
   </body>
 </html>
