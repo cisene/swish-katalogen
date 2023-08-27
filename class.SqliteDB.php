@@ -54,6 +54,8 @@ class SqliteDB {
     if ($this->sqlite_module_loaded == true) {
       if ($this->db_connection != null) {
 
+        $entry = null;
+
         $query = "SELECT entry, orgName, orgNumber, comment, web FROM swish WHERE entry = " . $entry_id . ";";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
