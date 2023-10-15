@@ -5,9 +5,8 @@ php_flag log_errors on
 php_flag ignore_repeated_errors off
 php_flag ignore_repeated_source off
 php_value error_reporting 2047
-php_value error_log /home/chrise/www_root/local.b19.www/swish-katalogen/httpd-error.log
+php_value error_log ./httpd-error.log
 php_value log_errors_max_len 52428800
-
 
 #php_value zlib.output_compression off
 
@@ -20,7 +19,7 @@ Options -MultiViews +FollowSymLinks
 RewriteEngine On
 RewriteBase /swish-katalogen
 
-
+# Error handling
 ErrorDocument 403 /swish-katalogen/403.php
 ErrorDocument 404 /swish-katalogen/404.php
 ErrorDocument 410 /swish-katalogen/410.php
@@ -31,15 +30,15 @@ RewriteCond %{REQUEST_METHOD} ^(CONNECT|DEBUG|DELETE|MOVE|PUT|TRACE|TRACK) [NC]
 RewriteRule .* - [F,L]
 
 # Preflight response common
-#RewriteCond %{REQUEST_METHOD} ^(OPTIONS) [NC]
-#Header always set Access-Control-Allow-Origin "*" 
-#Header always set Access-Control-Allow-Credentials "true"
-#Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
-#Header always set Access-Control-Allow-Headers "X-AuthTokenHeader,Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since"
-#Header always set Access-Control-Max-Age "1728000"
+# RewriteCond %{REQUEST_METHOD} ^(OPTIONS) [NC]
+# Header always set Access-Control-Allow-Origin "*" 
+# Header always set Access-Control-Allow-Credentials "true"
+# Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+# Header always set Access-Control-Allow-Headers "X-AuthTokenHeader,Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since"
+# Header always set Access-Control-Max-Age "1728000"
 # Header always set Content-Type "text/plain charset=UTF-8"
 # Header always set Content-Length "0"
-#RewriteRule .* - [R=204,NC,L]
+# RewriteRule .* - [R=204,NC,L]
 
 Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate" env=LONGCACHE
 # Header set Pragma "no-cache" env=LONGCACHE
@@ -63,7 +62,7 @@ RewriteRule ^sitemap\x2exml$ sitemap.php [L]
 RewriteRule ^k/$ categories.php?cat=$1 [L,NC]
 
 # Categories
-RewriteRule ^k/(.*)$ categories.php?cat=$1 [L,NC]
+RewriteRule ^k/(.*)$ categories.php?cat=$1 [B,NC,L]
 
 # Details
 RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
