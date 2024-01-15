@@ -35,9 +35,9 @@ class SwishKatalogen {
 
     if($config) {
 
-      $config["content"]["html"]["header"]["meta"][] = array(
-        "x-charset"   =>  "utf-8",
-      );
+      // $config["content"]["html"]["header"]["meta"][] = array(
+      //   "x-charset"   =>  "utf-8",
+      // );
 
     }
   }
@@ -46,24 +46,24 @@ class SwishKatalogen {
   public function renderHTMLHeadMetas($metaslist) {
     $result = array();
     foreach($metaslist as $item) {
-      $element = "<meta";
+      $element = "    <meta";
       foreach($item as $attribute_name => $attribute_value) {
         $element .= " " . strval($attribute_name) . "=\"" . strval($attribute_value) . "\"";
       }
       $element .= ">";
       $result[] = $element;
     }
-    return implode("", $result);
+    return implode("\n", $result);
   }
 
   public function renderHTMLHeadLinks($linkslist) {
     $result = array();
     foreach($linkslist as $item) {
-      $element = "<link";
+      $element = "    <link";
       foreach($item as $attribute_name => $attribute_value) {
         $element .= " " . strval($attribute_name) . "=\"" . strval($attribute_value) . "\"";
       }
-      $element .= ">";
+      $element .= ">\n";
       $result[] = $element;
     }
     return implode("", $result);
@@ -204,7 +204,11 @@ class SwishKatalogen {
     /* Render some html for in-page inclusion */
     $cat_list = array();
     foreach($ranked_array as $item) {
-      $quantity = intval($item['quantity']);
+      $quantity = 0;
+      if(isset($item['quantity'])) {
+        $quantity = intval($item['quantity']);
+      }
+
       $category = strval($item['category']);
 
       $elem = array();
@@ -214,7 +218,13 @@ class SwishKatalogen {
       } else {
         $elem[] = '<li>';
       }
-      $elem[] = '<a href="' . $this->cat_prefix . strval($category) . '" title="' . $quantity . ' förekomster i kategorin - ' . $category . ' -">';
+      
+      if($quantity == 0) {
+        $elem[] = '<a href="' . $this->cat_prefix . strval($category) . '" title="' . $category . '">';
+      } else {
+        $elem[] = '<a href="' . $this->cat_prefix . strval($category) . '" title="' . $quantity . ' förekomster i kategorin - ' . $category . '">';
+      }
+
       $elem[] = strval($category);
       $elem[] = '</a>';
       $elem[] = '</li>';

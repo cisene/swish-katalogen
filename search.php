@@ -2,17 +2,26 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors','On');
 
-include_once "class.SqliteDB.php";
+include_once "site.config.php";
+
+// include_once "class.SqliteDB.php";
+include_once "class.MySQLDB.php";
 include_once "class.SwishFormat.php";
 include_once "class.SwishKatalogen.php";
 
 $sf = new SwishFormat();
-$db = new SqliteDB();
+$db = new MySQLDB();
 $ui = new SwishKatalogen();
 
-$recent = new SqliteDB();
+$dbparam = $config["db"]["mysql"];
 
-$db->connectDB('./__database/swish-123-data.sqlite');
+$db->connectDB(
+  $dbparam["hostname"],
+  $dbparam["port"],
+  $dbparam["username"],
+  $dbparam["password"],
+  $dbparam["database"]
+);
 
 $recent->connectDB('./__database/recent.sqlite');
 
@@ -44,68 +53,36 @@ if(sizeof($category_items) < 1) {
   // die("");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?><!doctype html>
-<html lang="sv">
+<html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Swish-Katalogen - Sökning efter '<?php echo($cat_route); ?>' - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
 
-    <!-- meta name="theme-color" content="#f0f" -->
-    <!-- meta name="theme-color" content="#f0f" -->
-    <!--  meta name="msapplication-TileColor" content="#f0f" -->
+    <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
+    <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
 
-    <meta name="msapplication-TileImage" content="/favicon/favicon_150x150.jpg?v=1">
-    <link rel="apple-touch-icon" href="/favicon/favicon_192x192.jpg?v=1">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon_32x32.jpg?v=1">
 
-    <link rel="search" type="application/opensearchdescription+xml" title="Swish-Katalogen" href="/opensearch.xml">
 
-    <meta name="description" content="Swish-Katalogen - Sök och hitta Swish-nummer">
-
-    <meta property="og:locale" content="sv_SE">
-    <meta property="og:title" content="Swish-Katalogen">
-    <meta property="og:description" content="Swish-Katalogen, kategori '<?php echo($cat_route); ?>'">
-    <meta property="og:image" content="/favicon/favicon_512x512.jpg">
-    <meta property="og:url" content="https://b19.se/swish-katalogen/">
-    <meta property="og:site_name" content="Swish-Katalogen">
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@cisene" />
-
-    <meta name="apple-mobile-web-app-capable" content="no">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="swish-katalogen">
-
+    <title>Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
     <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
-
-    <link rel="manifest" href="manifest/manifest.json?v=1">
+    <script type="application/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
   <body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "<?php echo($config["site"]["title"]); ?>",
+        "url": "<?php echo($config["site"]["url"]); ?>",
+        "isBasedOn": "https://github.com/cisene/swish-123",
+        "breadcrumb": "Swish-Katalogen - Sök Swish-nummer",
+        "dateCreated": "<?php echo($config["site"]["dateCreated"]); ?>",
+        "datePublished": "<?php echo($config["site"]["dateCreated"]); ?>",
+        "dateModified": "<?php echo($config["site"]["dateModified"]); ?>"
+      }
+    </script>
 
-    <section id="pageheader">
-      <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
-    </section>
+<?php include_once "include.pageheader.php"; ?>
 
     <section id="pagebody">
       
@@ -124,8 +101,9 @@ if(sizeof($category_items) < 1) {
     </section>
 
     <section id="pagefooter">
-      <?php include_once "include.pagefooter.php"; ?>
+<?php include_once "include.pagefooter.php"; ?>
     </section>
+
 
   </body>
 </html>

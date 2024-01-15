@@ -1,15 +1,27 @@
 <?php
-
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors','On');
 
-include_once "class.SqliteDB.php";
+include_once "site.config.php";
+
+// include_once "class.SqliteDB.php";
+include_once "class.MySQLDB.php";
+include_once "class.SwishFormat.php";
 include_once "class.SwishKatalogen.php";
 
-$db = new SqliteDB();
+$sf = new SwishFormat();
+$db = new MySQLDB();
 $ui = new SwishKatalogen();
 
-$db->connectDB('./__database/swish-123-data.sqlite');
+$dbparam = $config["db"]["mysql"];
+
+$db->connectDB(
+  $dbparam["hostname"],
+  $dbparam["port"],
+  $dbparam["username"],
+  $dbparam["password"],
+  $dbparam["database"]
+);
 
 $cat_all = $db->getSitemapCategoriesAll();
 $entries_all = $db->getSitemapEntriesAll();

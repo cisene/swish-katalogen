@@ -4,38 +4,59 @@ ini_set('display_errors','On');
 
 include_once "site.config.php";
 
-include_once "class.SqliteDB.php";
+// include_once "class.SqliteDB.php";
+include_once "class.MySQLDB.php";
 include_once "class.SwishFormat.php";
 include_once "class.SwishKatalogen.php";
 
 $sf = new SwishFormat();
-$db = new SqliteDB();
+$db = new MySQLDB();
 $ui = new SwishKatalogen();
 
-$db->connectDB($config["db"]["sqlite"]["filepath"]);
+$dbparam = $config["db"]["mysql"];
+
+$db->connectDB(
+  $dbparam["hostname"],
+  $dbparam["port"],
+  $dbparam["username"],
+  $dbparam["password"],
+  $dbparam["database"]
+);
+
+$siteparam = $config["site"];
 
 $cat_route = $ui->getCategoryRouting();
-// $cat_ranked = $db->getCategoriesAll();
 
-if($cat_route != null) {
-  if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
+// $formatted_title_entry = $sf->getSwishSpecificFormat(strval($cat_route), "common");
 
-    $entry = $db->getEntryByID($cat_route);
-    if(sizeof($entry) > 0) {
+if(isset($cat_route)) {
+  if($cat_route != null) {
+    if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
 
-      $entry_json = $ui->EntryJSON($entry);
+      $entry = $db->getEntryByID($cat_route);
+      if(sizeof($entry) > 0) {
 
-      $orgName = $entry['orgName'];
+        $entry_json = $ui->EntryJSON($entry);
+
+        $orgName = $entry['orgName'];
+      } else {
+        ob_clean();
+        header("HTTP/1.1 404 NOT FOUND");
+        die("");
+      }
+    } else {
+      ob_clean();
+      header("HTTP/1.1 404 NOT FOUND");
+      die("");
     }
   }
 }
-
 ?><!doctype html>
 <html lang="sv">
   <head>
     <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
     <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
-    <title><?php echo($orgName . ' - ' . $cat_route); ?> - Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
+    <title><?php echo($cat_route . ' - ' . $orgName); ?> - Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
     <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
     <script type="application/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
@@ -59,6 +80,7 @@ if($cat_route != null) {
     <section id="pagefooter">
       <?php include_once "include.pagefooter.php"; ?>
     </section>
+
 
   </body>
 </html>
