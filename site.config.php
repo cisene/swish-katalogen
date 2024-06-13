@@ -93,15 +93,17 @@ $config = array(
             "content"     =>  $protocol . "://" . $http_host . "/swish-katalogen/sitemap.xml",
           ),
 
-          array(
-            "http-equiv"  =>  "content-type",
-            "content"     =>  "text/html; charset=utf-8",
-          ),
+          // Explicit declaration no longer needed
+          // array(
+          //   "http-equiv"  =>  "content-type",
+          //   "content"     =>  "text/html; charset=utf-8",
+          // ),
 
-          array(
-            "http-equiv"  =>  "content-language",
-            "content"     =>  "sv",
-          ),
+          // Explicit declaration no longer needed
+          // array(
+          //   "http-equiv"  =>  "content-language",
+          //   "content"     =>  "sv",
+          // ),
 
           array(
             "http-equiv"  =>  "pragma",
@@ -147,50 +149,64 @@ $config = array(
             "name"      => "apple-mobile-web-app-capable",
             "content"   => "no",
           ),
+
           array(
             "name"      => "apple-mobile-web-app-status-bar-style",
             "content"   => "default",
           ),
+
           array(
             "name"      => "apple-mobile-web-app-title",
             "content"   => "Swish-Katalogen",
           ),
+
           array(
             "name"      => "desciption",
             "content"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
           ),
+
           array(
             "name"      =>  "msapplication-TileImage",
             "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_150x150.jpg?v=1",
           ),
-          array(
-            "name"      =>  "twitter:card",
-            "content"   =>  "summary",
-          ),
-          array(
-            "name"      =>  "twitter:creator",
-            "content"   =>  "@cisene",
-          ),
+
+          // Nope, because fuck twitter
+          // array(
+          //   "name"      =>  "twitter:card",
+          //   "content"   =>  "summary",
+          // ),
+
+          // Nope, because fuck twitter
+          // array(
+          //   "name"      =>  "twitter:creator",
+          //   "content"   =>  "@cisene",
+          // ),
+
           array(
             "property"  =>  "og:description",
             "content"   =>  "Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.",
           ),
+
           array(
             "property"  =>  "og:image",
             "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_512x512.jpg",
           ),
+
           array(
             "property"  =>  "og:locale",
             "content"   =>  "sv_SE",
           ),
+
           array(
             "property"  =>  "og:site_name",
             "content"   =>  "Swish-Katalogen",
           ),
+
           array(
             "property"  =>  "og:title",
             "content"   =>  "Swish-Katalogen",
           ),
+
           array(
             "property"  =>  "og:url",
             "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
@@ -233,15 +249,15 @@ $config = array(
             "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
           ),
 
-          array(
-            "name"      =>  "msapplication-starturl",
-            "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
-          ),
+          // array(
+          //   "name"      =>  "msapplication-starturl",
+          //   "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
+          // ),
 
-          array(
-            "name"      =>  "msapplication-task",
-            "content"   =>  "name=Swish-Katalogen;action-uri=" . $protocol ."://" . $http_host . "/swish-katalogen/;icon-uri=" . $protocol ."://" . $http_host . "/favicon/favicon.ico",
-          ),
+          // array(
+          //   "name"      =>  "msapplication-task",
+          //   "content"   =>  "name=Swish-Katalogen;action-uri=" . $protocol ."://" . $http_host . "/swish-katalogen/;icon-uri=" . $protocol ."://" . $http_host . "/favicon/favicon.ico",
+          // ),
 
 
         ),
