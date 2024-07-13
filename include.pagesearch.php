@@ -4,7 +4,7 @@ $search_term = null;
 
 ?>
 
-    <script type="application/javascript">
+    <script>
       $( document ).ready(function() {
         console.log( "ready!" );
       });
