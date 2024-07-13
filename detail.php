@@ -58,7 +58,7 @@ if(isset($cat_route)) {
     <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
     <title><?php echo($cat_route . ' - ' . $orgName); ?> - Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
     <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
-    <script type="application/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
   <body>
 
