@@ -169,7 +169,8 @@ class MySQLDB {
     $result = array();
     if($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT DISTINCT category FROM categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . mysqli_real_escape_string($this->db_connection, $category) . "') ORDER BY category ASC;";
+        // $query = "SELECT DISTINCT category FROM categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . mysqli_real_escape_string($this->db_connection, $category) . "') ORDER BY category ASC;";
+        $query = "SELECT DISTINCT category FROM categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . $this->_sqlsafe($category) . "') ORDER BY category ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category']);
@@ -343,8 +344,12 @@ class MySQLDB {
 
 
   private function _sqlsafe($data) {
-    $data = strtolower($data);
-    $data = preg_replace("/[^a-z0-9åäö]/six", "", $data);
+    if(!is_null($data)) {
+      $data = strtolower($data);
+      $data = preg_replace("/[^a-z0-9åäö]/six", "", $data);
+    } else {
+      $data = "";
+    }
     return $data;
   }
 
