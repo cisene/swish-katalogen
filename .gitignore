@@ -6,3 +6,18 @@ infotest.php
 httpd-error.log
 config.rb
 site.config.php
+
+
+# Compass config.rb
+config.rb
+
+# CSS (Compass Generated)
+css/components/
+css/elements/
+css/objects/
+css/settings/
+css/tools/
+css/utilities/
+css/vendor/
+css/screen.scss
+css/_base.scss
