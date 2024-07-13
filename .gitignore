@@ -1,11 +1,13 @@
 __cache/
 __database/
 static/
+
+# Just no
 __phpinfo.php
 infotest.php
+
+# Local error log when debugging
 httpd-error.log
-config.rb
-site.config.php
 
 
 # Compass config.rb
@@ -21,3 +23,6 @@ css/utilities/
 css/vendor/
 css/screen.scss
 css/_base.scss
+
+# Site configuration
+site.config.php
