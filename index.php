@@ -52,7 +52,7 @@ $siteparam = $config["site"];
 
 <?php include_once "include.pageheader.php"; ?>
 
-<?php include_once "include.pagesearch.php"; ?>
+<?php // include_once "include.pagesearch.php"; ?>
 
 
     <section id="pagebody">
