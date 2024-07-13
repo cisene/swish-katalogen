@@ -1,13 +1,8 @@
-
-
 __cache/
 __database/
 static/
-
 __phpinfo.php
 infotest.php
-
 httpd-error.log
-
 config.rb
 site.config.php
