@@ -2,7 +2,7 @@
 
 class SqliteDB {
 
-  var $sqlite_module_loaded = false;
+  public $sqlite_module_loaded = false;
 
   var $db_connection = null;
 
