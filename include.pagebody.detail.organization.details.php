@@ -44,8 +44,8 @@ if($cat_route != null) {
           <table>
           <tr><td>Swish-nummer:</td><td><a href="swish://<?php echo($cat_route); ?>"><?php echo($cat_route); ?></a></td></tr>
           <tr><td>Organisation:</td><td itemprop="name"><?php echo($entry['orgName']); ?></td></tr>
-          <tr><td>Organisationsnummer:</span><td itemprop="taxID"><?php echo($entry['orgNumber']); ?></td></tr>
-          <tr><td>Hemsida:</span><td><a itemprop="url" href="<?php echo($entry['web']); ?>" target="_blank"><?php echo($entry['web']); ?></a></td></tr>
+          <tr><td>Organisationsnummer:</td><td itemprop="taxID"><?php echo($entry['orgNumber']); ?></td></tr>
+          <tr><td>Hemsida:</td><td><a itemprop="url" href="<?php echo($entry['web']); ?>" target="_blank"><?php echo($entry['web']); ?></a></td></tr>
           <tr><td>Kommentar:</td><td><?php echo($ui->_entryPrettify($entry['comment'])); ?></td></tr>
           <tr><td>Kategorier:</td><td><ul><?php echo($entry_categories); ?></ul></td></tr>
           </table>
