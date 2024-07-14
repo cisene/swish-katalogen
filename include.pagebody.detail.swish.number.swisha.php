@@ -16,6 +16,6 @@ $payload = array(
 $data = urlencode(json_encode($payload));
 
 ?>
-      <div id="pagebody-swish-number-swisha" class="mobile-enabled" style="display:none">
+      <div id="pagebody-swish-number-swisha" class="mobile-enabled">
         <a href="swish://payment?data=<?php echo($data); ?>&amp;source=swish-katalogen">Swisha</a>
       </div>
