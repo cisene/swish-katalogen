@@ -6,6 +6,11 @@ class MySQLDB {
 
   var $db_connection = null;
 
+  var $db_hostname = null;
+  var $db_username = null;
+  var $db_database = null;
+  /* there is no $db_password for a reason */
+
   public function __construct() {
     foreach(get_loaded_extensions() as $key => $value) {
       if (preg_match('/^mysqli$/six', $value)) {
@@ -17,16 +22,26 @@ class MySQLDB {
 
   public function connectDB($hostname, $port, $username, $password, $database) {
     if ($this->mysql_module_loaded == true) {
-      $this->db_connection = new mysqli($hostname, $username, $password, $database);
+      $this->db_connection = new mysqli(
+        $hostname,
+        $username,
+        $password,
+        $database
+      );
+
+      /* Save during session */
+      $this->db_hostname = $hostname;
+      $this->db_username = $username;
+      $this->db_database = $database;
 
       // $query = "SET CHARACTER_SET_RESULTS=UTF-8;";
       // $this->db_connection->query($query);
 
+      /* Set up connection to handle UTF8MB4 (Multibyte UTF-8) */
       $this->db_connection->query("SET NAMES utf8mb4");
       $this->db_connection->query("SET CHARACTER SET utf8mb4");
       $this->db_connection->query("SET character_set_connection=utf8mb4");
       $this->db_connection->query("SET autocommit=0;");
-
     }
   }
 
@@ -34,6 +49,10 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         $this->db_connection = null;
+
+        $this->db_hostname = null;
+        $this->db_username = null;
+        $this->db_database = null;
       }
     }
   }
@@ -155,7 +174,8 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY category ASC;";
+        // $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY category ASC;";
+        $query = "SELECT category, COUNT(*) AS cnt FROM " . $this->db_database . ".categories GROUP BY category ORDER BY category ASC LIMIT 5000;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
