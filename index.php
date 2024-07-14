@@ -4,7 +4,6 @@ ini_set('display_errors','On');
 
 include_once "site.config.php";
 
-// include_once "class.SqliteDB.php";
 include_once "class.MySQLDB.php";
 include_once "class.SwishFormat.php";
 include_once "class.SwishKatalogen.php";
@@ -20,7 +19,7 @@ $db->connectDB(
   $dbparam["port"],
   $dbparam["username"],
   $dbparam["password"],
-  $dbparam["database"]
+  $dbparam["database"],
 );
 
 $siteparam = $config["site"];
