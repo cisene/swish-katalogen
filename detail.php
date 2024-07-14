@@ -41,13 +41,13 @@ if(isset($cat_route)) {
         $orgName = $entry['orgName'];
       } else {
         ob_clean();
-        header("HTTP/1.1 404 NOT FOUND");
-        die("");
+        header("HTTP/1.1 410 Gone");
+        die("<!DOCTYPE html>");
       }
     } else {
       ob_clean();
-      header("HTTP/1.1 404 NOT FOUND");
-      die("");
+      header("HTTP/1.1 400 Bad Request");
+      die("<!DOCTYPE html>");
     }
   }
 }
