@@ -9,7 +9,9 @@
             "https://github.com/cisene",
             "https://www.linkedin.com/in/christopherisene",
             "https://mastodon.social/@cisene",
-            "https://podcastindex.social/@cisene"
+            "https://podcastindex.social/@cisene",
+            "https://pixelfed.social/@cisene",
+            "https://keybase.io/cisene"
           ]
         }
       </script>
