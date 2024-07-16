@@ -73,6 +73,23 @@ class MySQLDB {
     }
   }
 
+  public function getEntryByOrgNumber($orgNumber) {
+    $result = array();
+    if ($this->mysql_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT s.entry, s.comment FROM b19_se.swish s WHERE s.orgNumber = '" . orgNumber . "' ORDER BY s.entry ASC;"
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetch_assoc()) {
+          $result[] = array(
+            'entry'       => strval($row['entry']),
+            'comment'     => strval($row['comment']),
+          );
+        }
+      }
+    }
+    return $result;
+  }
+
   public function getEntryByID($entry_id) {
     $result = array();
     if ($this->mysql_module_loaded == true) {
