@@ -64,6 +64,13 @@ RewriteRule ^k/$ categories.php?cat=$1 [L,NC]
 # Categories
 RewriteRule ^k/(.*)$ categories.php?cat=$1 [B,NC,L]
 
+
+# Organizations - Empty
+RewriteRule ^o/$ organizations.php?org=$1 [L,NC]
+
+# Organizations
+RewriteRule ^o/(\d{6})-(\d{4})$ organizations.php?org=$1-$2 [L,NC]
+
 # Details
 RewriteRule ^(123\d{7})$ detail.php?number=$1 [L,NC]
 
