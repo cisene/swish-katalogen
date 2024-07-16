@@ -132,7 +132,6 @@ class SwishKatalogen {
       }
       $row[] = "</td>";
 
-
       $row[] = "<td>";
       $row[] = '<a href="' . $this->url_prefix . $entry . '" title="Swish-nummer ' . $entry . ' för ' . $orgName . '">';
       $row[] = strval($entry);
@@ -161,7 +160,7 @@ class SwishKatalogen {
     $result = null;
     $elem = array();
     foreach($list as $item) {
-      $elem[] = '<li><a itemprop="keywords" href="' . $this->cat_prefix . strval($item) . '">' . strval($item) . '</a></li>';
+      $elem[] = '<li><a itemprop="keywords" href="' . $this->cat_prefix . strval(urlencode($item)) . '">' . strval($item) . '</a></li>';
     }
     $result = join($elem);
     return $result;
@@ -173,7 +172,7 @@ class SwishKatalogen {
     foreach($categories as $item) {
       $category = $item['category'];
       if(!in_array($category, $exclude)) {
-        $elem[] = '<li><a href="' . $this->cat_prefix . strval($category) . '">' . strval($category) . '</a></li>';
+        $elem[] = '<li><a href="' . $this->cat_prefix . strval(urlencode($category)) . '">' . strval($category) . '</a></li>';
       }
     }
     $result = join($elem);
@@ -220,9 +219,9 @@ class SwishKatalogen {
       }
       
       if($quantity == 0) {
-        $elem[] = '<a href="' . $this->cat_prefix . strval($category) . '" title="' . $category . '">';
+        $elem[] = '<a href="' . $this->cat_prefix . strval(urlencode($category)) . '" title="' . $category . '">';
       } else {
-        $elem[] = '<a href="' . $this->cat_prefix . strval($category) . '" title="' . $quantity . ' förekomster i kategorin - ' . $category . '">';
+        $elem[] = '<a href="' . $this->cat_prefix . strval(urlencode($category)) . '" title="' . $quantity . ' förekomster i kategorin - ' . $category . '">';
       }
 
       $elem[] = strval($category);
@@ -331,11 +330,11 @@ class SwishKatalogen {
 
 
   public function getSitemapCatURL($data) {
-    return strval($this->domain_prefix) . strval($this->cat_prefix) . strval($data);
+    return strval($this->domain_prefix) . strval($this->cat_prefix) . strval(urlencode($data));
   }
 
   public function getSitemapEntryURL($data) {
-    return strval($this->domain_prefix) . strval($this->url_prefix) . strval($data);
+    return strval($this->domain_prefix) . strval($this->url_prefix) . strval(urlencode($data));
   }
 
 

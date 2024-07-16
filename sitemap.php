@@ -25,7 +25,8 @@ $db->connectDB(
 $cat_all = $db->getSitemapCategoriesAll();
 $entries_all = $db->getSitemapEntriesAll();
 
-$today = date("Y-m-d");
+// $today = date("Y-m-d");
+$today = date("c");
 
 $xml_template_string = "<?xml version='1.0' encoding='UTF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'></urlset>";
 $xml = simplexml_load_string($xml_template_string);

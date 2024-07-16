@@ -1,11 +1,17 @@
 <?php
 
+date_default_timezone_set('Europe/Stockholm');
+
 $protocol = $_SERVER['REQUEST_SCHEME'];
 $http_host = $_SERVER['HTTP_HOST'];
 $http_uri = $_SERVER['REQUEST_URI'];
 
 // Hardcode to HTTPS as we're behind a proxy
 $protocol = "https";
+
+// Other hardcoded values
+$date_created = date('r', strtotime("2022-03-24T10:32:16Z"));
+$date_modified = date(DATE_RFC2822);
 
 $config = array(
 
@@ -39,11 +45,7 @@ $config = array(
           array(
             "rel"       => "alternate",
             "hreflang"  => "sv",
-          ),
-
-          array(
-            "rel"       => "alternate",
-            "hreflang"  => "en",
+            "href"      => "/swish-katalogen/"
           ),
 
           array(
@@ -92,7 +94,8 @@ $config = array(
             "type"      =>  "application/opensearchdescription+xml",
             "title"     =>  "Swish-Katalogen",
             "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/opensearch.xml",
-          )
+          ),
+
         ),
 
         "meta" => array(
@@ -112,35 +115,9 @@ $config = array(
           ),
 
           array(
-            "http-equiv"  =>  "content-type",
-            "content"     =>  "text/html; charset=utf-8",
-          ),
-
-          array(
-            "http-equiv"  =>  "content-language",
-            "content"     =>  "sv",
-          ),
-
-          // <meta name="google" value="notranslate">
-          array(
             "name"        => "google",
-            "value"       => "notranslate",
+            "content"       => "notranslate",
           ),
-
-          array(
-            "http-equiv"  =>  "pragma",
-            "content"     =>  "no-cache",
-          ),
-
-          array(
-            "http-equiv"  =>  "X-UA-Compatible",
-            "content"     =>  "IE=edge",
-          ),
-
-          // array(
-          //   "http-equiv"  =>  "refresh",
-          //   "content"     =>  "600",
-          // ),
 
           array(
             "name"        =>  "content",
@@ -156,7 +133,32 @@ $config = array(
             "name"        =>  "revisit-after",
             "content"     =>  "1 day",
           ),
-          
+
+          array(
+            "name"        =>  "last_modified",
+            "content"     =>  $date_modified,
+          ),
+
+          array(
+            "name"        =>  "changed",
+            "content"     =>  $date_modified,
+          ),
+
+          array(
+            "name"        =>  "creation_date",
+            "content"     =>  $date_created,
+          ),
+
+          array(
+            "name"        =>  "category",
+            "content"     =>  "site;sv"
+          ),
+
+          array(
+            "name"        =>  "category",
+            "content"     =>  "contexttype;page"
+          ),
+
           array(
             "name"        =>  "application-name",
             "content"     =>  "Swish-Katalogen",
@@ -171,42 +173,52 @@ $config = array(
             "name"      => "apple-mobile-web-app-capable",
             "content"   => "no",
           ),
+
           array(
             "name"      => "apple-mobile-web-app-status-bar-style",
             "content"   => "default",
           ),
+
           array(
             "name"      => "apple-mobile-web-app-title",
             "content"   => "Swish-Katalogen",
           ),
+
           array(
             "name"      => "desciption",
             "content"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
           ),
+
           array(
             "name"      =>  "msapplication-TileImage",
             "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_150x150.jpg?v=1",
           ),
+
           array(
             "property"  =>  "og:description",
             "content"   =>  "Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.",
           ),
+
           array(
             "property"  =>  "og:image",
             "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_512x512.jpg",
           ),
+
           array(
             "property"  =>  "og:locale",
             "content"   =>  "sv_SE",
           ),
+
           array(
             "property"  =>  "og:site_name",
             "content"   =>  "Swish-Katalogen",
           ),
+
           array(
             "property"  =>  "og:title",
             "content"   =>  "Swish-Katalogen",
           ),
+
           array(
             "property"  =>  "og:url",
             "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
@@ -216,14 +228,17 @@ $config = array(
             "name"      =>  "expected-hostname",
             "content"   =>  $http_host,
           ),
+
           array(
             "name"      =>  "hostname",
             "content"   =>  $http_host,
           ),
+
           array(
             "name"      =>  "HandheldFriendly",
             "content"   =>  "true",
           ),
+
           array(
             "name"      =>  "referrer",
             "content"   =>  "same-origin",
@@ -237,6 +252,12 @@ $config = array(
           array(
             "name"      =>  "description",
             "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
+          ),
+
+          // <meta name="facebook-domain-verification" content="bqcxy55y3237l7a31qaunrqwfdswys" />
+          array(
+            "name"      =>  "facebook-domain-verification",
+            "content"   =>  "fuck-you-facebook",
           ),
 
         ),
