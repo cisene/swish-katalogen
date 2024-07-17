@@ -212,6 +212,8 @@ class SwishKatalogen {
 
       $elem = array();
 
+      $elem[] = "          ";
+
       if($category == $selected) {
         $elem[] = '<li class="li-category-selected">';
       } else {
@@ -227,6 +229,7 @@ class SwishKatalogen {
       $elem[] = strval($category);
       $elem[] = '</a>';
       $elem[] = '</li>';
+      $elem[] = "\n";
 
       $entry = join($elem);
       $cat_list[] = $entry;
