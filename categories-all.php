@@ -56,11 +56,7 @@ $siteparam = $config["site"];
 
     <section id="pagebody">
 
-<?php include_once "include.pagebody.categories.table.php"; ?>
-
-<?php include_once "include.pagebody.categories.related.php"; ?>
-
-<?php /* include_once "include.pagebody.categories.categories.php";  */ ?>
+<?php include_once "include.pagebody.categories.categories.php"; ?>
 
     </section>
 
