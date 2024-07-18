@@ -25,9 +25,9 @@ $db->connectDB(
 $siteparam = $config["site"];
 
 
-?><!doctype html>
+?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+  <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
 <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
     <title>Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
