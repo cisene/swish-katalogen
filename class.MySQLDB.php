@@ -90,6 +90,22 @@ class MySQLDB {
     return $result;
   }
 
+  public function getCountByOrgNumber($orgNumber) {
+    $result = array();
+    if ($this->mysql_module_loaded == true) {
+      if ($this->db_connection != null) {
+        $query = "SELECT COUNT(*) AS cnt FROM b19_se.swish s WHERE s.orgNumber = '" . $orgNumber . "';";
+        $results = $this->db_connection->query($query);
+        while ($row = $results->fetch_assoc()) {
+          $result[] = array(
+            'count'       => strval($row['cnt'])
+          );
+        }
+      }
+    }
+    return $result;
+  }
+
   public function getEntryByID($entry_id) {
     $result = array();
     if ($this->mysql_module_loaded == true) {
