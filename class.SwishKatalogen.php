@@ -107,7 +107,7 @@ class SwishKatalogen {
   public function getEntriesCategoryListing($items) {
     $result = null;
     $table_rows = array();
-    $table_rows[] = "<tr><th>&nbsp;</th><th>Nummer</th><th>Organisation</th><th>Kommentar</th></tr>\n";
+    $table_rows[] = "          <tr><th>&nbsp;</th><th>Nummer</th><th>Organisation</th><th>Kommentar</th></tr>\n";
     foreach($items as $item) {
       $row = array();
       $entry = $item['entry'];
@@ -118,7 +118,7 @@ class SwishKatalogen {
         $comment = "&nbsp;";
       }
 
-      $row[] = "<tr>";
+      $row[] = "          <tr>";
 
       $row[] = "<td>";
       if(preg_match('/^12390/six', $entry)) {
