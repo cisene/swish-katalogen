@@ -28,3 +28,5 @@
 
       <!-- Begin MediaCreeper tracker code --><a href="https://mediacreeper.com/latest" title="MediaCreeper"><img src="https://mediacreeper.com/image" alt="MediaCreeper" loading="lazy" style="width: 80px;height: 15px;border: 0px; display: none;"></a><!-- End MediaCreeper tracker code -->
       <!-- Begin Creeper tracker code --><a href="https://gnuheter.com/creeper/senaste" title="Creeper"><img src="https://gnuheter.com/creeper/image" alt="Creeper" loading="lazy" style="width: 80px;height: 15px;border: 0px; display: none;"></a><!-- End Creeper tracker code -->
+
+      <a href="/rabbithole/" style="display: none;"></a>
