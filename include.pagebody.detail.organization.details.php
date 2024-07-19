@@ -17,7 +17,7 @@ if($cat_route != null) {
       $entry_categories = $ui->getEntryCategories($entry['categories']);
       $other_categories = $ui->getOtherCategories($cat_ranked, $entry['categories']);
 
-      if(preg_match("/^(\d{6})\x2d(\d{4})$", strval($entry['orgNumber']))) {
+      if(preg_match("/^(\d{6})\x2d(\d{4})$/six", strval($entry['orgNumber']))) {
         // TODO: call getCountByOrgNumber() with orgNumber
         // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
       } else {
