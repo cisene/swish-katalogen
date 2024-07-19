@@ -71,7 +71,7 @@ if(isset($cat_route)) {
 
 <?php include_once "include.pagebody.detail.organization.details.php"; ?>
 
-<?php include_once "include.pagebody.detail.swish.number.swisha.php"; ?>
+<?php // include_once "include.pagebody.detail.swish.number.swisha.php"; ?>
 
 <?php include_once "include.pagebody.detail.swish.number.variants.php"; ?>
 

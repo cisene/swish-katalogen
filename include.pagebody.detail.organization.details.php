@@ -17,6 +17,27 @@ if($cat_route != null) {
       $entry_categories = $ui->getEntryCategories($entry['categories']);
       $other_categories = $ui->getOtherCategories($cat_ranked, $entry['categories']);
 
+      if(preg_match("/^(\d{6})\x2d(\d{4})$", strval($entry['orgNumber']))) {
+        // TODO: call getCountByOrgNumber() with orgNumber
+        // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
+      } else {
+        // TODO: handle non-organisation numbers such as persons with enskild firma
+      }
+
+      /* Build swish payment blob */
+      $payload = array(
+        "message" => array(
+          "value" => "Gåva genom Swish Katalogen.",
+          "editable" => true
+        ),
+        "payee" => array(
+          "value" => $cat_route,
+          "editable" => false
+        ),
+        "version" => 1
+      );
+      $paymentdata = urlencode(json_encode($payload));
+
     } else {
       ob_clean();
       header("HTTP/1.1 410 Gone");
@@ -44,7 +65,7 @@ if($cat_route != null) {
           <table>
           <tr>
             <td>Swish-nummer:</td>
-            <td><a href="swish://<?php echo($cat_route); ?>"><?php echo($cat_route); ?></a></td>
+            <td><a href="swish://payment?data=<?php echo($paymentdata); ?>&amp;source=swish-katalogen"><?php echo($cat_route); ?></a></td>
           </tr>
           <tr>
             <td>Organisation:</td>
@@ -68,6 +89,10 @@ if($cat_route != null) {
           </tr>
           </table>
         </div>
+      </div>
+
+      <div id="pagebody-swish-number-swisha" class="mobile-enabled">
+        <a href="swish://payment?data=<?php echo($paymentdata); ?>&amp;source=swish-katalogen">Swisha</a>
       </div>
 
       <script type="application/ld+json"><?php echo($entry_json); ?></script>
