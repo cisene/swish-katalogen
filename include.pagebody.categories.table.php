@@ -27,11 +27,9 @@ if($db && $ui) {
 ?>
 
       <div id="pagebody-categories-table">
-        <?php if($cat_route != null) { ?>
         <h2>Organisationer i kategorin '<?php echo($cat_route); ?>'</h2>
         <table>
-          <?php echo($category_item_listing); ?>
+<?php echo($category_item_listing); ?>
         </table>
-        <?php } ?>
       </div>
 
