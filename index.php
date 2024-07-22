@@ -25,7 +25,7 @@ $db->connectDB(
 $siteparam = $config["site"];
 
 $config["content"]["html"]["header"]["title"] = PAGE_START_TITLE;
-$config["content"]["html"]["header"]["description"] = PAGE_START_DESC;
+$config["content"]["html"]["header"]["description"]["content"] = PAGE_START_DESC;
 
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +33,6 @@ $config["content"]["html"]["header"]["description"] = PAGE_START_DESC;
 <?php echo($ui->renderHTMLHeadMisc($config)); ?>
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
 <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
-    <title>Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
     <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
     <script src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
@@ -61,11 +60,11 @@ $config["content"]["html"]["header"]["description"] = PAGE_START_DESC;
       
 <?php include_once "include.pagebody.index.intro.php"; ?>
 
+<?php // include_once "include.pagebody.index.statistics.php"; ?>
+
 <?php include_once "include.pagebody.index.seo-fodder.php"; ?>
 
 <?php include_once "include.pagebody.index.categories.php"; ?>
-
-<?php // include_once "include.pagebody.index.statistics.php"; ?>
 
     </section>
 
