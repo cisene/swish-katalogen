@@ -42,13 +42,12 @@ class SwishKatalogen {
     }
   }
 
-  private function _escapeSomeHtml($string) {
-    $string = preg_replace('/\x26/six', "&amp;", strval($string));
-
-    $string = preg_replace('/\x22/six', "&quot;", strval($string));
-    $string = preg_replace('/\x3c/six', "&lt;", strval($string));
-    $string = preg_replace('/\x3e/six', "&gt;", string($string));
-    return $string;
+  private function _escapeSomeHtml($data) {
+    $data = preg_replace('/\x26/six', "&amp;", strval($data));
+    $data = preg_replace('/\x22/six', "&quot;", strval($data));
+    $data = preg_replace('/\x3c/six', "&lt;", strval($data));
+    $data = preg_replace('/\x3e/six', "&gt;", strval($data));
+    return $data;
   }
 
   public function renderHTMLHeadMisc($config) {
