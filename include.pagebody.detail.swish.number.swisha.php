@@ -1,6 +1,6 @@
 <?php
-$number_variants = $sf->getSwishAllFormats($cat_route);
-$variants = $ui->getLIFormattedSwishNumberList($number_variants);
+// $number_variants = $sf->getSwishAllFormats($cat_route);
+// $variants = $ui->getLIFormattedSwishNumberList($number_variants);
 
 $payload = array(
   "message" => array(

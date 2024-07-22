@@ -24,6 +24,8 @@ $db->connectDB(
 
 $siteparam = $config["site"];
 
+$config["content"]["html"]["header"]["title"] = $config["site"]["name"] . " - Alla kategorier i alfabetisk ordning";
+$config["content"]["html"]["header"]["description"] = $config["site"]["name"] . " - Kategorier i bokstavsordning";
 
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
@@ -50,14 +52,10 @@ $siteparam = $config["site"];
     </script>
 
 <?php include_once "include.pageheader.php"; ?>
-
 <?php // include_once "include.pagesearch.php"; ?>
 
-
     <section id="pagebody">
-
 <?php include_once "include.pagebody.categories.categories.php"; ?>
-
     </section>
 
     <section id="pagefooter">

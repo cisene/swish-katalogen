@@ -42,6 +42,23 @@ class SwishKatalogen {
     }
   }
 
+  public function renderHTMLHeadMisc() {
+    $misc = array(
+      "title",
+    );
+
+    $result = array();
+
+    foreach($misc as $item) {
+      $element = "    <" . $item . ">";
+      if(isset($config["content"]["html"]["header"][$item])) {
+        $element .= htmlentities($config["content"]["html"]["header"][$item]);
+      }
+      $element .= "</" . $item . ">";
+      $result[] = $element;
+    }
+    return implode("\n", $result);
+  }
 
   public function renderHTMLHeadMetas($metaslist) {
     $result = array();

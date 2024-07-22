@@ -13,14 +13,42 @@ $protocol = "https";
 $date_created = date('r', strtotime("2022-03-24T10:32:16Z"));
 $date_modified = date(DATE_RFC2822);
 
+define("URL_ROOT",          $protocol . "://" . $http_host . "/swish-katalogen/");
+
+define("URL_SITEMAP",       URL_ROOT . "sitemap.xml");
+
+define("URL_OPENSEARCH",    URL_ROOT . "opensearch.xml")
+
+define("URL_MANIFEST",      URL_ROOT . "manifest.json")
+
+/* Define URLs of Favicons in different sizes */
+define("URL_ICON_32x32",    URL_ROOT . "favicon_32x32.jpg?v=1");
+define("URL_ICON_150x150",  URL_ROOT . "favicon_150x150.jpg?v=1");
+define("URL_ICON_180x180",  URL_ROOT . "favicon_180x180.jpg?v=1");
+define("URL_ICON_192x192",  URL_ROOT . "favicon_192x192.jpg?v=1");
+define("URL_ICON_270x270",  URL_ROOT . "favicon_270x270.jpg?v=1");
+define("URL_ICON_300x300",  URL_ROOT . "favicon_300x300.jpg?v=1");
+define("URL_ICON_512x450",  URL_ROOT . "favicon_512x450.jpg?v=1");
+define("URL_ICON_512x512",  URL_ROOT . "favicon_512x512.jpg?v=1");
+
+/* Define strings */
+define("SITE_NAME",     "Swish-Katalogen");
+
+define("PAGE_START_TITLE", "");
+define("PAGE_START_DESC", "")
+
+define("PAGE_CATEGORIES_ALL_TITLE", "");
+define("PAGE_CATEGORIES_ALL_DESC", "")
+
 $config = array(
 
   "site" => array(
-    "url" => $protocol . "://" . $http_host . "/swish-katalogen/",
-    "title" => "Swish-Katalogen",
-    "description" => "Swish-Katalogen - Sök och hitta Swish-nummer",
-    "dateCreated" => "2022-03-24",
-    "dateModified" => date("Y-m-d", time()),
+    "name"          => "Swish-Katalogen",
+    "url"           => $protocol . "://" . $http_host . "/swish-katalogen/",
+    "title"         => "Swish-Katalogen",
+    "description"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
+    "dateCreated"   => $date_created,
+    "dateModified"  => $date_modified,
   ),
 
   "db" => array(
@@ -38,7 +66,6 @@ $config = array(
       "header" => array(
 
         "title"         => "Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer",
-        "description"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
 
         "link" => array(
 
@@ -254,11 +281,6 @@ $config = array(
             "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
           ),
 
-          // <meta name="facebook-domain-verification" content="bqcxy55y3237l7a31qaunrqwfdswys" />
-          array(
-            "name"      =>  "facebook-domain-verification",
-            "content"   =>  "fuck-you-facebook",
-          ),
 
         ),
       ),

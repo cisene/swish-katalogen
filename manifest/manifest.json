@@ -1,14 +1,19 @@
 {
+    "name": "Swish-Katalogen",
+    "short_name": "Swish-Katalogen",
+    "start_url": ".",
+    "theme_color": "#fff",
+    "version": "0.1",
     "author": "Christopher Isene",
     "background_color": "#fff",
     "default_locale": "sv",
+    "display": "standalone",
     "developer": [
         {
             "name": "Christopher Isene",
-            "url": "https://christopherisene.se/?utm_source=swish-katalogen"
+            "url": "https://christopherisene.se/"
         }
     ],
-    "display": "standalone",
     "icons": [
         {
             "sizes": "32x32",
@@ -50,10 +55,5 @@
             "src": "https://b19.se/favicon/favicon_512x512.jpg",
             "type": "image/jpeg"
         }
-    ],
-    "name": "Swish-Katalogen",
-    "short_name": "Swish-Katalogen",
-    "start_url": ".",
-    "theme_color": "#fff",
-    "version": "0.1"
+    ]
 }
