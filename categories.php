@@ -74,8 +74,6 @@ $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = $cat
 
 <?php include_once "include.pagebody.categories.related.php"; ?>
 
-<?php /* include_once "include.pagebody.categories.categories.php";  */ ?>
-
     </section>
 
     <section id="pagefooter">
