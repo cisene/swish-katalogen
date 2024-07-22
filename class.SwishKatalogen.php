@@ -42,6 +42,15 @@ class SwishKatalogen {
     }
   }
 
+  private function _escapeSomeHtml($string) {
+    $string = preg_replace('/\x26/six', "&amp;", strval($string));
+
+    $string = preg_replace('/\x22/six', "&quot;", strval($string));
+    $string = preg_replace('/\x3c/six', "&lt;", strval($string));
+    $string = preg_replace('/\x3e/six', "&gt;", string($string));
+    return $string;
+  }
+
   public function renderHTMLHeadMisc($config) {
     $misc = array(
       "title",
@@ -52,7 +61,7 @@ class SwishKatalogen {
     foreach($misc as $item) {
       $element = "    <" . $item . ">";
       if(isset($config["content"]["html"]["header"][$item])) {
-        $element .= htmlentities($config["content"]["html"]["header"][$item]);
+        $element .= $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]);
       } else {
         $element .= " " . $item . " ";
       }
