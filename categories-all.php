@@ -24,8 +24,8 @@ $db->connectDB(
 
 $siteparam = $config["site"];
 
-$config["content"]["html"]["header"]["title"] = $config["site"]["name"] . " - Alla kategorier i alfabetisk ordning";
-$config["content"]["html"]["header"]["description"] = $config["site"]["name"] . " - Kategorier i bokstavsordning";
+// $config["content"]["html"]["header"]["title"] = $config["site"]["name"] . " - Alla kategorier i alfabetisk ordning";
+// $config["content"]["html"]["header"]["description"] = $config["site"]["name"] . " - Kategorier i bokstavsordning";
 
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
