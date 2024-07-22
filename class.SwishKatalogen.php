@@ -42,7 +42,7 @@ class SwishKatalogen {
     }
   }
 
-  public function renderHTMLHeadMisc() {
+  public function renderHTMLHeadMisc($config) {
     $misc = array(
       "title",
     );
