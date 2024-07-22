@@ -57,7 +57,7 @@ class SwishKatalogen {
       $element .= "</" . $item . ">";
       $result[] = $element;
     }
-    return implode("\n", $result);
+    return implode("\n", $result) . "\n";
   }
 
   public function renderHTMLHeadMetas($metaslist) {
