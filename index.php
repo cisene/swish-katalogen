@@ -24,8 +24,8 @@ $db->connectDB(
 
 $siteparam = $config["site"];
 
-$config["content"]["html"]["header"]["title"] = $config["site"]["name"] . " - Vad är Swish-Katalogen?";
-$config["content"]["html"]["header"]["description"] = $config["site"]["name"] . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer";
+$config["content"]["html"]["header"]["title"] = PAGE_START_TITLE;
+$config["content"]["html"]["header"]["description"] = PAGE_START_DESC;
 
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
