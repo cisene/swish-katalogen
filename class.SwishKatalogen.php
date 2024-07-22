@@ -53,6 +53,8 @@ class SwishKatalogen {
       $element = "    <" . $item . ">";
       if(isset($config["content"]["html"]["header"][$item])) {
         $element .= htmlentities($config["content"]["html"]["header"][$item]);
+      } else {
+        $element .= " " . $item . " ";
       }
       $element .= "</" . $item . ">";
       $result[] = $element;
