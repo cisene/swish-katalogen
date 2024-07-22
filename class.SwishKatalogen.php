@@ -44,6 +44,7 @@ class SwishKatalogen {
 
   private function _escapeSomeHtml($data) {
     $data = preg_replace('/\x26/six', "&amp;", strval($data));
+    $data = preg_replace('/\x27/six', "&apos;", strval($data));
     $data = preg_replace('/\x22/six', "&quot;", strval($data));
     $data = preg_replace('/\x3c/six', "&lt;", strval($data));
     $data = preg_replace('/\x3e/six', "&gt;", strval($data));
