@@ -13,13 +13,18 @@ $protocol = "https";
 $date_created = date('r', strtotime("2022-03-24T10:32:16Z"));
 $date_modified = date(DATE_RFC2822);
 
-define("URL_ROOT",          $protocol . "://" . $http_host . "/swish-katalogen/");
+define("URL_ROOT",                  $protocol . "://" . $http_host . "/swish-katalogen/");
 
-define("URL_SITEMAP",       URL_ROOT . "sitemap.xml");
+define("URL_CATEGORIES",            URL_ROOT . "k/");
 
-define("URL_OPENSEARCH",    URL_ROOT . "opensearch.xml")
+define("URL_SITEMAP",               URL_ROOT . "sitemap.xml");
 
-define("URL_MANIFEST",      URL_ROOT . "manifest.json")
+define("URL_OPENSEARCH",            URL_ROOT . "opensearch.xml");
+
+define("URL_MANIFEST",              URL_ROOT . "manifest.json");
+
+define("URL_GITHUB_SWISH123",       "https://github.com/cisene/swish-123");
+define("URL_GITHUB_SWISHKAT",       "https://github.com/cisene/swish-katalogen");
 
 /* Define URLs of Favicons in different sizes */
 define("URL_ICON_32x32",    URL_ROOT . "favicon_32x32.jpg?v=1");
@@ -34,17 +39,21 @@ define("URL_ICON_512x512",  URL_ROOT . "favicon_512x512.jpg?v=1");
 /* Define strings */
 define("SITE_NAME",     "Swish-Katalogen");
 
-define("PAGE_START_TITLE", "");
-define("PAGE_START_DESC", "")
+define("PAGE_START_TITLE",  SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
+define("PAGE_START_DESC",   SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
 
 define("PAGE_CATEGORIES_ALL_TITLE", "");
-define("PAGE_CATEGORIES_ALL_DESC", "")
+define("PAGE_CATEGORIES_ALL_DESC", "");
+
+define("PAGE_CATEGORY_TITLE", SITE_NAME . " - Kategori '%category%'");
+define("PAGE_CATEGORY_DESC", SITE_NAME . " - Kategori '%category%' med' ");
 
 $config = array(
 
   "site" => array(
     "name"          => "Swish-Katalogen",
-    "url"           => $protocol . "://" . $http_host . "/swish-katalogen/",
+    // "url"           => $protocol . "://" . $http_host . "/swish-katalogen/",
+    "url"           => URL_ROOT,
     "title"         => "Swish-Katalogen",
     "description"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
     "dateCreated"   => $date_created,
@@ -65,49 +74,50 @@ $config = array(
     "html" => array(
       "header" => array(
 
-        "title"         => "Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer",
+        "title"         =>  "Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer",
 
         "link" => array(
-
-          array(
-            "rel"       => "alternate",
-            "hreflang"  => "sv",
-            "href"      => "/swish-katalogen/"
-          ),
-
-          array(
-            "rel"       => "sitemap",
-            "type"      =>  "application/xml",
-            "href"      => $protocol ."://" . $http_host . "/swish-katalogen/sitemap.xml",
-          ),
-
-          array(
-            "rel"       =>  "apple-touch-icon",
-            "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_192x192.jpg?v=1",
-          ),
-
-          array(
-            "rel"       =>  "icon",
-            "type"      =>  "image/png",
-            "sizes"     =>  "32x32",
-            "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_32x32.jpg?v=1",
-          ),
 
           array(
             "rel"       =>  "canonical",
             "href"      =>  $protocol ."://" . $http_host . $http_uri,
           ),
 
+          // <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
           array(
-            "rel"       =>  "categories",
-            "title"     =>  "Kategorier",
-            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/k/",
+            "rel"       =>  "sitemap",
+            "type"      =>  "application/xml",
+            "title"     =>  "Sitemap",
+            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/sitemap.xml",
+            "href"      =>  URL_SITEMAP,
+          ),
+
+          array(
+            "rel"       =>  "alternate",
+            "hreflang"  =>  "sv",
+            "href"      =>  URL_ROOT,
+          ),
+
+          array(
+            "rel"       =>  "icon",
+            "type"      =>  "image/jpg",
+            "sizes"     =>  "32x32",
+            // "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_32x32.jpg?v=1",
+            "href"      =>  URL_ICON_32x32,
           ),
 
           array(
             "rel"       =>  "index",
             "title"     =>  "Index",
-            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/",
+            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/",
+            "href"      =>  URL_ROOT,
+          ),
+
+          array(
+            "rel"       =>  "categories",
+            "title"     =>  "Kategorier",
+            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/k/",
+            "href"      =>  URL_CATEGORIES,
           ),
 
           array(
@@ -120,7 +130,8 @@ $config = array(
             "rel"       =>  "search",
             "type"      =>  "application/opensearchdescription+xml",
             "title"     =>  "Swish-Katalogen",
-            "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/opensearch.xml",
+            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/opensearch.xml",
+            "href"      =>  URL_OPENSEARCH,
           ),
 
         ),
@@ -128,159 +139,175 @@ $config = array(
         "meta" => array(
 
           array(
-            "charset"     =>  "utf-8",
+            "charset"       =>  "utf-8",
           ),
 
           array(
-            "name"        =>  "robots",
-            "content"     =>  "index,follow",
+            "name"          =>  "robots",
+            "content"       =>  "index,follow",
+          ),
+
+          // <meta name="country" content="SE">
+          array(
+            "name"          => "country",
+            "content"       => "SE",
+          ),
+
+          // array(
+          //   "name"          =>  "sitemap",
+          //   "content"       =>  $protocol . "://" . $http_host . "/swish-katalogen/sitemap.xml",
+          // ),
+
+          "description" => array(
+            "name"          =>  "description",
+            "content"       =>  "Swish-Katalogen - Sök Swish-nummer",
           ),
 
           array(
-            "name"        =>  "sitemap",
-            "content"     =>  $protocol . "://" . $http_host . "/swish-katalogen/sitemap.xml",
+            "name"          =>  "keywords",
+            "content"       =>  "swish-katalogen, swishnummer, swish-nummer, söka swish företag",
           ),
 
+          // <meta name="google" content="notranslate">
           array(
-            "name"        => "google",
+            "name"          => "google",
             "content"       => "notranslate",
           ),
 
           array(
-            "name"        =>  "content",
-            "content"     =>  "general",
+            "name"          =>  "content",
+            "content"       =>  "general",
           ),
 
           array(
-            "name"        =>  "distribution",
-            "content"     =>  "global",
+            "name"            =>  "Last-Modified",
+            "content"         =>  $date_modified,
           ),
 
           array(
-            "name"        =>  "revisit-after",
-            "content"     =>  "1 day",
+            "name"            =>  "Creation-Date",
+            "content"         =>  $date_created,
           ),
 
           array(
-            "name"        =>  "last_modified",
-            "content"     =>  $date_modified,
+            "name"            =>  "category",
+            "content"         =>  "site;sv"
           ),
 
           array(
-            "name"        =>  "changed",
-            "content"     =>  $date_modified,
+            "name"            =>  "category",
+            "content"         =>  "contexttype;page"
           ),
 
           array(
-            "name"        =>  "creation_date",
-            "content"     =>  $date_created,
+            "name"            =>  "application-name",
+            "content"         =>  "Swish-Katalogen",
           ),
 
           array(
-            "name"        =>  "category",
-            "content"     =>  "site;sv"
+            "name"            =>  "viewport",
+            "content"         =>  "width=device-width, initial-scale=1.0, shrink-to-fit=no",
+          ),
+
+          "og_title" => array(
+            "property"        =>  "og:title",
+            "content"         =>  "Swish-Katalogen",
+          ),
+
+          "og_description" => array(
+            "property"        =>  "og:description",
+            "content"         =>  "Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.",
+          ),
+
+          "og_site_name" => array(
+            "property"        =>  "og:site_name",
+            "content"         =>  "Swish-Katalogen",
           ),
 
           array(
-            "name"        =>  "category",
-            "content"     =>  "contexttype;page"
+            "property"        =>  "og:image",
+            "content"         =>  $protocol ."://" . $http_host . "/favicon/favicon_512x512.jpg",
           ),
 
           array(
-            "name"        =>  "application-name",
-            "content"     =>  "Swish-Katalogen",
+            "property"        =>  "og:locale",
+            "content"         =>  "sv_SE",
           ),
 
           array(
-            "name"      =>  "viewport",
-            "content"   =>  "width=device-width, initial-scale=1.0, shrink-to-fit=no",
+            "property"        =>  "og:url",
+            "content"         =>  URL_ROOT,
           ),
 
-          array(
-            "name"      => "apple-mobile-web-app-capable",
-            "content"   => "no",
+          "dc_title" => array(
+            "property"  =>  "dc:Title",
+            "content"   =>  "Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer",
           ),
 
-          array(
-            "name"      => "apple-mobile-web-app-status-bar-style",
-            "content"   => "default",
-          ),
-
-          array(
-            "name"      => "apple-mobile-web-app-title",
-            "content"   => "Swish-Katalogen",
-          ),
-
-          array(
-            "name"      => "desciption",
-            "content"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
-          ),
-
-          array(
-            "name"      =>  "msapplication-TileImage",
-            "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_150x150.jpg?v=1",
-          ),
-
-          array(
-            "property"  =>  "og:description",
-            "content"   =>  "Swish-Katalogen, en enkel söktjänst för Swish-nummer. Sök och hitta Swish-nummer.",
-          ),
-
-          array(
-            "property"  =>  "og:image",
-            "content"   =>  $protocol ."://" . $http_host . "/favicon/favicon_512x512.jpg",
-          ),
-
-          array(
-            "property"  =>  "og:locale",
-            "content"   =>  "sv_SE",
-          ),
-
-          array(
-            "property"  =>  "og:site_name",
-            "content"   =>  "Swish-Katalogen",
-          ),
-
-          array(
-            "property"  =>  "og:title",
-            "content"   =>  "Swish-Katalogen",
-          ),
-
-          array(
-            "property"  =>  "og:url",
-            "content"   =>  $protocol ."://" . $http_host . "/swish-katalogen/",
-          ),
-
-          array(
-            "name"      =>  "expected-hostname",
-            "content"   =>  $http_host,
-          ),
-
-          array(
-            "name"      =>  "hostname",
-            "content"   =>  $http_host,
-          ),
-
-          array(
-            "name"      =>  "HandheldFriendly",
-            "content"   =>  "true",
-          ),
-
-          array(
-            "name"      =>  "referrer",
-            "content"   =>  "same-origin",
-          ),
-
-          array(
-            "name"      =>  "dc.description",
-            "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
-          ),
-          
-          array(
-            "name"      =>  "description",
+          "dc_description" => array(
+            "property"  =>  "dc.Description",
             "content"   =>  "Swish-Katalogen - Sök Swish-nummer",
           ),
 
+          array(
+            "property"  =>  "dc:Identifier",
+            "content"   =>  URL_ROOT,
+          ),
+
+          array(
+            "property"  =>  "dc:Creator",
+            "content"   =>  "Creator",
+          ),
+
+          array(
+            "property"  =>  "dc:Creator.Address",
+            "content"   =>  "christopher.isene@gmail.com",
+          ),
+
+          array(
+            "property"  =>  "dc:Publisher",
+            "content"   =>  "Publisher",
+          ),
+
+          array(
+            "property"  =>  "dc:Publisher.Address",
+            "content"   =>  "christopher.isene@gmail.com",
+          ),
+
+          array(
+            "property"  =>  "dc:Date.Created",
+            "content"   =>  date('c', strtotime($date_created)),
+          ),
+
+          array(
+            "property"  =>  "DC.Date.Created",
+            "content"   =>  date('Y-m-d', strtotime($date_created)),
+          ),
+
+          array(
+            "property"  =>  "DC.Date.Modified",
+            "content"   =>  date('Y-m-d', strtotime($date_modified)),
+          ),
+
+          array(
+            "property"  =>  "dc:Date.Modified",
+            "content"   =>  date('c', strtotime($date_modified)),
+          ),
+
+          array(
+            "property"  =>  "dc:Type",
+            "content"   =>  "Text",
+          ),
+
+          array(
+            "property"  =>  "dc:Format",
+            "content"   =>  "text/html",
+          ),
+
+          array(
+            "property"  =>  "dc:Language",
+            "content"   =>  "sv",
+          ),
 
         ),
       ),
