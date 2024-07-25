@@ -273,9 +273,10 @@ class SwishKatalogen {
     $result = null;
     $elem = array();
     foreach($list as $item) {
-      $elem[] = '<li>' . $item . '</li>';
+      $escaped_variant = preg_replace('/\x20/', "&nbsp;", strval($item));
+      $elem[] = '        <li>' . $escaped_variant . "</li>\n";
     }
-    $result = join($elem);
+    $result = "\n" . join($elem) . "\n";
     return $result;
   }
 
@@ -326,8 +327,8 @@ class SwishKatalogen {
     }
     $temp['url'] = strval($obj['web']);
 
-    $temp['dateCreated'] = strval("2022-03-24");
-    $temp['breadcrumb'] = strval("Swish-Katalogen - Sök Swish-nummer - " . $obj['orgName']);
+    // $temp['dateCreated'] = strval("2022-03-24");
+    // $temp['breadcrumb'] = strval("Swish-Katalogen - Sök Swish-nummer - " . $obj['orgName']);
 
     // $temp['keywords'] = array();
 
