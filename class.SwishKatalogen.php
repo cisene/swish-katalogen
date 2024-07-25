@@ -177,7 +177,7 @@ class SwishKatalogen {
     $result = null;
     $elem = array();
     foreach($list as $item) {
-      $elem[] = '<li><a itemprop="keywords" href="' . $this->cat_prefix . strval(urlencode($item)) . '">' . strval($item) . '</a></li>';
+      $elem[] = '                  <li><a itemprop="keywords" href="' . $this->cat_prefix . strval(urlencode($item)) . '">' . strval($item) . "</a></li>\n";
     }
     $result = join($elem);
     return $result;
