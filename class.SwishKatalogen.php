@@ -29,18 +29,6 @@ class SwishKatalogen {
 
   }
 
-  private function _insertRuntimeMeta() {
-    global $config;
-
-
-    if($config) {
-
-      // $config["content"]["html"]["header"]["meta"][] = array(
-      //   "x-charset"   =>  "utf-8",
-      // );
-
-    }
-  }
 
   private function _escapeSomeHtml($data) {
     $data = preg_replace('/\x26/six', "&amp;", strval($data));
@@ -59,10 +47,11 @@ class SwishKatalogen {
     $result = array();
 
     foreach($misc as $item) {
-      $element = "    <" . $item . ">";
       if(isset($config["content"]["html"]["header"][$item])) {
+        $element = "    <" . $item . " content=\" . $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]) . "\" itemProp=\"name\">";
         $element .= $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]);
       } else {
+        $element = "    <" . $item . ">";
         $element .= " " . $item . " ";
       }
       $element .= "</" . $item . ">";

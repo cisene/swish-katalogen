@@ -65,9 +65,10 @@ $config["content"]["html"]["header"]["meta"]["og_description"]["content"] = $det
 $config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = $detail_title;
 $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = $detail_desc;
 
+
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
-  <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
+  <head itemScope itemType="https://schema.org/WebSite" prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
 <?php echo($ui->renderHTMLHeadMisc($config)); ?>
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
 <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
