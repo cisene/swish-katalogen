@@ -87,8 +87,7 @@ if($cat_route != null) {
             <td>Kategorier:</td>
             <td>
               <ul>
-                <?php echo($entry_categories); ?>
-                  
+<?php echo($entry_categories); ?>
               </ul>
             </td>
           </tr>
