@@ -48,7 +48,7 @@ class SwishKatalogen {
 
     foreach($misc as $item) {
       if(isset($config["content"]["html"]["header"][$item])) {
-        $element = "    <" . $item . " content=\" . $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]) . "\" itemProp=\"name\">";
+        $element = "    <" . $item . " content=\"" . $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]) . "\" itemProp=\"name\">";
         $element .= $this->_escapeSomeHtml($config["content"]["html"]["header"][$item]);
       } else {
         $element = "    <" . $item . ">";
