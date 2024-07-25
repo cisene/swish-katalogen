@@ -25,7 +25,7 @@ class SwishKatalogen {
     $this->local_base = $_SERVER['DOCUMENT_ROOT'];
     $this->local_base_static = $this->local_base . $this->url_prefix . "static/";
 
-    $this->_insertRuntimeMeta();
+    // $this->_insertRuntimeMeta();
 
   }
 
