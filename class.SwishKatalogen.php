@@ -274,9 +274,9 @@ class SwishKatalogen {
     $elem = array();
     foreach($list as $item) {
       $escaped_variant = preg_replace('/\x20/', "&nbsp;", strval($item));
-      $elem[] = '        <li>' . $escaped_variant . "</li>\n";
+      $elem[] = '          <li>' . $escaped_variant . "</li>\n";
     }
-    $result = "\n" . join($elem) . "\n";
+    $result = join($elem);
     return $result;
   }
 
