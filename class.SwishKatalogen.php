@@ -4,9 +4,10 @@ class SwishKatalogen {
   
   var $domain_prefix = 'https://b19.se';
 
-  var $url_prefix = '/swish-katalogen/';
-  var $cat_prefix = '/swish-katalogen/k/';
-  var $search_prefix = '/swish-katalogen/s/';
+  var $url_prefix     = '/swish-katalogen/';
+  var $cat_prefix     = '/swish-katalogen/k/';
+  var $org_prefix     = '/swish-katalogen/o/';
+  var $search_prefix  = '/swish-katalogen/s/';
 
 
   // var $local_base = $_SERVER['DOCUMENT_ROOT'];
@@ -87,7 +88,35 @@ class SwishKatalogen {
   }
 
 
+  public function getOrgNumberRouting() {
+    $result = null;
+    if(isset($_SERVER['REQUEST_URI'])) {
+      $uri = urldecode($_SERVER['REQUEST_URI']);
 
+      /* Strip off trailing slash - blindly */
+      $uri = preg_replace('/\x2f$/six', "", strval($uri));
+
+      /* Build regex from predefined path, regexify */
+      $mask = $this->_regexify($this->org_prefix);
+      
+      /* Add regex prefix and suffix to complete pattern */
+      $re = "/^" . $mask . "/six";
+
+      /* Match wanted prefix */
+      if(preg_match($re, strval($uri))) {
+        /* Strip off prefix as we're sure we have a value */
+        $uri = preg_replace($re, "", strval($uri));
+
+        /* Test that value looks correct and assign if true */
+        $re_orgnumber_pattern = "/^(\d{6})\x2d(\d{4})$/six";
+        if(preg_match($re_orgnumber_pattern, strval($uri))) {
+          /* Success */
+          $result = strval($uri);
+        }
+      }
+    }
+    return $result;
+  }
 
   public function getCategoryRouting() {
     $result = null;
