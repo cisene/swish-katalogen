@@ -25,8 +25,8 @@ $db->connectDB(
 $siteparam = $config["site"];
 
 $cat_route = $ui->getCategoryRouting();
-$category_title = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_TITLE));
-$category_desc = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_DESC));
+// $category_title = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_TITLE));
+// $category_desc = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_DESC));
 
 
 $config["content"]["html"]["header"]["title"] = $category_title;
@@ -67,17 +67,13 @@ $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = $cat
 
 <?php // include_once "include.pagesearch.php"; ?>
 
-
     <section id="pagebody">
-
 <?php include_once "include.pagebody.organizations.table.php"; ?>
-
     </section>
 
     <section id="pagefooter">
 <?php include_once "include.pagefooter.php"; ?>
     </section>
-
 
   </body>
 </html>
