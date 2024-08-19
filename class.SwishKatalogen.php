@@ -154,7 +154,13 @@ class SwishKatalogen {
     $result = null;
     $table_rows = array();
 
-    $table_rows[] = "          <tr><th>&nbsp;</th><th>Nummer</th><th>Organisation</th><th>Kommentar</th></tr>\n";
+    $table_rows[] = "          <tr>\n";
+    $table_rows[] = "            <th>&nbsp;</th>\n";
+    $table_rows[] = "            <th>Nummer</th>\n";
+    $table_rows[] = "            <th>Organisation</th>\n";
+    $table_rows[] = "            <th>Kommentar</th>\n";
+    $table_rows[] = "          </tr>\n";
+
     foreach($items as $item) {
       $row = array();
       $entry = $item['entry'];
@@ -164,6 +170,38 @@ class SwishKatalogen {
       if(preg_match('/None/six', $comment)) {
         $comment = "&nbsp;";
       }
+
+      $row[] = "          <tr>\n";
+
+      $row[] = "          <td>";
+      if(preg_match('/^12390/six', $entry)) {
+        $row[] = '<svg width="24" height="24">';
+        $row[] = '<image xlink:href="/swish-katalogen/checkmark.svg" width="24" height="24" title="Insamlingskontroll" />';
+        $row[] = '</svg>';
+      } else {
+        $row[] = "&nbsp;";
+      }
+      $row[] = "</td>\n";
+
+      $row[] = "            <td>";
+      $row[] = '<a href="' . $this->url_prefix . $entry . '" title="Swish-nummer ' . $entry . ' för ' . $orgName . '">';
+      $row[] = strval($entry);
+      $row[] = '</a>';
+      $row[] = "</td>\n";
+
+      $row[] = "            <td>";
+      $row[] = '<a href="' . $this->url_prefix . $entry . '" title="Swish-nummer ' . $entry . ' för ' . $orgName . '">';
+      $row[] = strval($orgName);
+      $row[] = '</a>';
+      $row[] = "</td>\n";
+
+      $row[] = "            <td>";
+      $row[] = strval($comment);
+      $row[] = "</td>\n";
+
+      $row[] = "          </tr>\n";
+      $row_fragment = join($row);
+      $table_rows[] = $row_fragment;
     }
     $result = join($table_rows);
     return $result;
