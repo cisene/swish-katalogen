@@ -23,9 +23,9 @@ if($cat_route != null) {
       if(preg_match("/^(\d{6})\x2d(\d{4})$/six", strval($entry['orgNumber']))) {
         // TODO: call getCountByOrgNumber() with orgNumber
         // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
-        $orgNumber_count = $db->getCountByOrgNumber($entry['orgNumber']);
-        if (isset($orgNumber_count["count"])) {
-          $orgNumber_count = $orgNumber_count["count"];
+        $count = $db->getCountByOrgNumber($entry['orgNumber']);
+        if (isset($count["count"])) {
+          $orgNumber_count = $count["count"];
           $orgNumber_link = "/swish-katalogen/o/" . urlencode($entry['orgNumber']);
         }
       } else {
