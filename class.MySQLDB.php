@@ -98,7 +98,7 @@ class MySQLDB {
         $query = "SELECT COUNT(*) AS cnt FROM b19_se.swish s WHERE s.orgNumber = '" . strval($orgNumber) . "';";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
-          $result[] = array(
+          $result = array(
             'count'       => strval($row['cnt'])
           );
         }
