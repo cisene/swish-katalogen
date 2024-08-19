@@ -2,6 +2,9 @@
 $cat_route = $ui->getCategoryRouting();
 $cat_ranked = $db->getCategoriesAll();
 
+$orgNumber_count = 0;
+$orgNumber_link = "";
+
 if($cat_route != null) {
   if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
 
