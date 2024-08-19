@@ -27,7 +27,7 @@ if($cat_route != null) {
 
         echo("\n<!-- \n");
         var_dump($OrgCount);
-        echo("\n -->\n")
+        echo("\n -->\n");
 
         if (isset($OrgCount["count"])) {
           $orgNumber_count = $OrgCount["count"];
