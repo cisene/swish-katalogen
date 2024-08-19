@@ -171,9 +171,13 @@ class SwishKatalogen {
         $comment = "&nbsp;";
       }
 
+      if(preg_match('/^$/six', $comment)) {
+        $comment = "&nbsp;";
+      }
+
       $row[] = "          <tr>\n";
 
-      $row[] = "          <td>";
+      $row[] = "            <td>";
       if(preg_match('/^12390/six', $entry)) {
         $row[] = '<svg width="24" height="24">';
         $row[] = '<image xlink:href="/swish-katalogen/checkmark.svg" width="24" height="24" title="Insamlingskontroll" />';
