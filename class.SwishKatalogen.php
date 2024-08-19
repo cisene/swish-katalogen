@@ -150,6 +150,25 @@ class SwishKatalogen {
     return $result;
   }
 
+  public function getEntriesOrgNumberListing($items) {
+    $result = null;
+    $table_rows = array();
+
+    $table_rows[] = "          <tr><th>&nbsp;</th><th>Nummer</th><th>Organisation</th><th>Kommentar</th></tr>\n";
+    foreach($items as $item) {
+      $row = array();
+      $entry = $item['entry'];
+      $orgName = $item['orgName'];
+      $comment = $item['comment'];
+
+      if(preg_match('/None/six', $comment)) {
+        $comment = "&nbsp;";
+      }
+    }
+    $result = join($table_rows);
+    return $result;
+  }
+
   public function getEntriesCategoryListing($items) {
     $result = null;
     $table_rows = array();
