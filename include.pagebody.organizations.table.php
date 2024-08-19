@@ -14,6 +14,9 @@ if($db && $ui) {
     // $category_items = $db->getEntriesByCategory($cat_route);
     $org_items = $db->getEntriesByOrgNumber($org_route);
 
+    echo("<pre>"); var_dump($org_items); echo("</pre>");
+
+
     // $category_item_listing = $ui->getEntriesCategoryListing($category_items);
 
   }
