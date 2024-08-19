@@ -448,6 +448,10 @@ class SwishKatalogen {
     return strval($this->domain_prefix) . strval($this->url_prefix) . strval(urlencode($data));
   }
 
+  public function getSitemapOrgURL($data) {
+    return strval($this->domain_prefix) . strval($this->org_prefix) . strval(urlencode($data));
+  }
+
 
   public function LoadJson($filepath) {
     $result = array();
