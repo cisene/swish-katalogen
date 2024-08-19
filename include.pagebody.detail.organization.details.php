@@ -2,7 +2,7 @@
 $cat_route = $ui->getCategoryRouting();
 $cat_ranked = $db->getCategoriesAll();
 
-$orgNumber_count = 0;
+$orgNumber_count = 1;
 $orgNumber_link = "";
 
 if($cat_route != null) {
@@ -23,9 +23,9 @@ if($cat_route != null) {
       if(preg_match("/^(\d{6})\x2d(\d{4})$/six", strval($entry['orgNumber']))) {
         // TODO: call getCountByOrgNumber() with orgNumber
         // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
-        $count = $db->getCountByOrgNumber($entry['orgNumber']);
-        if (isset($count["count"])) {
-          $orgNumber_count = $count["count"];
+        $OrgCount = $db->getCountByOrgNumber($entry['orgNumber']);
+        if (isset($OrgCount["count"])) {
+          $orgNumber_count = $OrgCount["count"];
           $orgNumber_link = "/swish-katalogen/o/" . urlencode($entry['orgNumber']);
         }
       } else {
@@ -108,10 +108,6 @@ if($cat_route != null) {
           </tr>
           </table>
         </div>
-      </div>
-
-      <div id="pagebody-swish-number-swisha" class="mobile-enabled">
-        <a href="swish://payment?data=<?php echo($paymentdata); ?>&amp;source=swish-katalogen">Swisha</a>
       </div>
 
       <script type="application/ld+json"><?php echo($entry_json); ?></script>
