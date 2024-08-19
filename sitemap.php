@@ -33,7 +33,7 @@ $xml = simplexml_load_string($xml_template_string);
 /* Organisations */
 $org_top = $db->getSitemapOrganisationsTop();
 foreach($org_top as $org) {
-  $sitemap_org_url = getSitemapOrgURL($org["orgNumber"]);
+  $sitemap_org_url = $ui->getSitemapOrgURL($org["orgNumber"]);
 
   /* Append element */
   $url = $xml->addChild('url');
