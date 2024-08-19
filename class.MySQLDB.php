@@ -82,6 +82,7 @@ class MySQLDB {
         while ($row = $results->fetch_assoc()) {
           $result[] = array(
             'entry'       => strval($row['entry']),
+            'orgName'     => strval($row['orgName']),
             'comment'     => strval($row['comment']),
           );
         }
