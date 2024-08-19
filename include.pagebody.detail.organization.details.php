@@ -20,19 +20,27 @@ if($cat_route != null) {
       if(preg_match("/^(\d{6})\x2d(\d{4})$/six", strval($entry['orgNumber']))) {
         // TODO: call getCountByOrgNumber() with orgNumber
         // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
+        $orgNumber_count = $db->getCountByOrgNumber($entry['orgNumber']);
+        $orgNumber_link = "/swish-katalogen/o/" . urlencode($entry['orgNumber']);
       } else {
         // TODO: handle non-organisation numbers such as persons with enskild firma
+        $orgNumber_count = 1;
+        $orgNumber_link = "";
       }
 
       /* Build swish payment blob */
       $payload = array(
         "message" => array(
           "value" => "Gåva genom Swish Katalogen.",
-          "editable" => true
+          "editable" => true,
         ),
         "payee" => array(
           "value" => $cat_route,
-          "editable" => false
+          "editable" => false,
+        ),
+        "amount" => array(
+          "value" => "100",
+          "editable" => true,
         ),
         "version" => 1
       );
@@ -73,7 +81,7 @@ if($cat_route != null) {
           </tr>
           <tr>
             <td>Organisationsnummer:</td>
-            <td itemprop="taxID"><?php echo($entry['orgNumber']); ?></td>
+            <td itemprop="taxID"><? if ($orgNumber_count >= 2) { ?><a href="<?php echo($orgNumber_link); ?>"><?php } ?><?php echo($entry['orgNumber']); ?><? if ($orgNumber_count >= 2) { ?></a><?php } ?></td>
           </tr>
           <tr>
             <td>Hemsida:</td>
