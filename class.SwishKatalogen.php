@@ -211,7 +211,7 @@ class SwishKatalogen {
     return $result;
   }
 
-  public function getOrgNumberTopListing($item) {
+  public function getOrgNumberTopListing($items) {
     $result = null;
     $table_rows = array();
 
