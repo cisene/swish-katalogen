@@ -20,7 +20,7 @@ if($db && $ui) {
 ?>
 
       <div id="pagebody-organizations-toplist">
-        <h2>Swishnummer som hör till organisationsnummer '<?php echo($org_route); ?>'</h2>
+        <h2>Organisationsnummer Top 100</h2>
         <table>
 <?php echo($org_items_listing); ?>
         </table>
