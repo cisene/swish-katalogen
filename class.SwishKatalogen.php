@@ -226,7 +226,7 @@ class SwishKatalogen {
       $orgNumber = $item['orgNumber'];
       $count = $item['count'];
 
-      if(preg_match('/^(\d{6})\x2d(\d{4})/six', $entry)) {
+      if(preg_match('/^(\d{6})\x2d(\d{4})/six', $orgNumber)) {
 
         $row[] = "          <tr>\n";
 
