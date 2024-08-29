@@ -112,7 +112,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
-        echo("\n<!-- " . $query . "-->\n");
+        // echo("\n<!-- " . $query . "-->\n");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $result[] = array(

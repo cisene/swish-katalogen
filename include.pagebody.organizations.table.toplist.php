@@ -6,12 +6,11 @@ if($db && $ui) {
 
   $org_route = $ui->getOrgNumberRouting();
 
-  // $org_items = $db->getEntriesByOrgNumber($org_route);
   $org_items = $db->getToplistOrgNumber(100);
 
-  echo("<pre>"); var_dump($org_items); echo("</pre>");
+  // echo("<pre>"); var_dump($org_items); echo("</pre>");
 
-  // $org_items_listing = $ui->getEntriesOrgNumberListing($org_items);
+  $org_items_toplist = $ui->getOrgNumberTopListing($items);
 }
 
 ?>
@@ -19,7 +18,7 @@ if($db && $ui) {
       <div id="pagebody-organizations-toplist">
         <h2>Organisationsnummer Top 100</h2>
         <table>
-<?php echo($org_items_listing); ?>
+<?php echo($org_items_toplist); ?>
         </table>
       </div>
 

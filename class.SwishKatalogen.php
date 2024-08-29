@@ -211,6 +211,46 @@ class SwishKatalogen {
     return $result;
   }
 
+  public function getOrgNumberTopListing($item) {
+    $result = null;
+    $table_rows = array();
+
+    $table_rows[] = "          <tr>\n";
+    $table_rows[] = "            <th>OrgNummer</th>\n";
+    $table_rows[] = "            <th>Förekomster</th>\n";
+    $table_rows[] = "          </tr>\n";
+
+    foreach($items as $item) {
+      $row = array();
+
+      $orgNumber = $item['orgNumber'];
+      $count = $item['count'];
+
+      if(preg_match('/^(\d{6})\x2d(\d{4})/six', $entry)) {
+
+        $row[] = "          <tr>\n";
+
+        $row[] = "            <td>";
+        $row[] = '<a href="' $org_prefix . urlencode($orgNumber) . '">';
+        $row[] = strval($orgNumber);
+        $row[] = '</a>'
+        $row[] = "</td>\n";
+
+        $row[] = "            <td>";
+        $row[] = strval($count);
+        $row[] = "</td>\n";
+
+        $row[] = "          </tr>\n";
+      }
+
+      $row_fragment = join($row);
+      $table_rows[] = $row_fragment;
+    }
+    $result = join($table_rows);
+    return $result;
+  }
+
+
   public function getEntriesCategoryListing($items) {
     $result = null;
     $table_rows = array();
