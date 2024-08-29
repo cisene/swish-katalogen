@@ -233,7 +233,7 @@ class SwishKatalogen {
         $row[] = "            <td>";
         $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . $strval($orgNumber) . '">';
         $row[] = strval($orgNumber);
-        $row[] = '</a>'
+        $row[] = '</a>';
         $row[] = "</td>\n";
 
         $row[] = "            <td>";
