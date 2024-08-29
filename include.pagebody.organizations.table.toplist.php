@@ -6,15 +6,12 @@ if($db && $ui) {
 
   $org_route = $ui->getOrgNumberRouting();
 
+  // $org_items = $db->getEntriesByOrgNumber($org_route);
+  $org_items = $db->getToplistOrgNumber(100);
 
-  if($org_route != null) {
-    // $org_items = $db->getEntriesByOrgNumber($org_route);
-    $org_items = $db->getToplistOrgNumber(100);
+  echo("<pre>"); var_dump($org_items); echo("</pre>");
 
-    echo("<pre>"); var_dump($org_items); echo("</pre>");
-
-    // $org_items_listing = $ui->getEntriesOrgNumberListing($org_items);
-  }
+  // $org_items_listing = $ui->getEntriesOrgNumberListing($org_items);
 }
 
 ?>
