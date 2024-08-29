@@ -115,7 +115,7 @@ class MySQLDB {
         echo("\n<!-- " . $query . "-->\n");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
-          $result = array(
+          $result[] = array(
             'orgNumber'   => strval($row['orgNumber']),
             'count'       => strval($row['cnt'])
           );
