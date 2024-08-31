@@ -4,7 +4,6 @@ ini_set('display_errors','On');
 
 include_once "site.config.php";
 
-// include_once "class.SqliteDB.php";
 include_once "class.MySQLDB.php";
 include_once "class.SwishFormat.php";
 include_once "class.SwishKatalogen.php";
@@ -20,16 +19,12 @@ $db->connectDB(
   $dbparam["port"],
   $dbparam["username"],
   $dbparam["password"],
-  $dbparam["database"]
+  $dbparam["database"],
 );
 
-$recent->connectDB('./__database/recent.sqlite');
+$siteparam = $config["site"];
 
 
-$cat_route = $ui->getCategoryRouting();
-$cat_ranked = $db->getCategoriesAll();
-
-$category_items = array();
 
 $category_list = "";
 $search_item_listing = "";
@@ -56,11 +51,11 @@ if(sizeof($category_items) < 1) {
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
   <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
-    <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
-    <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
-    <title>Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer</title>
+<?php echo($ui->renderHTMLHeadMisc($config)); ?>
+<?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
+<?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
     <link rel="stylesheet" href="/swish-katalogen/css/screen.css?nocache=<?php echo(time()); ?>">
-    <script type="application/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <script type="application/ld+json">
@@ -78,6 +73,9 @@ if(sizeof($category_items) < 1) {
     </script>
 
 <?php include_once "include.pageheader.php"; ?>
+
+<?php // include_once "include.pagesearch.php"; ?>
+
 
     <section id="pagebody">
       
