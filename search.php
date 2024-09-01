@@ -24,29 +24,8 @@ $db->connectDB(
 
 $siteparam = $config["site"];
 
-
-
 $category_list = "";
 $search_item_listing = "";
-
-if($cat_route != null) {
-
-  $search_items = $db->getItemsByTerm($cat_route);
-  if(sizeof($search_items) > 0) {
-    $search_item_listing = $ui->getItemListing($search_items);
-  } else {
-    $search_item_listing = "Inget matchade '" . $cat_route . "'";
-  }
-
-  $category_list = $ui->getCategoriesTagCloud($cat_ranked, "non-selected");
-}
-
-if(sizeof($category_items) < 1) {
-  
-  // header("Location: /swish-katalogen/404");
-  // header("HTTP/1.1 404 NOT FOUND");
-  // die("");
-}
 
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
@@ -74,23 +53,13 @@ if(sizeof($category_items) < 1) {
 
 <?php include_once "include.pageheader.php"; ?>
 
-<?php // include_once "include.pagesearch.php"; ?>
+<?php include_once "include.pagesearch.php"; ?>
 
 
     <section id="pagebody">
-      
-      <div id="blurb">
-        <h2>Sökträffar för '<?php echo($cat_route); ?>'</h2>
-        <table>
-          <?php echo($search_item_listing); ?>
-        </table>
-      </div>
+<?php include_once "include.pagebody.search.searchform.php"; ?>
 
-      <div id="categories">
-        <h2>Kategorier</h2>
-        <ul id="categories-list"><?php echo($category_list); ?></ul>
-      </div>
-
+<?php include_once "include.pagebody.search.results.php"; ?>
     </section>
 
     <section id="pagefooter">
