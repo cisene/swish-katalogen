@@ -12,14 +12,13 @@ $sf = new SwishFormat();
 $db = new MySQLDB();
 $ui = new SwishKatalogen();
 
-if(isset($_GET['search'])) {
-  if($_GET['search'] != "") {
-    $term = urldecode($_GET['search']);
-
+if(isset($_REQUEST['search'])) {
+  if($_REQUEST['search'] != "") {
+    $term = urldecode($_REQUEST['search']);
 
 
     $result_url = $ui->search_prefix . urlencode($term);
-    header("Location: " . $result_url);
+    header('Location: ' . $result_url);
     die();
   }
 }
