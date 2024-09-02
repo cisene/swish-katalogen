@@ -80,6 +80,9 @@ RewriteRule ^(123\d{7})/$ /swish-katalogen/$1 [R=301,L]
 # Search - Empty
 RewriteRule ^s/$ search.php?term=$1 [L,NC]
 
+# Search - query - s/?search=text#
+RewriteRule ^s\x2f\x3fsearch\x3d(.*)\x23 s/$1 [L,NC]
+
 # Search - Term
 RewriteRule ^s/(.*)$ search.php?term=$1 [L,NC]
 
