@@ -27,3 +27,7 @@
       </div>
 
       <a href="/rabbithole/" style="display: none;"></a>
+
+      <div class="misclinks">
+        <a href="https://www.webbkatalog.se/">Webbkatalog.se</a>
+      </div>
