@@ -12,17 +12,6 @@ $sf = new SwishFormat();
 $db = new MySQLDB();
 $ui = new SwishKatalogen();
 
-if(isset($_REQUEST['search'])) {
-  if($_REQUEST['search'] != "") {
-    $term = urldecode($_REQUEST['search']);
-
-
-    $result_url = $ui->search_prefix . urlencode($term);
-    header('Location: ' . $result_url);
-    die();
-  }
-}
-
 $dbparam = $config["db"]["mysql"];
 
 $db->connectDB(
@@ -38,9 +27,21 @@ $siteparam = $config["site"];
 $category_list = "";
 $search_item_listing = "";
 
+if(isset($_REQUEST['search'])) {
+  if($_REQUEST['search'] != "") {
+    $term = urldecode($_REQUEST['search']);
+
+
+    $result_url = $ui->search_prefix . urlencode($term);
+    header('Location: ' . $result_url);
+    die();
+  }
+}
+
+
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
-  <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
+  <head itemScope itemType="https://schema.org/WebSite" prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
 <?php echo($ui->renderHTMLHeadMisc($config)); ?>
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
 <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
