@@ -25,9 +25,9 @@ if($cat_route != null) {
         // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
         $OrgCount = $db->getCountByOrgNumber($entry['orgNumber']);
 
-        echo("\n<!-- \n");
-        var_dump($OrgCount);
-        echo("\n -->\n");
+        // echo("\n<!-- \n");
+        // var_dump($OrgCount);
+        // echo("\n -->\n");
 
         if (isset($OrgCount["count"])) {
           $orgNumber_count = $OrgCount["count"];
@@ -39,7 +39,7 @@ if($cat_route != null) {
         $orgNumber_link = "";
       }
 
-      echo("<!-- " . $orgNumber_count . " -->\n");
+      // echo("<!-- " . $orgNumber_count . " -->\n");
 
       /* Build swish payment blob */
       $payload = array(
@@ -71,7 +71,7 @@ if($cat_route != null) {
   }
 }
 
-
+// https://www.allabolag.se/bransch-s%C3%B6k?q=252004-0607
 // https://www.ratsit.se/sok/foretag?vem=882601-2240
 // https://www.bankgirot.se/sok-bankgironummer/?bgnr=&orgnr=882601-2240&company=&city=
 // https://www.upplysning.se/8820005075
