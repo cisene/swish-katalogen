@@ -46,7 +46,9 @@ if(isset($cat_route)) {
     } else {
       ob_clean();
       header("HTTP/1.1 400 Bad Request");
-      die("<!DOCTYPE html>");
+      // die("<!DOCTYPE html>");
+      $html = file_get_contents("./400.html");
+      die($html);
     }
   }
 }
