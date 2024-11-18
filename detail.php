@@ -39,7 +39,9 @@ if(isset($cat_route)) {
       } else {
         ob_clean();
         header("HTTP/1.1 410 Gone");
-        die("<!DOCTYPE html>");
+        // die("<!DOCTYPE html>");
+        $html = file_get_contents("./410.html");
+        die($html);
       }
     } else {
       ob_clean();
