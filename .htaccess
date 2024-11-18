@@ -20,9 +20,10 @@ RewriteEngine On
 RewriteBase /swish-katalogen
 
 # Error handling
+ErrorDocument 400 /swish-katalogen/400.html
 ErrorDocument 403 /swish-katalogen/403.php
 ErrorDocument 404 /swish-katalogen/404.php
-ErrorDocument 410 /swish-katalogen/410.php
+ErrorDocument 410 /swish-katalogen/410.html
 
 
 # BLOCK UNNECESSARY REQUEST METHODS
@@ -51,6 +52,9 @@ RewriteRule ^(.*)$ https://%1/swish-katalogen/$1 [R=301,L]
 
 # Top page
 RewriteRule ^$ index.php [L]
+
+# Favicon
+#RewriteRule favicon.ico /favicon/favicon.ico [L]
 
 # API
 RewriteRule ^api api.php [L]
