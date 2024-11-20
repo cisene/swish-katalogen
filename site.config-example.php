@@ -39,14 +39,21 @@ define("URL_ICON_512x512",  URL_ROOT . "favicon_512x512.jpg?v=1");
 /* Define strings */
 define("SITE_NAME",     "Swish-Katalogen");
 
-define("PAGE_START_TITLE",  SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
-define("PAGE_START_DESC",   SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
+define("PAGE_START_TITLE",          SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
+define("PAGE_START_DESC",           SITE_NAME . " - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer");
 
-define("PAGE_CATEGORIES_ALL_TITLE", "");
-define("PAGE_CATEGORIES_ALL_DESC", "");
+define("PAGE_CATEGORIES_ALL_TITLE", "Alla Kategorier i bokstavsordning - " . SITE_NAME);
+define("PAGE_CATEGORIES_ALL_DESC",  "Alla Kategorier i bokstavsordning - " . SITE_NAME);
 
-define("PAGE_CATEGORY_TITLE", SITE_NAME . " - Kategori '%category%'");
-define("PAGE_CATEGORY_DESC", SITE_NAME . " - Kategori '%category%' med' ");
+define("PAGE_CATEGORY_TITLE",       "Kategori '%category%' - " . SITE_NAME);
+define("PAGE_CATEGORY_DESC",        "Organisationer i kategorin '%category%' - " . SITE_NAME);
+
+define("PAGE_DETAIL_TITLE",         "%orgName% - %entry% - " . SITE_NAME);
+define("PAGE_DETAIL_DESC",          "Information om %orgName% - %entry% - " . SITE_NAME);
+
+define("PAGE_ORGANISATION_TITLE",   "Swishnummer som hör till organisationsnummer '%orgNumber%' - " . SITE_NAME);
+define("PAGE_ORGANISATION_DESC",    "Swishnummer som hör till organisationsnummer '%orgNumber%' - " . SITE_NAME);
+
 
 $config = array(
 
@@ -58,16 +65,26 @@ $config = array(
     "description"   => "Swish-Katalogen - Sök och hitta Swish-nummer",
     "dateCreated"   => $date_created,
     "dateModified"  => $date_modified,
+    "host"          => $_SERVER['HTTP_HOST'],
+    "protocol"      => $_SERVER['REQUEST_SCHEME'],
+    "uri"           => $_SERVER['REQUEST_URI'],
   ),
 
   "db" => array(
     "mysql" => array(
-      "hostname" => "<fill in hostname>",
-      "port" => "3306",
-      "username" => "<username>",
-      "password" => "<password>",
-      "database" => "<databasename>",
+      "hostname"    => "<fill in hostname>",
+      "port"        => "3306",
+      "username"    => "<username>",
+      "password"    => "<password>",
+      "database"    => "<databasename>",
     )
+  ),
+
+  "urls" => array(
+    "main"              => URL_ROOT,
+    "categories"        => URL_ROOT . "/k/",
+    "orgNumberToplist"  => URL_ROOT . "/o/",
+    "search"            => URL_ROOT . "/s/",
   ),
 
   "content" => array(
@@ -78,8 +95,15 @@ $config = array(
 
         "link" => array(
 
+          // <link rel="icon" href="data:,"/>
           array(
+            "rel"       =>  "icon",
+            "href"      =>  "data:,"
+          ),
+
+          "rel_canonical" => array(
             "rel"       =>  "canonical",
+            "itemProp"  =>  "url",
             "href"      =>  $protocol ."://" . $http_host . $http_uri,
           ),
 
@@ -88,7 +112,6 @@ $config = array(
             "rel"       =>  "sitemap",
             "type"      =>  "application/xml",
             "title"     =>  "Sitemap",
-            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/sitemap.xml",
             "href"      =>  URL_SITEMAP,
           ),
 
@@ -102,21 +125,18 @@ $config = array(
             "rel"       =>  "icon",
             "type"      =>  "image/jpg",
             "sizes"     =>  "32x32",
-            // "href"      =>  $protocol ."://" . $http_host . "/favicon/favicon_32x32.jpg?v=1",
             "href"      =>  URL_ICON_32x32,
           ),
 
           array(
             "rel"       =>  "index",
             "title"     =>  "Index",
-            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/",
             "href"      =>  URL_ROOT,
           ),
 
           array(
             "rel"       =>  "categories",
             "title"     =>  "Kategorier",
-            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/k/",
             "href"      =>  URL_CATEGORIES,
           ),
 
@@ -130,7 +150,6 @@ $config = array(
             "rel"       =>  "search",
             "type"      =>  "application/opensearchdescription+xml",
             "title"     =>  "Swish-Katalogen",
-            // "href"      =>  $protocol ."://" . $http_host . "/swish-katalogen/opensearch.xml",
             "href"      =>  URL_OPENSEARCH,
           ),
 
@@ -139,7 +158,7 @@ $config = array(
         "meta" => array(
 
           array(
-            "charset"       =>  "utf-8",
+            "charset"       =>  "UTF-8",
           ),
 
           array(
@@ -147,20 +166,22 @@ $config = array(
             "content"       =>  "index,follow",
           ),
 
+          // <meta name="viewport" content="width=device-width,initial-scale=1"/>
+          array(
+            "name"          =>  "viewport",
+            "content"       =>  "width=device-width,initial-scale=1",
+          ),
+
+
           // <meta name="country" content="SE">
           array(
             "name"          => "country",
             "content"       => "SE",
           ),
 
-          // array(
-          //   "name"          =>  "sitemap",
-          //   "content"       =>  $protocol . "://" . $http_host . "/swish-katalogen/sitemap.xml",
-          // ),
-
           "description" => array(
             "name"          =>  "description",
-            "content"       =>  "Swish-Katalogen - Sök Swish-nummer",
+            "content"       =>  "Swish-Katalogen - Sök Swish-nummer i katalogen, Hitta företag, föreningar och församlingar.",
           ),
 
           array(
@@ -181,11 +202,13 @@ $config = array(
 
           array(
             "name"            =>  "Last-Modified",
+            "itepProp"        =>  "dateModified",
             "content"         =>  $date_modified,
           ),
 
           array(
             "name"            =>  "Creation-Date",
+            "itemProp"        =>  "dateCreated",
             "content"         =>  $date_created,
           ),
 
@@ -239,6 +262,30 @@ $config = array(
             "content"         =>  URL_ROOT,
           ),
 
+          // <meta name="dcterms.identifier" content="https://pro.se">
+          array(
+            "name"            =>  "dcterms.identifier",
+            "content"         =>  URL_ROOT,
+          ),
+
+          // <meta name="dcterms.language" content="sv">
+          array(
+            "name"            =>  "dcterms.language",
+            "content"         =>  "sv",
+          ),
+
+          // <meta name="dcterms.format" content="text/html">
+          array(
+            "name"            =>  "dcterms.format",
+            "content"         =>  "text/html",
+          ),
+
+          // <meta name="dcterms.type" content="text">
+          array(
+            "name"            =>  "dcterms.type",
+            "content"         =>  "text",
+          ),
+
           "dc_title" => array(
             "property"  =>  "dc:Title",
             "content"   =>  "Swish-Katalogen - Sök och hitta Swish-nummer, en enkel söktjänst för Swish-nummer",
@@ -285,13 +332,13 @@ $config = array(
           ),
 
           array(
-            "property"  =>  "DC.Date.Modified",
-            "content"   =>  date('Y-m-d', strtotime($date_modified)),
+            "property"  =>  "dc:Date.Modified",
+            "content"   =>  date('c', strtotime($date_modified)),
           ),
 
           array(
-            "property"  =>  "dc:Date.Modified",
-            "content"   =>  date('c', strtotime($date_modified)),
+            "property"  =>  "DC.Date.Modified",
+            "content"   =>  date('Y-m-d', strtotime($date_modified)),
           ),
 
           array(
@@ -316,6 +363,69 @@ $config = array(
       "index-categories" => 100,
     ),
   ),
+
+  "external" => array(
+
+    "infoservices" => array(
+      array(
+        "name"    => "Bolagsfakta",
+        "url"     => "https://www.bolagsfakta.se/sok?vad={flattenedOrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Ratsit",
+        "url"     => "https://www.ratsit.se/{flattenedOrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "AllaBolag",
+        "url"     => "https://www.allabolag.se/{flattenedOrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Syna",
+        "url"     => "https://upplysningar.syna.se/foretag/{flattenedOrgNumber}",
+        "enabled" => true,
+        "when"    => "^5(\d{5})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Bolagsverket",
+        "url"     => "https://foretagsinfo.bolagsverket.se/sok-foretagsinformation-web/foretag?sokord={OrgNumber}",
+        "enabled" => true,
+        "when"    => "^5(\d{5})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "MerInfo",
+        "url"     => "https://www.merinfo.se/search?q={OrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Upplysning",
+        "url"     => "https://www.upplysning.se/{flattenedOrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Hitta.se",
+        "url"     => "https://www.hitta.se/s%C3%B6k?vad={OrgNumber}",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+      array(
+        "name"    => "Eniro",
+        "url"     => "https://www.eniro.se/{OrgNumber}/f%C3%B6retag",
+        "enabled" => true,
+        "when"    => "^(\d{6})\x2d(\d{4})$",
+      ),
+
+    ),
+
+  ),
+
   "static" => array(
     "statistics" => "./static/statistics.json",
   ),
