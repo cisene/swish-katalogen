@@ -1,20 +1,22 @@
+<?php
 
-      <script type="application/ld+json">
-        {
-          "@context":"https://schema.org",
-          "@type":"Person",
-          "name":"Christopher Isene",
-          "url":"https://christopherisene.se/",
-          "sameAs":[
-            "https://github.com/cisene",
-            "https://www.linkedin.com/in/christopherisene",
-            "https://mastodon.social/@cisene",
-            "https://podcastindex.social/@cisene",
-            "https://pixelfed.social/@cisene",
-            "https://keybase.io/cisene"
-          ]
-        }
-      </script>
+$cisene = array(
+  "@context"  => "https://schema.org",
+  "@type"     => "Person",
+  "name"      => "Christopher Isene",
+  "url"       => "https://christopherisene.se/",
+  "sameAs"    => array(
+    "https://github.com/cisene",
+    "https://www.linkedin.com/in/christopherisene",
+    "https://mastodon.social/@cisene",
+    "https://podcastindex.social/@cisene",
+    "https://pixelfed.social/@cisene",
+    "https://keybase.io/cisene"
+  )
+);
+
+?>
+      <script type="application/ld+json"><?php echo(json_encode($cisene)); ?></script>
 
       <div class="disclaimer">
         <p><b>Disclaimer</b>: <a href="https://github.com/cisene/swish-katalogen" target="_blank">Swish-Katalogen</a> har inget att göra med företaget Swish, <a href="https://github.com/cisene/swish-katalogen" target="_blank">Swish-Katalogen</a> är helt och hållet en skapelse av en <a href="https://christopherisene.se/" target="_blank">privatperson</a>.</p>
@@ -29,5 +31,5 @@
       <a href="/rabbithole/" style="display: none;"></a>
 
       <div class="misclinks">
-        <a href="https://www.webbkatalog.se/">Webbkatalog.se</a>
+        <a href="/swish-katalogen/swish-123.pdf">Hela Swish-Katalogen som PDF</a>
       </div>
