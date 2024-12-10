@@ -27,6 +27,19 @@ $siteparam = $config["site"];
 // $config["content"]["html"]["header"]["title"] = $config["site"]["name"] . " - Alla kategorier i alfabetisk ordning";
 // $config["content"]["html"]["header"]["description"] = $config["site"]["name"] . " - Kategorier i bokstavsordning";
 
+$webpage = array(
+  "@context"        => "https://schema.org",
+  "@type"           => "WebPage",
+  "name"            => $config["site"]["title"],
+  "url"             => $config["site"]["url"],
+  "isBasedOn"       => "https://github.com/cisene/swish-123",
+  "breadcrumb"      => "Swish-Katalogen - Sök Swish-nummer",
+  "dateCreated"     => $config["site"]["dateCreated"],
+  "datePublished"   => $config["site"]["dateCreated"],
+  "dateModified"    => $config["site"]["dateModified"],
+);
+
+
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
   <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
@@ -37,19 +50,7 @@ $siteparam = $config["site"];
     <script src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "<?php echo($config["site"]["title"]); ?>",
-        "url": "<?php echo($config["site"]["url"]); ?>",
-        "isBasedOn": "https://github.com/cisene/swish-123",
-        "breadcrumb": "Swish-Katalogen - Sök Swish-nummer",
-        "dateCreated": "<?php echo($config["site"]["dateCreated"]); ?>",
-        "datePublished": "<?php echo($config["site"]["dateCreated"]); ?>",
-        "dateModified": "<?php echo($config["site"]["dateModified"]); ?>"
-      }
-    </script>
+    <script type="application/ld+json"><?php echo(json_encode($webpage)); ?></script>
 
 <?php include_once "include.pageheader.php"; ?>
 <?php // include_once "include.pagesearch.php"; ?>
