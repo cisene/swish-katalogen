@@ -33,6 +33,18 @@ $config["content"]["html"]["header"]["meta"]["og_description"]["content"] = PAGE
 $config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = PAGE_START_TITLE;
 $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE_START_DESC;
 
+$webpage = array(
+  "@context"      => "https://schema.org",
+  "@type"         => "WebPage",
+  "name"          => $config["site"]["title"],
+  "url"           => $config["site"]["url"],
+  "isBasedOn"     => "https://github.com/cisene/swish-123",
+  "breadcrumb"    => "Swish-Katalogen - Sök Swish-nummer",
+  "dateCreated"   => $config["site"]["dateCreated"],
+  "datePublished" => $config["site"]["dateCreated"],
+  "dateModified"  => $config["site"]["dateModified"],
+);
+
 ?><!DOCTYPE html>
 <html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
   <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
@@ -43,19 +55,7 @@ $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE
     <script src="js/jquery/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "<?php echo($config["site"]["title"]); ?>",
-        "url": "<?php echo($config["site"]["url"]); ?>",
-        "isBasedOn": "https://github.com/cisene/swish-123",
-        "breadcrumb": "Swish-Katalogen - Sök Swish-nummer",
-        "dateCreated": "<?php echo($config["site"]["dateCreated"]); ?>",
-        "datePublished": "<?php echo($config["site"]["dateCreated"]); ?>",
-        "dateModified": "<?php echo($config["site"]["dateModified"]); ?>"
-      }
-    </script>
+    <script type="application/ld+json"><?php echo(json_encode($webpage)); ?></script>
 
 <?php include_once "include.pageheader.php"; ?>
 
