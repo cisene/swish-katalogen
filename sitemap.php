@@ -28,6 +28,12 @@ $today = date("c");
 $xml_template_string = "<?xml version='1.0' encoding='UTF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'></urlset>";
 $xml = simplexml_load_string($xml_template_string);
 
+/* PDF */
+$url = $xml->addChild('url');
+$loc = $url->addChild('loc', "https://b19.se/swish-katalogen/swish-123.pdf");
+$lastmod = $url->addChild('lastmod', $today);
+
+
 /* Categories */
 $cat_all = $db->getSitemapCategoriesAll();
 foreach($cat_all as $cat) {

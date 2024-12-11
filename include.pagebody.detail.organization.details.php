@@ -94,7 +94,6 @@ if($cat_route != null) {
           </tr>
           <tr>
             <td>Organisationsnummer:</td>
-            <!-- orgNumber_count: <?php echo($orgNumber_count); ?> -->
             <td itemprop="taxID"><? if ($orgNumber_count >= 2) { ?><a href="<?php echo($orgNumber_link); ?>"><?php } ?><?php echo($entry['orgNumber']); ?><? if ($orgNumber_count >= 2) { ?></a><?php } ?></td>
           </tr>
           <tr>

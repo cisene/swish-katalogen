@@ -2,6 +2,18 @@
 $placeholder_text = null;
 $search_term = null;
 
+$website = array(
+  "@context"  => "https://schema.org",
+  "@type"     => "WebSite",
+  "url"       => "https://b19.se/swish-katalogen/s/",
+  "potentialAction" => array(
+    "@type" => "SearchAction",
+    "target" => "https://b19.se/swish-katalogen/s/{search_term_string}",
+    "query-input" => "required name=search_term_string",
+  ),
+);
+
+
 ?>
 
     <script>
@@ -21,18 +33,7 @@ $search_term = null;
 
 
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "url": "https://b19.se/swish-katalogen/s/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://b19.se/swish-katalogen/s/{search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
+    <script type="application/ld+json"><?php echo(json_encode($website)); ?></script>
 
     <section id="pagesearch">
 
