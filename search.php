@@ -51,7 +51,7 @@ $webpage = array(
 );
 
 ?><!DOCTYPE html>
-<html lang="sv" dir="ltr" xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml">
+<html translate="no" lang="sv" xml:lang="sv" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
   <head itemScope itemType="https://schema.org/WebSite" prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
 <?php echo($ui->renderHTMLHeadMisc($config)); ?>
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
