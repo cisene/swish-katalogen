@@ -99,11 +99,13 @@ class SwishFormat {
 
   public function getSwishAllFormats($swishNumber) {
     $result = array();
-    if(preg_match($this->validation_rule, $swishNumber)) {
-      foreach($this->output_formats as $key => $format) {
-        if (preg_match($format['re'], $swishNumber)) {
-          $formatted = preg_replace($format['re'], $format['pat'], $swishNumber);
-          $result[] = $formatted;
+    if($swishNumber != NULL) {
+      if(preg_match($this->validation_rule, $swishNumber)) {
+        foreach($this->output_formats as $key => $format) {
+          if (preg_match($format['re'], $swishNumber)) {
+            $formatted = preg_replace($format['re'], $format['pat'], $swishNumber);
+            $result[] = $formatted;
+          }
         }
       }
     }
@@ -118,12 +120,14 @@ class SwishFormat {
       $pattern = "digits-3-sp-3-sp-2-sp-2";
     }
 
-    if(preg_match($this->validation_rule, $swishNumber)) {
-      if (isset($this->output_formats[$pattern])) {
-        $format = $this->output_formats[$pattern];
-        if (preg_match($format['re'], $swishNumber)) {
-          $formatted = preg_replace($format['re'], $format['pat'], $swishNumber);
-          $result[] = $formatted;
+    if($swishNumber != NULL) {
+      if(preg_match($this->validation_rule, $swishNumber)) {
+        if (isset($this->output_formats[$pattern])) {
+          $format = $this->output_formats[$pattern];
+          if (preg_match($format['re'], $swishNumber)) {
+            $formatted = preg_replace($format['re'], $format['pat'], $swishNumber);
+            $result[] = $formatted;
+          }
         }
       }
     }
