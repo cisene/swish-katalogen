@@ -30,5 +30,5 @@ $cisene = array(
       <a href="/rabbithole/" style="display: none;"></a>
 
       <div class="misclinks">
-        <a href="/swish-katalogen/swish-123.pdf?nocache=<?php echo(time()); ?>">Hela Swish-Katalogen som PDF</a>
+        <a href="/swish-katalogen/swish-123.pdf?nocache=<?php echo(time()); ?>" target=_blank>Hela Swish-Katalogen som PDF</a>
       </div>
