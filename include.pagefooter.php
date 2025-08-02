@@ -25,11 +25,10 @@ $cisene = array(
       <div class="github">
         <h3>Swish-Katalogen</h3>
         <p>Alla samlade Swish-nummer kommer från projektet <a href="https://github.com/cisene/swish-123" target="_blank">Swish-123</a> på Github. Alla nummer har samlats av individer eftersom Swish själva inte tillhandahåller möjligheten att söka eller ta reda på vem/vilka dessa nummer tillhör. Läs mer eller bidra här: <a href="https://github.com/cisene/swish-123" target="_blank">Swish-123</a>.</p>
-        <p>Om du gillar tjänsten eller bara vill skänka mig en slant som tack för hjälpen, Swisha mig på nummer 070<span></span>3852<span></span>166 - Ingen peng är för liten.</p>
       </div>
 
       <a href="/rabbithole/" style="display: none;"></a>
 
       <div class="misclinks">
-        <a href="/swish-katalogen/swish-123.pdf">Hela Swish-Katalogen som PDF</a>
+        <a href="/swish-katalogen/swish-123.pdf?nocache=<?php echo(time()); ?>">Hela Swish-Katalogen som PDF</a>
       </div>
