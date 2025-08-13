@@ -26,6 +26,9 @@ $siteparam = $config["site"];
 
 $cat_route = $ui->getCategoryRouting();
 
+$orgName = "";
+$entry_json = "";
+
 if(isset($cat_route)) {
   if($cat_route != null) {
     if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {

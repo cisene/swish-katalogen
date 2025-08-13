@@ -4,6 +4,8 @@ $cat_ranked = $db->getCategoriesAll();
 
 $orgNumber_count = 1;
 $orgNumber_link = "";
+$paymentdata = "";
+$entry = NULL;
 
 if($cat_route != null) {
   if(preg_match("/^123(\d{7})$/six", strval($cat_route))) {
