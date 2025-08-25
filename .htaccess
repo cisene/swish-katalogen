@@ -60,7 +60,7 @@ RewriteRule ^$ index.php [L]
 RewriteRule ^api api.php [L]
 
 # Sitemap
-RewriteRule ^sitemap\x2exml$ sitemap.php [L]
+#RewriteRule ^sitemap\x2exml$ sitemap.php [L]
 
 # Categories - Empty
 RewriteRule ^k/$ categories-all.php?cat=$1 [L,NC]
