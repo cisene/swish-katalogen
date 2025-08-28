@@ -73,6 +73,24 @@ if($cat_route != null) {
   }
 }
 
+/* Play safe ... */
+if( is_null($entry['orgName']) || empty($entry['orgName']) ) {
+  $entry['orgName'] = "";
+}
+
+if( is_null($entry['orgNumber']) || empty($entry['orgNumber']) ) {
+  $entry['orgNumber'] = "";
+}
+
+if( is_null($entry['comment']) || empty($entry['comment']) ) {
+  $entry['comment'] = "";
+}
+
+if( is_null($entry['web']) || empty($entry['web']) ) {
+  $entry['web'] = "";
+}
+
+
 // https://www.allabolag.se/bransch-s%C3%B6k?q=252004-0607
 // https://www.ratsit.se/sok/foretag?vem=882601-2240
 // https://www.bankgirot.se/sok-bankgironummer/?bgnr=&orgnr=882601-2240&company=&city=

@@ -22,12 +22,20 @@ class MySQLDB {
 
   public function connectDB($hostname, $port, $username, $password, $database) {
     if ($this->mysql_module_loaded == true) {
-      $this->db_connection = new mysqli(
+      // $this->db_connection = new mysqli(
+      //   $hostname,
+      //   $username,
+      //   $password,
+      //   $database
+      // );
+
+      $this->db_connection = mysqli_connect(
         $hostname,
         $username,
         $password,
         $database
       );
+
 
       /* Save during session */
       $this->db_hostname = $hostname;
@@ -48,6 +56,7 @@ class MySQLDB {
   public function disconnectDB() {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
+        mysqli_close($this->db_connection);
         $this->db_connection = null;
 
         $this->db_hostname = null;
