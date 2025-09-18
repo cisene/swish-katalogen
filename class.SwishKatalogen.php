@@ -226,25 +226,27 @@ class SwishKatalogen {
       $orgNumber = $item['orgNumber'];
       $count = $item['count'];
 
-      if(preg_match('/^(\d{6})\x2d(\d{4})/six', $orgNumber)) {
+      if($orgNumber != null) {
+        if(preg_match('/^(\d{6})\x2d(\d{4})/six', $orgNumber)) {
 
-        $row[] = "          <tr>";
+          $row[] = "          <tr>";
 
-        $row[] = "<td>";
-        $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
-        $row[] = strval($orgNumber);
-        $row[] = '</a>';
-        $row[] = "</td>";
+          $row[] = "<td>";
+          $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
+          $row[] = strval($orgNumber);
+          $row[] = '</a>';
+          $row[] = "</td>";
 
-        $row[] = "<td>";
-        $row[] = strval($count);
-        $row[] = "</td>\n";
+          $row[] = "<td>";
+          $row[] = strval($count);
+          $row[] = "</td>";
 
-        $row[] = "</tr>\n";
+          $row[] = "</tr>\n";
+        }
+
+        $row_fragment = join($row);
+        $table_rows[] = $row_fragment;
       }
-
-      $row_fragment = join($row);
-      $table_rows[] = $row_fragment;
     }
     $result = join($table_rows);
     return $result;
