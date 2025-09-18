@@ -44,14 +44,14 @@ $breadcrumbs = array(
 $items = array();
 foreach($breadcrumbs['itemListElement'] as $item) {
   $elem = array();
-  $elem[] = "<li>";
+  $elem[] = "        <li>";
   $elem[] = "<a href=\"" . strval($item['item']['@id']) . "\" title=\"" . strval($item['item']['name']) . "\">";
   $elem[] = strval($item['item']['name']);
   $elem[] = "</a>";
-  $elem[] = "</li>";
+  $elem[] = "</li>\n";
 
   $row = join($elem);
-  $items[] = $row . "\n";
+  $items[] = $row;
 }
 $navLinks = join($items);
 ?>
@@ -63,6 +63,6 @@ $navLinks = join($items);
 
     <nav>
       <ul>
-        <?php echo($navLinks); ?>
+<?php echo($navLinks); ?>
       </ul>
     </nav>
