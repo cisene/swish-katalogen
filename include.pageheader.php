@@ -40,7 +40,7 @@ $breadcrumbs = array(
 );
 
 $items = array();
-foreach($item in $breadcrumbs['itemListElement']) {
+foreach($breadcrumbs['itemListElement'] as $item) {
   $elem = array();
   $elem[] = "<li>";
   $elem[] = "<a href=\"" . strval($item['item']['@id']) . "\" title=\"" . strval($item['item']['name']) . "\">";
