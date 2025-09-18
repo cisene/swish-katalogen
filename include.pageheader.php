@@ -23,18 +23,20 @@ $breadcrumbs = array(
       "@type"     => "ListItem",
       "position"  => 3,
       "item"      => array(
-        "@id" => "https://b19.se/swish-katalogen/s/",
-        "name" => "Sök"
-      )
-    ),
-    array(
-      "@type"     => "ListItem",
-      "position"  => 4,
-      "item"      => array(
         "@id" => "https://b19.se/swish-katalogen/o/",
         "name" => "Organisationer"
       )
     ),
+
+    // array(
+    //   "@type"     => "ListItem",
+    //   "position"  => 4,
+    //   "item"      => array(
+    //     "@id" => "https://b19.se/swish-katalogen/s/",
+    //     "name" => "Sök"
+    //   )
+    // ),
+
 
   )
 );
