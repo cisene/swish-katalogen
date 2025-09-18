@@ -120,11 +120,13 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
+        // $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
+        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
         // echo("\n<!-- " . $query . "-->\n");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $result[] = array(
+            'orgName'     => strval($row['orgName']),
             'orgNumber'   => strval($row['orgNumber']),
             'count'       => strval($row['cnt'])
           );
@@ -279,10 +281,12 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
+        // $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
+        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
-            $result[] = array('orgNumber' => $row['orgNumber']);
+          // $result[] = array('orgNumber' => $row['orgNumber']);
+          $result[] = array('orgName' => $row['orgName'], 'orgNumber' => $row['orgNumber'], 'count' => $row['cnt']);
         }
       }
     }
