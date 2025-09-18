@@ -216,6 +216,7 @@ class SwishKatalogen {
     $table_rows = array();
 
     $table_rows[] = "          <tr>\n";
+    $table_rows[] = "            <th>Organisation</th>\n";
     $table_rows[] = "            <th>OrgNummer</th>\n";
     $table_rows[] = "            <th>Förekomster</th>\n";
     $table_rows[] = "          </tr>\n";
@@ -224,25 +225,29 @@ class SwishKatalogen {
       $row = array();
 
       $orgNumber = $item['orgNumber'];
+      $orgName = $item['orgName'];
       $count = $item['count'];
 
-      if($orgNumber != null) {
-        if(preg_match('/^(\d{6})\x2d(\d{4})/six', $orgNumber)) {
+      if($orgNumber != null && $orgName != null) {
+        $row[] = "          <tr>";
 
-          $row[] = "          <tr>";
+        $row[] = "<td>";
+        $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
+        $row[] = strval($orgName);
+        $row[] = '</a>';
+        $row[] = "</td>";
 
-          $row[] = "<td>";
-          $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
-          $row[] = strval($orgNumber);
-          $row[] = '</a>';
-          $row[] = "</td>";
+        $row[] = "<td>";
+        $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
+        $row[] = strval($orgNumber);
+        $row[] = '</a>';
+        $row[] = "</td>";
 
-          $row[] = "<td>";
-          $row[] = strval($count);
-          $row[] = "</td>";
+        $row[] = "<td>";
+        $row[] = strval($count);
+        $row[] = "</td>";
 
-          $row[] = "</tr>\n";
-        }
+        $row[] = "</tr>\n";
 
         $row_fragment = join($row);
         $table_rows[] = $row_fragment;
