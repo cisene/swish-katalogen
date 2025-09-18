@@ -228,19 +228,19 @@ class SwishKatalogen {
 
       if(preg_match('/^(\d{6})\x2d(\d{4})/six', $orgNumber)) {
 
-        $row[] = "          <tr>\n";
+        $row[] = "          <tr>";
 
-        $row[] = "            <td>";
+        $row[] = "<td>";
         $row[] = '<a href="' . $this->org_prefix . urlencode($orgNumber) . '" title="Organisationsnummer ' . strval($orgNumber) . '">';
         $row[] = strval($orgNumber);
         $row[] = '</a>';
-        $row[] = "</td>\n";
+        $row[] = "</td>";
 
-        $row[] = "            <td>";
+        $row[] = "<td>";
         $row[] = strval($count);
         $row[] = "</td>\n";
 
-        $row[] = "          </tr>\n";
+        $row[] = "</tr>\n";
       }
 
       $row_fragment = join($row);
