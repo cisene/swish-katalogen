@@ -38,6 +38,20 @@ $breadcrumbs = array(
 
   )
 );
+
+$items = array();
+foreach($item in $breadcrumbs['itemListElement']) {
+  $elem = array();
+  $elem[] = "<li>";
+  $elem[] = "<a href=\"" . strval($item['item']['@id']) . "\" title=\"" . strval($item['item']['name']) . "\">";
+  $elem[] = strval($item['item']['name']);
+  $elem[] = "</a>";
+  $elem[] = "</li>";
+
+  $row = join($elem);
+  $items[] = $row . "\n";
+}
+$navLinks = join($items);
 ?>
     <section id="pageheader">
       <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
@@ -45,4 +59,8 @@ $breadcrumbs = array(
 
     <script type="application/ld+json"><?php echo(json_encode($breadcrumbs)); ?></script>
 
-
+    <nav>
+      <ul>
+        <?php echo($navLinks); ?>
+      </ul>
+    </nav>
