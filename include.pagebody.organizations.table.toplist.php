@@ -11,7 +11,7 @@ if($db && $ui) {
 ?>
 
       <div id="pagebody-organizations-toplist">
-        <h2>Organisationsnummer Top 250</h2>
+        <h2>Organisationer Top 250</h2>
         <table>
 <?php echo($org_items_toplist); ?>
         </table>
