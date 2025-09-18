@@ -74,22 +74,37 @@ if($cat_route != null) {
 }
 
 /* Play safe ... */
-if( is_null($entry['orgName']) || empty($entry['orgName']) ) {
+if(isset($entry['orgName'])) {
+  if( is_null($entry['orgName']) || empty($entry['orgName']) ) {
+    $entry['orgName'] = "";
+  }
+} else {
   $entry['orgName'] = "";
 }
 
-if( is_null($entry['orgNumber']) || empty($entry['orgNumber']) ) {
+if(isset($entry['orgNumber'])) {
+  if( is_null($entry['orgNumber']) || empty($entry['orgNumber']) ) {
+    $entry['orgNumber'] = "";
+  }
+} else {
   $entry['orgNumber'] = "";
 }
 
-if( is_null($entry['comment']) || empty($entry['comment']) ) {
+if(isset($entry['comment'])) {
+  if( is_null($entry['comment']) || empty($entry['comment']) ) {
+    $entry['comment'] = "";
+  }
+} else {
   $entry['comment'] = "";
 }
 
-if( is_null($entry['web']) || empty($entry['web']) ) {
+if(isset($entry['web'])) {
+  if( is_null($entry['web']) || empty($entry['web']) ) {
+    $entry['web'] = "";
+  }
+} else {
   $entry['web'] = "";
 }
-
 
 // https://www.allabolag.se/bransch-s%C3%B6k?q=252004-0607
 // https://www.ratsit.se/sok/foretag?vem=882601-2240
