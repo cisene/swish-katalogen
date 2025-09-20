@@ -66,3 +66,4 @@ $webpage = array(
 
   </body>
 </html>
+<?php $db->disconnectDB(); ?>

@@ -82,4 +82,4 @@ $webpage = array(
 
   </body>
 </html>
-<? $db->disconnectDB(); ?>
+<?php $db->disconnectDB(); ?>
