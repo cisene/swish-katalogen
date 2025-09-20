@@ -61,7 +61,7 @@ $navLinks = join($items);
 
     <script type="application/ld+json"><?php echo(json_encode($breadcrumbs)); ?></script>
 
-    <nav>
+    <nav id="pagenavigation">
       <ul>
 <?php echo($navLinks); ?>
       </ul>
