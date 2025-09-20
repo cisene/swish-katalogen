@@ -433,7 +433,7 @@ class MySQLDB {
         $query .= "'" . mysqli_real_escape_string($this->db_connection, $entry) . "',";
         $query .= "'" . mysqli_real_escape_string($this->db_connection, $path) . "'";
         $query .= ");";
-        echo("\n<!-- " . $query . " -->\n");
+        // echo("\n<!-- " . $query . " -->\n");
         $this->db_connection->query($query);
       }
     }
