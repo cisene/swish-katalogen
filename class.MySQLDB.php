@@ -422,18 +422,18 @@ class MySQLDB {
         $query = "INSERT INTO ";
         $query .= $this->db_database . ".history ";
         $query .= "(";
-        $query .= "dt, ";
-        $query .= "ip, ";
-        $query .= "entry, ";
+        $query .= "dt,";
+        $query .= "ip,";
+        $query .= "entry,";
         $query .= "path";
         $query .= ") ";
         $query .= "VALUES(";
-        $query .= "NOW(), ";
-        $query .= "'" . mysqli_real_escape_string($this->db_connection, $client_ip) . "', ";
-        $query .= "'" . mysqli_real_escape_string($this->db_connection, $entry) . "', ";
+        $query .= "NOW(),";
+        $query .= "'" . mysqli_real_escape_string($this->db_connection, $client_ip) . "',";
+        $query .= "'" . mysqli_real_escape_string($this->db_connection, $entry) . "',";
         $query .= "'" . mysqli_real_escape_string($this->db_connection, $path) . "'";
         $query .= ");";
-        // echo("\n<!-- " . $query . " -->\n");
+        echo("\n<!-- " . $query . " -->\n");
         $this->db_connection->query($query);
       }
     }
