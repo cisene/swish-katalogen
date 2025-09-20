@@ -71,7 +71,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         // Pick ONE random entry where Swish 123 number is under Insamlingskontroll (123900 - 123909)
-        $query = "SELECT * FROM swish WHERE entry BETWEEN 1239000000 AND 1239099999 ORDER BY RANDOM() ASC LIMIT 1;";
+        $query = "SELECT * FROM " . $this->db_database . ".swish WHERE entry BETWEEN 1239000000 AND 1239099999 ORDER BY RANDOM() ASC LIMIT 1;";
         // echo($query . "\n");
 
         $results = $this->db_connection->query($query);
@@ -86,7 +86,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT s.entry, s.orgName, s.comment FROM b19_se.swish s WHERE s.orgNumber = '" . strval($orgNumber) . "' ORDER BY s.entry ASC;";
+        $query = "SELECT s.entry, s.orgName, s.comment FROM " . $this->db_database . ".swish s WHERE s.orgNumber = '" . strval($orgNumber) . "' ORDER BY s.entry ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $result[] = array(
@@ -104,7 +104,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT COUNT(*) AS cnt FROM b19_se.swish s WHERE s.orgNumber = '" . strval($orgNumber) . "';";
+        $query = "SELECT COUNT(*) AS cnt FROM " . $this->db_database . ".swish s WHERE s.orgNumber = '" . strval($orgNumber) . "';";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $result = array(
@@ -121,7 +121,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         // $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
-        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
+        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM " . $this->db_database . ".swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT " . $limit . ";";
         // echo("\n<!-- " . $query . "-->\n");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
@@ -143,7 +143,7 @@ class MySQLDB {
 
         $entry = null;
 
-        $query = "SELECT entry, orgName, orgNumber, comment, web FROM swish WHERE entry = " . $entry_id . ";";
+        $query = "SELECT entry, orgName, orgNumber, comment, web FROM " . $this->db_database . ".swish WHERE entry = " . $entry_id . ";";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $entry = array(
@@ -157,7 +157,7 @@ class MySQLDB {
         }
 
         if($entry) {
-          $query = "SELECT category FROM categories WHERE entry = " . $entry_id . " ORDER BY category ASC;";
+          $query = "SELECT category FROM " . $this->db_database . ".categories WHERE entry = " . $entry_id . " ORDER BY category ASC;";
           $results = $this->db_connection->query($query);
           while ($row = $results->fetch_assoc()) {
             $entry['categories'][] = $row['category'];
@@ -174,7 +174,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         $category_clean = $this->_sqlsafe($category);
-        $query = "SELECT * FROM swish s LEFT JOIN categories c ON c.entry = s.entry WHERE c.category = '" . $category_clean . "' ORDER BY RANDOM() ASC LIMIT 1;";
+        $query = "SELECT * FROM " . $this->db_database . ".swish s LEFT JOIN " . $this->db_database . ".categories c ON c.entry = s.entry WHERE c.category = '" . $category_clean . "' ORDER BY RANDOM() ASC LIMIT 1;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           $result[] = array(
@@ -194,7 +194,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category HAVING cnt >= 10 ORDER BY cnt DESC, category ASC LIMIT 50;";
+        $query = "SELECT category, COUNT(*) AS cnt FROM " . $this->db_database . ".categories GROUP BY category HAVING cnt >= 10 ORDER BY cnt DESC, category ASC LIMIT 50;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
@@ -208,7 +208,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY cnt DESC, category ASC;";
+        $query = "SELECT category, COUNT(*) AS cnt FROM " . $this->db_database . ".categories GROUP BY category ORDER BY cnt DESC, category ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category'], 'quantity' => $row['cnt']);
@@ -222,7 +222,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT category, COUNT(*) AS cnt FROM categories GROUP BY category ORDER BY cnt DESC, category ASC LIMIT " . strval($limit) . ";";
+        $query = "SELECT category, COUNT(*) AS cnt FROM " . $this->db_database . ".categories GROUP BY category ORDER BY cnt DESC, category ASC LIMIT " . strval($limit) . ";";
         // echo($query . "<br>");
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
@@ -420,7 +420,7 @@ class MySQLDB {
         }
 
         $query = "INSERT INTO ";
-        $query .= "history ";
+        $query .= $this->db_database . ".history ";
         $query .= "(";
         $query .= "dt, ";
         $query .= "ip, ";
