@@ -253,7 +253,7 @@ class MySQLDB {
     if($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         // $query = "SELECT DISTINCT category FROM categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . mysqli_real_escape_string($this->db_connection, $category) . "') ORDER BY category ASC;";
-        $query = "SELECT DISTINCT category FROM categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . $this->_sqlsafe($category) . "') ORDER BY category ASC;";
+        $query = "SELECT DISTINCT category FROM " . $this->db_database . ".categories WHERE entry IN (SELECT DISTINCT entry FROM categories WHERE category = '" . $this->_sqlsafe($category) . "') ORDER BY category ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category']);
@@ -267,7 +267,7 @@ class MySQLDB {
     $result = array();
     if($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT UPPER(LEFT(category,1)) AS letter, category, COUNT(*) AS cnt FROM categories WHERE category != '' GROUP BY category ORDER BY category ASC;";
+        $query = "SELECT UPPER(LEFT(category,1)) AS letter, category, COUNT(*) AS cnt FROM " . $this->db_database . ".categories WHERE category != '' GROUP BY category ORDER BY category ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category']);
@@ -282,7 +282,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         // $query = "SELECT s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
-        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM b19_se.swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
+        $query = "SELECT s.orgName, s.orgNumber, COUNT(*) as cnt FROM " . $this->db_database . ".swish s WHERE s.orgNumber NOT LIKE '%-XXXX' GROUP BY s.orgNumber HAVING cnt >= 2 ORDER BY cnt DESC, s.orgNumber ASC LIMIT 100;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           // $result[] = array('orgNumber' => $row['orgNumber']);
@@ -299,7 +299,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT DISTINCT entry FROM swish ORDER BY entry ASC;";
+        $query = "SELECT DISTINCT entry FROM " . $this->db_database . ".swish ORDER BY entry ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('entry' => $row['entry']);
@@ -313,7 +313,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT DISTINCT category FROM categories ORDER BY category ASC;";
+        $query = "SELECT DISTINCT category FROM " . $this->db_database . ".categories ORDER BY category ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
             $result[] = array('category' => $row['category']);
@@ -331,7 +331,7 @@ class MySQLDB {
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
         if (strlen($term) >= 2) {
-          $query = "SELECT entry, orgName, orgNumber, web, comment FROM swish ";
+          $query = "SELECT entry, orgName, orgNumber, web, comment FROM " . $this->db_database . ".swish ";
           $query .= "WHERE ";
           $query .= "(";
           $query .= "entry LIKE '%:term%' ";
@@ -360,7 +360,7 @@ class MySQLDB {
 
             $categories = array();
             
-            $query = "SELECT category FROM categories WHERE entry = '" . $entry . "' ORDER BY category ASC;";
+            $query = "SELECT category FROM " . $this->db_database . ".categories WHERE entry = '" . $entry . "' ORDER BY category ASC;";
             $category_results = $this->db_connection->query($query);
             while ($row = $results->fetch_assoc()) {
               $categories[] = strval($category_row['category']);
@@ -387,7 +387,7 @@ class MySQLDB {
     $result = array();
     if ($this->mysql_module_loaded == true) {
       if ($this->db_connection != null) {
-        $query = "SELECT entry, orgName, orgNumber, web, comment FROM swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
+        $query = "SELECT entry, orgName, orgNumber, web, comment FROM " . $this->db_database . ".swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
           // echo("<pre>");var_dump($row);echo("</pre>");
