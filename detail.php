@@ -56,6 +56,8 @@ if(isset($cat_route)) {
   }
 }
 
+$db->disconnectDB();
+
 $detail_title = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_TITLE));
 $detail_desc = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_DESC));
 
@@ -83,6 +85,7 @@ $webpage = array(
   "datePublished"   => $config["site"]["dateCreated"],
   "dateModified"    => $config["site"]["dateModified"],
 );
+
 
 ?><!DOCTYPE html>
 <html translate="no" lang="sv" xml:lang="sv" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">

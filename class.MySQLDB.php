@@ -22,13 +22,6 @@ class MySQLDB {
 
   public function connectDB($hostname, $port, $username, $password, $database) {
     if ($this->mysql_module_loaded == true) {
-      // $this->db_connection = new mysqli(
-      //   $hostname,
-      //   $username,
-      //   $password,
-      //   $database
-      // );
-
       $this->db_connection = mysqli_connect(
         $hostname,
         $username,
@@ -36,14 +29,10 @@ class MySQLDB {
         $database
       );
 
-
       /* Save during session */
       $this->db_hostname = $hostname;
       $this->db_username = $username;
       $this->db_database = $database;
-
-      // $query = "SET CHARACTER_SET_RESULTS=UTF-8;";
-      // $this->db_connection->query($query);
 
       /* Set up connection to handle UTF8MB4 (Multibyte UTF-8) */
       $this->db_connection->query("SET NAMES utf8mb4");

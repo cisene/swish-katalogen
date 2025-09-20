@@ -9,10 +9,6 @@ class SwishKatalogen {
   var $org_prefix     = '/swish-katalogen/o/';
   var $search_prefix  = '/swish-katalogen/s/';
 
-
-  // var $local_base = $_SERVER['DOCUMENT_ROOT'];
-  //  . $url_prefix . "static/";
-
   private $local_base = null;
   private $local_base_static = null;
 
@@ -25,9 +21,6 @@ class SwishKatalogen {
   public function __construct() {
     $this->local_base = $_SERVER['DOCUMENT_ROOT'];
     $this->local_base_static = $this->local_base . $this->url_prefix . "static/";
-
-    // $this->_insertRuntimeMeta();
-
   }
 
 
@@ -463,15 +456,6 @@ class SwishKatalogen {
       $temp['vatID'] = strval($obj['orgNumber']);
     }
     $temp['url'] = strval($obj['web']);
-
-    // $temp['dateCreated'] = strval("2022-03-24");
-    // $temp['breadcrumb'] = strval("Swish-Katalogen - Sök Swish-nummer - " . $obj['orgName']);
-
-    // $temp['keywords'] = array();
-
-    // foreach($obj['categories'] as $cat) {
-    //  $temp['keywords'][] = strval($cat);
-    // }
 
     $result = $this->_jsonPrettify(json_encode($temp));
     return $result;
