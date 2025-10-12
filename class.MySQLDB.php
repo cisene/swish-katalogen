@@ -421,7 +421,7 @@ class MySQLDB {
         $query .= "'" . strval($entry) . "',";
         $query .= "'" . strval($path) . "'";
         $query .= ");";
-        echo("\n<!-- " . $query . " -->\n");
+        // echo("\n<!-- " . $query . " -->\n");
         $this->db_connection->query($query);
         $this->db_connection->commit();
       }
