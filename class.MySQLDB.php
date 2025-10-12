@@ -379,7 +379,6 @@ class MySQLDB {
         $query = "SELECT entry, orgName, orgNumber, web, comment FROM " . $this->db_database . ".swish WHERE entry IN (SELECT entry FROM categories WHERE category = '" . $category . "') ORDER BY entry ASC;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
-          // echo("<pre>");var_dump($row);echo("</pre>");
             $result[] = array(
               'entry'       => strval($row['entry']),
               'orgName'     => strval($row['orgName']),
@@ -418,12 +417,13 @@ class MySQLDB {
         $query .= ") ";
         $query .= "VALUES(";
         $query .= "NOW(),";
-        $query .= "'" . mysqli_real_escape_string($this->db_connection, $client_ip) . "',";
-        $query .= "'" . mysqli_real_escape_string($this->db_connection, $entry) . "',";
-        $query .= "'" . mysqli_real_escape_string($this->db_connection, $path) . "'";
+        $query .= "'" . strval($client_ip) . "',";
+        $query .= "'" . strval($entry) . "',";
+        $query .= "'" . strval($path) . "'";
         $query .= ");";
-        // echo("\n<!-- " . $query . " -->\n");
+        echo("\n<!-- " . $query . " -->\n");
         $this->db_connection->query($query);
+        $this->db_connection->commit();
       }
     }
     return $result;
