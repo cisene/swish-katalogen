@@ -56,7 +56,7 @@ if(isset($cat_route)) {
   }
 }
 
-$entry_pritty = $ui->getSwishSpecificFormat($cat_route, "digits-3-sp-3-sp-2-sp-2");
+$entry_pritty = $sf->getSwishSpecificFormat($cat_route, "digits-3-sp-3-sp-2-sp-2");
 
 
 $detail_title = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_TITLE));
