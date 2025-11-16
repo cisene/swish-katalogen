@@ -29,14 +29,14 @@ $cat_route = $ui->getCategoryRouting();
 // $category_desc = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_DESC));
 
 
-$config["content"]["html"]["header"]["title"] = PAGE_ORGANISATION_TITLE;
-$config["content"]["html"]["header"]["meta"]["description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
+// $config["content"]["html"]["header"]["title"] = PAGE_ORGANISATION_TITLE;
+// $config["content"]["html"]["header"]["meta"]["description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
 
-$config["content"]["html"]["header"]["meta"]["og_title"]["content"] = PAGE_ORGANISATION_TITLE;
-$config["content"]["html"]["header"]["meta"]["og_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
+// $config["content"]["html"]["header"]["meta"]["og_title"]["content"] = PAGE_ORGANISATION_TITLE;
+// $config["content"]["html"]["header"]["meta"]["og_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
 
-$config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = PAGE_ORGANISATION_TITLE;
-$config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
+// $config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = PAGE_ORGANISATION_TITLE;
+// $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
 
 $webpage = array(
   "@context"      => "https://schema.org",
