@@ -56,11 +56,14 @@ if(isset($cat_route)) {
   }
 }
 
+$entry_pritty = $ui->getSwishSpecificFormat($cat_route, "digits-3-sp-3-sp-2-sp-2");
+
+
 $detail_title = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_TITLE));
 $detail_desc = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_DESC));
 
-$detail_title = preg_replace('/\x25entry\x25/six', $cat_route, strval($detail_title));
-$detail_desc = preg_replace('/\x25entry\x25/six', $cat_route, strval($detail_desc));
+$detail_title = preg_replace('/\x25entry\x25/six', $entry_pritty, strval($detail_title));
+$detail_desc = preg_replace('/\x25entry\x25/six', $entry_pritty, strval($detail_desc));
 
 
 $config["content"]["html"]["header"]["title"] = $detail_title;
