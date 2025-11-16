@@ -56,14 +56,14 @@ if(isset($cat_route)) {
   }
 }
 
-$entry_pretty = $sf->getSwishSpecificFormat(strval($cat_route), "common");
+// $entry_pretty = $sf->getSwishSpecificFormat(strval($cat_route), "common");
 
 
 $detail_title = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_TITLE));
 $detail_desc = preg_replace('/\x25orgName\x25/six', $orgName, strval(PAGE_DETAIL_DESC));
 
-$detail_title = preg_replace('/\x25entry\x25/six', $entry_pretty, strval($detail_title));
-$detail_desc = preg_replace('/\x25entry\x25/six', $entry_pretty, strval($detail_desc));
+$detail_title = preg_replace('/\x25entry\x25/six', $cat_route, strval($detail_title));
+$detail_desc = preg_replace('/\x25entry\x25/six', $cat_route, strval($detail_desc));
 
 
 $config["content"]["html"]["header"]["title"] = $detail_title;
