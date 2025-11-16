@@ -27,11 +27,11 @@ $siteparam = $config["site"];
 // $cat_route = $ui->getCategoryRouting();
 $org_route = $ui->getOrgNumberRouting();
 
-// $category_title = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_TITLE));
+$org_title = preg_replace('/\x25orgNumber\x25/six', $org_route, strval(PAGE_CATEGORY_TITLE));
 // $category_desc = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_DESC));
 
 
-// $config["content"]["html"]["header"]["title"] = PAGE_ORGANISATION_TITLE;
+$config["content"]["html"]["header"]["title"] = $org_title;
 // $config["content"]["html"]["header"]["meta"]["description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
 
 // $config["content"]["html"]["header"]["meta"]["og_title"]["content"] = PAGE_ORGANISATION_TITLE;
