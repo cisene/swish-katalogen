@@ -34,17 +34,19 @@ $org_desc = preg_replace('/\x25orgNumber\x25/six', $org_route, strval(PAGE_ORGAN
 $config["content"]["html"]["header"]["title"] = $org_title;
 $config["content"]["html"]["header"]["meta"]["description"]["content"] = $org_desc;
 
-// $config["content"]["html"]["header"]["meta"]["og_title"]["content"] = PAGE_ORGANISATION_TITLE;
-// $config["content"]["html"]["header"]["meta"]["og_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
+$config["content"]["html"]["header"]["meta"]["og_title"]["content"] = $org_title;
+$config["content"]["html"]["header"]["meta"]["og_description"]["content"] = $org_desc;
 
-// $config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = PAGE_ORGANISATION_TITLE;
-// $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE_ORGANISATION_DESCRIPTION;
+$config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = $org_title;
+$config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = $org_desc;
 
 $webpage = array(
   "@context"      => "https://schema.org",
   "@type"         => "WebPage",
-  "name"          => $config["site"]["title"],
-  "url"           => $config["site"]["url"],
+  // "name"          => $config["site"]["title"],
+  "name"          => $org_title,
+  // "url"           => $config["site"]["url"],
+  "url"           => $config["content"]["html"]["header"]["link"]["rel_canonical"]["href"],
   "isBasedOn"     => "https://github.com/cisene/swish-123",
   "breadcrumb"    => "Swish-Katalogen - Sök Swish-nummer",
   "dateCreated"   => $config["site"]["dateCreated"],
