@@ -24,7 +24,9 @@ $db->connectDB(
 
 $siteparam = $config["site"];
 
-$cat_route = $ui->getCategoryRouting();
+// $cat_route = $ui->getCategoryRouting();
+$org_route = $ui->getOrgNumberRouting();
+
 // $category_title = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_TITLE));
 // $category_desc = preg_replace('/\x25category\x25/six', $cat_route, strval(PAGE_CATEGORY_DESC));
 
@@ -54,6 +56,7 @@ $webpage = array(
 ?><!DOCTYPE html>
 <html translate="no" lang="sv" xml:lang="sv" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
   <head prefix="dc: http://purl.org/dc/elements/1.1/; og: http://ogp.me/ns#">
+<!-- <?php var_dump($org_route); ?> -->
 <?php echo($ui->renderHTMLHeadMisc($config)); ?>
 <?php echo($ui->renderHTMLHeadMetas($config["content"]["html"]["header"]["meta"]) . "\n"); ?>
 <?php echo($ui->renderHTMLHeadLinks($config["content"]["html"]["header"]["link"]) . "\n"); ?>
