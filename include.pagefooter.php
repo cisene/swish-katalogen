@@ -31,4 +31,6 @@ $cisene = array(
 
       <div class="misclinks">
         <a href="/swish-katalogen/swish-123.pdf" target=_blank>Hela Swish-Katalogen som PDF</a>
+        <a href="/swish-katalogen/swishkatalogen-godkända-gåvomottagare.pdf" target=_blank>Godkända Gåvomottagare</a>
+        <a href="/swish-katalogen/swishkatalogen-kvinnojourer.pdf" target=_blank>Kvinnojourer</a>
       </div>
