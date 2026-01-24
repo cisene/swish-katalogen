@@ -91,7 +91,16 @@ if(is_array($routing)) {
       $cached = $api->checkCache($cache_key);
       if($cached['status'] == false) {
         $result = array();
-
+        $term_result = $db->getHistoryLatest();
+        echo("<pre>"); var_dump($term_result); echo("</pre>");
+        foreach($term_result as $word_result) {
+          $result[] = $word_result;
+        }
+        // $result = $api->arrayResultSort($result);
+        $http_response_status = 200;
+        $http_response_content_type = 'application/json';
+        $http_response_body = json_encode($result);
+        $api->setCacheObject($cache_key, $http_response_body);
       } else {
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
