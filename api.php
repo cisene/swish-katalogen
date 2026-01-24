@@ -70,6 +70,7 @@ if(is_array($routing)) {
       $result = array();
       if($cached['status'] == false) {
         $toplist = $db->getHistoryToplist();
+        echo("<pre>"); var_dump($toplist); echo("</pre>");
         foreach($toplist as $item) {
           $result[] = array(
             "entry"       => $item['entry'],
