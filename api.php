@@ -37,7 +37,6 @@ $api->purgeCache();
 $routing = $api->getRoutingElements();
 if(is_array($routing)) {
   $cache_key = $api->getCacheKey($routing);
-  echo($cache_key . "<br>");
 
   switch($routing[0]) {
 
@@ -72,8 +71,14 @@ if(is_array($routing)) {
         $result = array();
         $term_result = $db->getHistoryToplist();
         echo("<pre>"); var_dump($term_result); echo("</pre>");
-        foreach($term_result as $word_result) {
-          $result[] = $word_result;
+        foreach($term_result as $item) {
+          $result[] = array(
+            "entry"       => $item['entry'],
+            "hightlight"  => $item['hightlight'],
+            "orgName"     => $item['orgName'],
+            "comment"     => $item['comment'],
+            "path"        => $item['path'],
+          );
         }
         // $result = $api->arrayResultSort($result);
         $http_response_status = 200;
