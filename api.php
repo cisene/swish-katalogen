@@ -74,7 +74,7 @@ if(is_array($routing)) {
         foreach($term_result as $word_result) {
           $result[] = $word_result;
         }
-        $result = $api->arrayResultSort($result);
+        // $result = $api->arrayResultSort($result);
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
         $http_response_body = json_encode($result);
