@@ -124,7 +124,9 @@ class SwishAPI {
     if(is_array($route_object)) {
       if($route_object[0] == $this->route) {
         $cache_prep[] = $this->route;
-        $cache_prep[] = sha1($route_object[1], false);
+        if(isset($route_object[1])) {
+          $cache_prep[] = sha1($route_object[1], false);
+        }
       }
       $result = join("-", $cache_prep) . ".json";
     }
