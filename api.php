@@ -4,11 +4,13 @@ ini_set('display_errors','On');
 
 include_once "site.config.php";
 
-include_once "class.SqliteDB.php";
+// include_once "class.SqliteDB.php";
+include_once "class.MySQLDB.php";
 include_once "class.SwishKatalogen.php";
 include_once "class.SwishAPI.php";
 
-$db = new SqliteDB();
+// $db = new SqliteDB();
+$db = new MySQLDB();
 $ui = new SwishKatalogen();
 $api = new SwishAPI();
 
@@ -49,6 +51,38 @@ if(is_array($routing)) {
           $http_response_body = json_encode($result);
           $api->setCacheObject($cache_key, $http_response_body);
         }
+      } else {
+        $http_response_status = 200;
+        $http_response_content_type = 'application/json';
+        $http_response_body = $api->getCacheObject($cache_key);
+      }
+      break;
+
+    case "getHistoryToplist":
+      $cached = $api->checkCache($cache_key);
+      if($cached['status'] == false) {
+        $result = array();
+        $term_result = $db->getHistoryToplist();
+        foreach($term_result as $word_result) {
+          $result[] = $word_result;
+        }
+        $result = $api->arrayResultSort($result);
+        $http_response_status = 200;
+        $http_response_content_type = 'application/json';
+        $http_response_body = json_encode($result);
+        $api->setCacheObject($cache_key, $http_response_body);
+      } else {
+        $http_response_status = 200;
+        $http_response_content_type = 'application/json';
+        $http_response_body = $api->getCacheObject($cache_key);
+      }
+      break;
+
+    case "getHistoryLatest":
+      $cached = $api->checkCache($cache_key);
+      if($cached['status'] == false) {
+        $result = array();
+
       } else {
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
