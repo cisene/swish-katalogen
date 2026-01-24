@@ -88,6 +88,7 @@ class SwishAPI {
   public function purgeCache() {
     if(is_dir($this->cache_dir)) {
     }
+    return;
   }
 
   public function setCacheObject($cache_key, $contents) {
@@ -119,9 +120,8 @@ class SwishAPI {
 
   public function getCacheKey($route_object) {
     $result = null;
-
+    $cache_prep = array();
     if(is_array($route_object)) {
-      $cache_prep = array();
       if($route_object[0] == $this->route) {
         $cache_prep[] = $this->route;
         $cache_prep[] = sha1($route_object[1], false);
