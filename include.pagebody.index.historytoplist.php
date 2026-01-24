@@ -1,35 +1,44 @@
 <?php
+include_once "class.SwishFormat.php";
+
+$sf = new SwishFormat();
 
 $url = "https://b19.se/swish-katalogen/api/getHistoryToplist";
+$json = file_get_contents("$url");
+$data = json_decode($json, true);
+
+$lines = array();
+foreach($data as $item) {
+
+  // Todo: do something with $item['highlight']
+
+  $line = array();
+  $entry_friendly = $sf->getSwishSpecificFormat($item['entry'], "common")[0];
+  $line[] = "<li>";
+
+  $line[] = '<a href="' . $item['path'] . '" title="' . $item['orgName'] . '">';
+  $line[] = $entry_friendly;
+  $line[] = '</a>';
+
+  $line[] = " ";
+  $line[] = $item['orgName'];
+
+  if(strlen($item['comment']) > 0) {
+    $line[] = "<br>";
+    $lint[] = $item['comment'];
+  }
+
+  $line[] = "</li>";
+
+  $lines[] = implode("", $line);
+}
+$li_list = implode("\n", $lines);
 
 
 ?>
       <div id="pagebody-history-toplist">
-        <p>De som hamnar på denna sida har oftast sökt på följande fraser;</p>
+        <p>Mest besökta sidor;</p>
         <ul>
-          <li>sök swishnummer</li>
-          <li>söka swishnummer</li>
-          <li>söka swishnummer företag</li>
-          <li>swish nummer sök</li>
-          <li>kolla swishnummer</li>
-          <li>hitta swishnummer</li>
-          <li>vem har swish nummer</li>
-          <li>swishnummer</li>
-          <li>hitta swishnummer företag</li>
-          <li>swishnummer företag</li>
-          <li>kontrollera swish nummer</li>
-          <li>kolla upp swish nummer</li>
-          <li>swish-nummer som börjar på 123</li>
-          <li>sök swishnummer företag</li>
-          <li>sök swish nummer</li>
-          <li>vems swish-nummer</li>
-          <li>swishnummer förening</li>
-          <li>swish nummer</li>
-          <li>swish 123 nummer</li>
-          <li>swish nummer företag</li>
-          <li>swish 123</li>
-          <li>123 swish nummer</li>
-          <li>swish nr</li>
-          <li>swish kontakt</li>
+<?php echo($li_list); ?>
         </ul>
       </div>
