@@ -67,11 +67,10 @@ if(is_array($routing)) {
 
     case "getHistoryToplist":
       $cached = $api->checkCache($cache_key);
+      $result = array();
       if($cached['status'] == false) {
-        $result = array();
-        $term_result = $db->getHistoryToplist();
-        echo("<pre>"); var_dump($term_result); echo("</pre>");
-        foreach($term_result as $item) {
+        $toplist = $db->getHistoryToplist();
+        foreach($toplist as $item) {
           $result[] = array(
             "entry"       => $item['entry'],
             "hightlight"  => $item['hightlight'],
@@ -80,7 +79,6 @@ if(is_array($routing)) {
             "path"        => $item['path'],
           );
         }
-        // $result = $api->arrayResultSort($result);
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
         $http_response_body = json_encode($result);
