@@ -1,5 +1,9 @@
+<?php
+$url = "https://b19.se/swish-katalogen/api/getHistoryLatest";
+$json = file_get_contents("$url");
 
-      <div id="pagebody-seo-fodder">
+?>
+      <div id="pagebody-history-latest">
         <p>De som hamnar på denna sida har oftast sökt på följande fraser;</p>
         <ul>
           <li>sök swishnummer</li>
