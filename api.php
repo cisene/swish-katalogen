@@ -71,6 +71,7 @@ if(is_array($routing)) {
       if($cached['status'] == false) {
         $result = array();
         $term_result = $db->getHistoryToplist();
+        echo("<pre>"); var_dump($term_result); echo("</pre>");
         foreach($term_result as $word_result) {
           $result[] = $word_result;
         }
