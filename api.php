@@ -67,19 +67,8 @@ if(is_array($routing)) {
 
     case "getHistoryToplist":
       $cached = $api->checkCache($cache_key);
-      $result = array();
       if($cached['status'] == false) {
         $toplist = $db->getHistoryToplist();
-        // echo("<pre>"); var_dump($toplist); echo("</pre>");
-        // foreach($toplist as $item) {
-        //   $result[] = array(
-        //     "entry"       => $item['entry'],
-        //     "hightlight"  => $item['hightlight'],
-        //     "orgName"     => $item['orgName'],
-        //     "comment"     => $item['comment'],
-        //     "path"        => $item['path'],
-        //   );
-        // }
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
         $http_response_body = json_encode($toplist);
@@ -94,16 +83,10 @@ if(is_array($routing)) {
     case "getHistoryLatest":
       $cached = $api->checkCache($cache_key);
       if($cached['status'] == false) {
-        $result = array();
-        $term_result = $db->getHistoryLatest();
-        echo("<pre>"); var_dump($term_result); echo("</pre>");
-        foreach($term_result as $word_result) {
-          $result[] = $word_result;
-        }
-        // $result = $api->arrayResultSort($result);
+        $latest = $db->getHistoryLatest();
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
-        $http_response_body = json_encode($result);
+        $http_response_body = json_encode($latest);
         $api->setCacheObject($cache_key, $http_response_body);
       } else {
         $http_response_status = 200;
