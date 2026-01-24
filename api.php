@@ -14,7 +14,15 @@ $db = new MySQLDB();
 $ui = new SwishKatalogen();
 $api = new SwishAPI();
 
-$db->connectDB($config["db"]["sqlite"]["filepath"]);
+$dbparam = $config["db"]["mysql"];
+
+$db->connectDB(
+  $dbparam["hostname"],
+  $dbparam["port"],
+  $dbparam["username"],
+  $dbparam["password"],
+  $dbparam["database"],
+);
 
 $http_response_status = 400;
 $http_response_body = "";
