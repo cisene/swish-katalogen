@@ -87,10 +87,6 @@ class SwishAPI {
 
   public function purgeCache() {
     if(is_dir($this->cache_dir)) {
-      $files = (new AdvancedFilesystemIterator($this->cache_dir))->sortByMTime()->limit(0, 10);
-      foreach($files as $file) {
-        echo($file . "<br>");
-      }
     }
   }
 
