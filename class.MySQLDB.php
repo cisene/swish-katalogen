@@ -75,7 +75,7 @@ class MySQLDB {
         $query = "SELECT s.entry, CASE WHEN s.entry LIKE '1239%' THEN '*' ELSE '' END AS hightlight, s.orgName, s.comment, h.path, COUNT(h.entry) AS cnt FROM b19_se.history AS h JOIN b19_se.swish as s ON s.entry = h.entry WHERE s.entry IS NOT NULL AND h.dt > date_sub(NOW(), INTERVAL (24*7) HOUR) GROUP BY h.entry HAVING cnt > 1 ORDER BY cnt DESC, s.entry ASC LIMIT 25;";
         $results = $this->db_connection->query($query);
         while ($row = $results->fetch_assoc()) {
-          $result = array(
+          $result[] = array(
             'entry'       => strval($row['entry']),
             'hightlight'  => strval($row['hightlight']),
             "orgName"     => strval($row['orgName']),
