@@ -37,7 +37,7 @@ $api->purgeCache();
 $routing = $api->getRoutingElements();
 if(is_array($routing)) {
   $cache_key = $api->getCacheKey($routing);
-  // echo($cache_key . "<br>");
+  echo($cache_key . "<br>");
 
   switch($routing[0]) {
 

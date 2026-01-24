@@ -75,9 +75,9 @@ $webpage = array(
 
     </section>
 
-    <section id="pagefooter">
+    <footer id="pagefooter" role="contentinfo">
 <?php include_once "include.pagefooter.php"; ?>
-    </section>
+    </footer>
 
 
   </body>

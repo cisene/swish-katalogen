@@ -34,15 +34,15 @@ $config["content"]["html"]["header"]["meta"]["dc_title"]["content"] = PAGE_START
 $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = PAGE_START_DESC;
 
 $webpage = array(
-  "@context"      => "https://schema.org",
-  "@type"         => "WebPage",
-  "name"          => $config["site"]["title"],
-  "url"           => $config["site"]["url"],
-  "isBasedOn"     => "https://github.com/cisene/swish-123",
-  "breadcrumb"    => "Swish-Katalogen - Sök Swish-nummer",
-  "dateCreated"   => $config["site"]["dateCreated"],
-  "datePublished" => $config["site"]["dateCreated"],
-  "dateModified"  => $config["site"]["dateModified"],
+  "@context"        => "https://schema.org",
+  "@type"           => "WebPage",
+  "name"            => $config["site"]["title"],
+  "url"             => $config["site"]["url"],
+  "isBasedOn"       => "https://github.com/cisene/swish-123",
+  "breadcrumb"      => "Swish-Katalogen - Sök Swish-nummer",
+  "dateCreated"     => $config["site"]["dateCreated"],
+  "datePublished"   => $config["site"]["dateCreated"],
+  "dateModified"    => $config["site"]["dateModified"],
 );
 
 ?><!DOCTYPE html>
@@ -74,9 +74,9 @@ $webpage = array(
 
     </section>
 
-    <section id="pagefooter">
+    <footer id="pagefooter" role="contentinfo">
 <?php include_once "include.pagefooter.php"; ?>
-    </section>
+    </footer>
 
 
   </body>
