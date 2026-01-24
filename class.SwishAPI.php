@@ -112,7 +112,13 @@ class SwishAPI {
     $result = array('status' => false);
     $cache_file = $this->cache_dir . $cache_key;
     if(is_file($cache_file)) {
-      $result['status'] = true;
+
+      $delta = (time() - filemtime($cache_file));
+      if($delta >= 300) {
+        $result['status'] = false;
+      } else {
+        $result['status'] = true;
+      }
     }
 
     return $result;
