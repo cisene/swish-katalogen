@@ -70,19 +70,19 @@ if(is_array($routing)) {
       $result = array();
       if($cached['status'] == false) {
         $toplist = $db->getHistoryToplist();
-        echo("<pre>"); var_dump($toplist); echo("</pre>");
-        foreach($toplist as $item) {
-          $result[] = array(
-            "entry"       => $item['entry'],
-            "hightlight"  => $item['hightlight'],
-            "orgName"     => $item['orgName'],
-            "comment"     => $item['comment'],
-            "path"        => $item['path'],
-          );
-        }
+        // echo("<pre>"); var_dump($toplist); echo("</pre>");
+        // foreach($toplist as $item) {
+        //   $result[] = array(
+        //     "entry"       => $item['entry'],
+        //     "hightlight"  => $item['hightlight'],
+        //     "orgName"     => $item['orgName'],
+        //     "comment"     => $item['comment'],
+        //     "path"        => $item['path'],
+        //   );
+        // }
         $http_response_status = 200;
         $http_response_content_type = 'application/json';
-        $http_response_body = json_encode($result);
+        $http_response_body = json_encode($toplist);
         $api->setCacheObject($cache_key, $http_response_body);
       } else {
         $http_response_status = 200;
