@@ -469,7 +469,7 @@ class MySQLDB {
         $query = "DELETE FROM ";
         $query .= $this->db_database . ".history ";
         $query .= "WHERE ";
-        $query .= "DATE(dt) < date_sub(CURDATE(), INTERVAL 30 DAY) "
+        $query .= "DATE(dt) < date_sub(CURDATE(), INTERVAL 30 DAY) ";
         $query .= "ORDER BY dt ASC ";
         $query .= "LIMIT 10000;";
         $this->db_connection->query($query);
