@@ -480,9 +480,6 @@ class MySQLDB {
     return $result;
   }
 
-  publi function 
-
-
   private function _sqlsafe($data) {
     if(!is_null($data)) {
       $data = strtolower($data);
