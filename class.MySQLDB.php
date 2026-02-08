@@ -447,6 +447,7 @@ class MySQLDB {
           $path = $_SERVER['REQUEST_URI'];
         }
 
+        /* Add log entry */
         $query = "INSERT INTO ";
         $query .= $this->db_database . ".history ";
         $query .= "(";
@@ -461,15 +462,25 @@ class MySQLDB {
         $query .= "'" . strval($entry) . "',";
         $query .= "'" . strval($path) . "'";
         $query .= ");";
-        // echo("\n<!-- " . $query . " -->\n");
         $this->db_connection->query($query);
         $this->db_connection->commit();
+
+        /* Purge old log entries */
+        $query = "DELETE FROM ";
+        $query .= $this->db_database . ".history ";
+        $query .= "WHERE ";
+        $query .= "DATE(dt) < date_sub(CURDATE(), INTERVAL 30 DAY) "
+        $query .= "ORDER BY dt ASC ";
+        $query .= "LIMIT 10000;";
+        $this->db_connection->query($query);
+        $this->db_connection->commit();
+
       }
     }
     return $result;
   }
 
-
+  publi function 
 
 
   private function _sqlsafe($data) {
