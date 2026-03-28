@@ -27,7 +27,7 @@ ErrorDocument 410 /swish-katalogen/410.html
 
 
 # BLOCK UNNECESSARY REQUEST METHODS
-RewriteCond %{REQUEST_METHOD} ^(CONNECT|DEBUG|DELETE|MOVE|PUT|TRACE|TRACK) [NC]
+RewriteCond %{REQUEST_METHOD} ^(CONNECT|DEBUG|MOVE|PUT|TRACE|TRACK) [NC]
 RewriteRule .* - [F,L]
 
 # Preflight response common
@@ -41,9 +41,9 @@ RewriteRule .* - [F,L]
 # Header always set Content-Length "0"
 # RewriteRule .* - [R=204,NC,L]
 
-Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate" env=LONGCACHE
 # Header set Pragma "no-cache" env=LONGCACHE
-# Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT" env=LONGCACHE 
+# Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT" env=LONGCACHE
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate" env=LONGCACHE
 
 # remove www...
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
@@ -58,9 +58,6 @@ RewriteRule ^$ index.php [L]
 
 # API
 RewriteRule ^api api.php [L]
-
-# Sitemap
-#RewriteRule ^sitemap\x2exml$ sitemap.php [L]
 
 # Categories - Empty
 RewriteRule ^k/$ categories-all.php?cat=$1 [L,NC]
@@ -97,12 +94,11 @@ RewriteRule ^opensearch\x2exml$ opensearch.php [L]
 # Manifest
 RewriteRule ^manifest\x2ejson$ manifest.php [L]
 
-
 # QR-Code
-RewriteRule ^qr/123(\d{7})$ qrcode-generator.php?code=123$1 [L,NC]
+#RewriteRule ^qr/123(\d{7})$ qrcode-generator.php?code=123$1 [L,NC]
 
 # QR-Code - special for Christopher
-RewriteRule ^qr/0703852166$ qrcode-generator.php?code=0703852166 [L,NC]
+#RewriteRule ^qr/0703852166$ qrcode-generator.php?code=0703852166 [L,NC]
 
 
 # BEGIN EXPIRES
