@@ -198,6 +198,28 @@ class MySQLDB {
     return $result;
   }
 
+  public function getOrgByID($org_id) {
+    $result = array();
+    if ($this->mysql_module_loaded == true) {
+      if ($this->db_connection != null) {
+
+        $mask = "(\d{6})\x2d(\d{4})";
+        $re = "/^" . $mask . "$/six";
+        if(preg_match($re, strval($org_id))) {
+          $query = "SELECT orgName, orgNumber FROM " . $this->db_database . ".swish s WHERE s.orgNumber = '" . str($org_id) . "' LIMIT 1";
+          $results = $this->db_connection->query($query);
+          while ($row = $results->fetch_assoc()) {
+            $result[] = array(
+              'orgName'   => strval($row['orgName']),
+              'orgNumber' => strval($row['orgNumber']),
+            );
+          }
+        }
+      }
+    }
+    return $result;
+  }
+
   public function getSingleRandomFromCategories($category) {
     $result = array();
     if ($this->mysql_module_loaded == true) {
