@@ -30,6 +30,11 @@ $org_route = $ui->getOrgNumberRouting();
 // Get Organisation info
 $org_info = $db->getOrgByID($org_route);
 
+echo("<pre>\n");
+echo(var_dump($org_info));
+echo("</pre>\n");
+
+
 // Copy templates
 $org_title = strval(PAGE_ORGANISATION_TITLE);
 $org_desc = strval(PAGE_ORGANISATION_DESC);
