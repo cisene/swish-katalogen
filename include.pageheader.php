@@ -1,4 +1,19 @@
 <?php
+$cisene = array(
+  "@context"  => "https://schema.org",
+  "@type"     => "Person",
+  "name"      => "Christopher Isene",
+  "url"       => "https://christopherisene.se/",
+  "sameAs"    => array(
+    "https://github.com/cisene",
+    "https://www.linkedin.com/in/christopherisene",
+    "https://mastodon.social/@cisene",
+    "https://podcastindex.social/@cisene",
+    "https://pixelfed.social/@cisene",
+    "https://keybase.io/cisene"
+  )
+);
+
 $breadcrumbs = array(
   "@context"  => "https://schema.org",
   "@type"     => "BreadcrumbList",
@@ -37,9 +52,11 @@ $breadcrumbs = array(
     //   )
     // ),
 
-
   )
 );
+
+// TODO: Dynamic Breadcrumbs .. navigation as input
+
 
 $items = array();
 foreach($breadcrumbs['itemListElement'] as $item) {
@@ -59,6 +76,7 @@ $navLinks = join($items);
       <a href="/swish-katalogen/"><h1>Swish-Katalogen</h1></a>
     </section>
 
+    <script type="application/ld+json"><?php echo(json_encode($cisene)); ?></script>
     <script type="application/ld+json"><?php echo(json_encode($breadcrumbs)); ?></script>
 
     <nav id="pagenavigation">
