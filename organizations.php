@@ -27,8 +27,20 @@ $siteparam = $config["site"];
 // $cat_route = $ui->getCategoryRouting();
 $org_route = $ui->getOrgNumberRouting();
 
-$org_title = preg_replace('/\x25orgNumber\x25/six', $org_route, strval(PAGE_ORGANISATION_TITLE));
-$org_desc = preg_replace('/\x25orgNumber\x25/six', $org_route, strval(PAGE_ORGANISATION_DESC));
+// Get Organisation info
+$org_info = $db->getOrgByID($org_route);
+
+// Copy templates
+$org_title = strval(PAGE_ORGANISATION_TITLE);
+$org_desc = strval(PAGE_ORGANISATION_DESC);
+
+// Prepare OrgNumber
+$org_title = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_title);
+$org_desc = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_desc);
+
+// Prepare OrgName
+$org_title = preg_replace('/\x25orgName\x25/six', $org_info['orgName'], $org_title);
+$org_desc = preg_replace('/\x25orgName\x25/six', $org_info['orgName'], $org_desc);
 
 
 $config["content"]["html"]["header"]["title"] = $org_title;
