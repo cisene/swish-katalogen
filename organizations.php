@@ -44,8 +44,8 @@ $org_title = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_title);
 $org_desc = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_desc);
 
 // Prepare OrgName
-$org_title = preg_replace('/\x25orgName\x25/six', $org_info['orgName'], $org_title);
-$org_desc = preg_replace('/\x25orgName\x25/six', $org_info['orgName'], $org_desc);
+$org_title = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_title);
+$org_desc = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_desc);
 
 
 $config["content"]["html"]["header"]["title"] = $org_title;
