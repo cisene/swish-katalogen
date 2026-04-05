@@ -206,7 +206,7 @@ class MySQLDB {
         $mask = "(\d{6})\x2d(\d{4})";
         $re = "/^" . $mask . "$/six";
         if(preg_match($re, strval($org_id))) {
-          $query = "SELECT orgName, orgNumber FROM " . $this->db_database . ".swish s WHERE s.orgNumber = '" . str($org_id) . "' LIMIT 1";
+          $query = "SELECT orgName, orgNumber FROM " . $this->db_database . ".swish s WHERE s.orgNumber = '" . strval($org_id) . "' LIMIT 1";
           $results = $this->db_connection->query($query);
           while ($row = $results->fetch_assoc()) {
             $result[] = array(
