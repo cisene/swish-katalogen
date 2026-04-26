@@ -45,9 +45,12 @@ $org_title = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_title);
 $org_desc = preg_replace('/\x25orgNumber\x25/six', $org_route, $org_desc);
 
 // Prepare OrgName
-$org_title = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_title);
-$org_desc = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_desc);
-
+if(isset($org_info[0])) {
+  $org_title = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_title);
+}
+if(isset($org_info[0])) {
+  $org_desc = preg_replace('/\x25orgName\x25/six', $org_info[0]['orgName'], $org_desc);
+}
 
 $config["content"]["html"]["header"]["title"] = $org_title;
 $config["content"]["html"]["header"]["meta"]["description"]["content"] = $org_desc;
@@ -61,9 +64,7 @@ $config["content"]["html"]["header"]["meta"]["dc_description"]["content"] = $org
 $webpage = array(
   "@context"      => "https://schema.org",
   "@type"         => "WebPage",
-  // "name"          => $config["site"]["title"],
   "name"          => $org_title,
-  // "url"           => $config["site"]["url"],
   "url"           => $config["content"]["html"]["header"]["link"]["rel_canonical"]["href"],
   "isBasedOn"     => "https://github.com/cisene/swish-123",
   "breadcrumb"    => "Swish-Katalogen - Sök Swish-nummer",
