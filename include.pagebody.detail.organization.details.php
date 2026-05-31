@@ -23,25 +23,16 @@ if($cat_route != null) {
       $other_categories = $ui->getOtherCategories($cat_ranked, $entry['categories']);
 
       if(preg_match("/^(\d{6})\x2d(\d{4})$/six", strval($entry['orgNumber']))) {
-        // TODO: call getCountByOrgNumber() with orgNumber
-        // count > 1 should yield a link through /swish-katalogen/o/{orgNumber}
         $OrgCount = $db->getCountByOrgNumber($entry['orgNumber']);
-
-        // echo("\n<!-- \n");
-        // var_dump($OrgCount);
-        // echo("\n -->\n");
 
         if (isset($OrgCount["count"])) {
           $orgNumber_count = $OrgCount["count"];
           $orgNumber_link = "/swish-katalogen/o/" . urlencode($entry['orgNumber']);
         }
       } else {
-        // TODO: handle non-organisation numbers such as persons with enskild firma
         $orgNumber_count = 1;
         $orgNumber_link = "";
       }
-
-      // echo("<!-- " . $orgNumber_count . " -->\n");
 
       /* Build swish payment blob */
       $payload = array(

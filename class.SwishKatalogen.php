@@ -319,7 +319,7 @@ class SwishKatalogen {
     foreach($categories as $item) {
       $category = $item['category'];
       if(!in_array($category, $exclude)) {
-        $elem[] = '<li><a href="' . $this->cat_prefix . strval(urlencode($category)) . '">' . strval($category) . '</a></li>';
+        $elem[] = '<li><a href="' . $this->cat_prefix . strval(urlencode($category)) . '">' . strval($category) . '</a></li> ';
       }
     }
     $result = join($elem);
