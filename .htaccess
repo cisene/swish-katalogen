@@ -102,36 +102,49 @@ RewriteRule ^manifest\x2ejson$ manifest.php [L]
 
 
 # BEGIN EXPIRES
-#<IfModule mod_expires.c>
-#    ExpiresActive On
-#    ExpiresDefault "access plus 1 days"
-#    ExpiresByType text/css "access plus 1 week"
-#    ExpiresByType text/plain "access plus 1 month"
-#    ExpiresByType image/gif "access plus 1 month"
-#    ExpiresByType image/png "access plus 1 month"
-#    ExpiresByType image/jpeg "access plus 1 month"
-#    ExpiresByType application/x-javascript "access plus 1 month"
-#    ExpiresByType application/javascript "access plus 1 week"
-#    ExpiresByType application/x-icon "access plus 1 year"
-#</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 day"
+  ExpiresByType text/plain "access plus 1 day"
+  ExpiresByType text/html "access plus 1 day"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/pdf "access plus 1 week"
+  ExpiresByType application/x-pdf "access plus 1 week"
+  ExpiresByType application/xml "access plus 1 week"
+  ExpiresByType text/xml "access plus 1 week"
+  ExpiresByType application/atom+xml "access plus 1 week"
+  ExpiresByType application/rss+xml "access plus 1 week"
+  ExpiresByType application/x-javascript "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType application/x-icon "access plus 1 year"
+</IfModule>
 
-#<IfModule mod_headers.c>
-#    <FilesMatch "\.(js|css|xml|gz)$">
-#        Header append Vary Accept-Encoding
-#    </FilesMatch>
-#    <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">
-#        Header set Cache-Control "public"
-#    </FilesMatch>
-#    <FilesMatch "\.(css)$">
-#        Header set Cache-Control "public"
-#    </FilesMatch>
-#    <FilesMatch "\.(js)$">
-#        Header set Cache-Control "private"
-#    </FilesMatch>
-#    <FilesMatch "\.(x?html?|php)$">
-#        Header set Cache-Control "private, must-revalidate"
-#    </FilesMatch>
-#</IfModule>
+<IfModule mod_headers.c>
+  #<FilesMatch "\.(js|css|xml|gz)$">
+  #  Header append Vary Accept-Encoding
+  #</FilesMatch>
+  <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">
+    Header set Cache-Control "public"
+  </FilesMatch>
+  #<FilesMatch "\.(css)$">
+  #  Header set Cache-Control "public"
+  #</FilesMatch>
+  #<FilesMatch "\.(js)$">
+  #  Header set Cache-Control "private"
+  #</FilesMatch>
+  #<FilesMatch "\.(x?html?|php)$">
+  #  Header set Cache-Control "private, must-revalidate"
+  #</FilesMatch>
+  <FilesMatch "\.xml$">
+    Header set Cache-Control "private, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "private, must-revalidate"
+  </FilesMatch>
+</IfModule>
 
 # Compression
 #<ifModule mod_gzip.c>
