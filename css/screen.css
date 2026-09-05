@@ -1,50 +1,198 @@
-html { display: inline-block; font-size: 1.3em; font-weight: 400; font-family: Verdana, Geneva, Helvetica, sanserif, arial; margin: 0px; padding: 0px; }
-html body { background-color: #fff; margin: 0px; padding: 0px; border: 0; vertical-align: baseline; }
-html body #pageheader { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; background-color: #33f; }
-html body #pageheader a { text-decoration: none; color: #fff; }
-html body #pageheader a h1 { font-size: 3.0em; font-weight: 700; margin: 0px; padding: 0px; }
-html body #pagesearch { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; background-color: #cce; empty-cells: hide; }
-html body #pagesearch #pagesearch-breadcrumbs { float: left; }
-html body #pagesearch #pagesearch-searchbox { float: right; }
-html body #pagesearch #pagesearch-searchbox input[type="text"] { font-size: larger; border-radius: 7px 7px 7px; padding: 15px; }
-html body #pagesearch #pagesearch-searchbox button { font-size: larger; border-radius: 7px 7px 7px; padding: 15px; }
-html body #pagebody { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; }
-html body #pagebody #pagebody-intro { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-categories { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-categories h2 { color: #000; }
-html body #pagebody #pagebody-categories ul { display: inline-flex; margin: 0px; padding: 0px; float: left; clear: both; flex-wrap: wrap; flex-direction: row; align-content: space-around; justify-content: space-between; align-items: center; }
-html body #pagebody #pagebody-categories ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding: 5px; margin: 5px; background-color: #ddd; border: 1px solid #999; border-radius: 7px 7px 7px; }
-html body #pagebody #pagebody-categories ul li a { color: #00d; text-decoration: none; }
-html body #pagebody #pagebody-categories ul li a:hover { text-decoration: underline; }
-html body #pagebody #pagebody-categories ul li:hover { color: #00f; }
-html body #pagebody #pagebody-categories #pagebody-categories-list { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-details-other-categories { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-details-other-categories h2 { color: #000; }
-html body #pagebody #pagebody-details-other-categories ul { display: inline-flex; margin: 0px; padding: 0px; float: left; clear: both; flex-wrap: wrap; flex-direction: row; align-content: space-around; justify-content: space-between; align-items: center; }
-html body #pagebody #pagebody-details-other-categories ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding: 5px; margin: 5px; background-color: #ddd; border: 1px solid #999; border-radius: 7px 7px 7px; }
-html body #pagebody #pagebody-details-other-categories ul li a { color: #00d; text-decoration: none; }
-html body #pagebody #pagebody-details-other-categories ul li a:hover { text-decoration: underline; }
-html body #pagebody #pagebody-details-other-categories ul li:hover { color: #00f; }
-html body #pagebody #pagebody-details-other-categories #pagebody-categories-list { display: inline-block; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-categories-table { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-categories-table table { width: 100%; }
-html body #pagebody #pagebody-categories-table table tbody tr th { text-align: left; font-size: 1.0em; }
-html body #pagebody #pagebody-categories-table table tbody tr td { font-size: 1.0em; }
-html body #pagebody #pagebody-categories-table table tbody tr td a { text-decoration: none; }
-html body #pagebody #pagebody-categories-table table tbody tr td a:hover { text-decoration: underline; }
-html body #pagebody #pagebody-categories-table table tbody tr td:nth-child(1) { width: 10%; }
-html body #pagebody #pagebody-organization-details { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-organization-details h2 { font-size: 1.7em; margin: 0px; padding: 0px; }
-html body #pagebody #pagebody-organization-details div { display: inline-block; width: 100%; font-size: 1.7em; }
-html body #pagebody #pagebody-organization-details div table tbody tr td ul { display: inline-flex; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-organization-details div table tbody tr td ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding-right: 50px; }
-html body #pagebody #pagebody-organization-details div table tbody tr td:nth-child(odd) { width: 5%; padding: 10px; margin: 0px; font-size: 1.0em; text-align: right; font-weight: 700; vertical-align: top; }
-html body #pagebody #pagebody-organization-details div table tbody tr td:nth-child(even) { width: 94%; padding: 10px; margin: 0px; font-size: 1.0em; }
-html body #pagebody #pagebody-swish-number-variants ul { display: inline-flex; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-swish-number-variants ul li { cursor: pointer; white-space: nowrap; font-size: 1.0em; overflow-x: hidden; line-height: normal; padding-right: 50px; }
-html body #pagebody #pagebody-search-terms { display: inline-block; margin: 0px; padding: 15px; float: left; clear: both; }
-html body #pagebody #pagebody-statistics { display: inline-block; width: 100%; margin: 0px; padding: 0px; float: left; clear: both; }
-html body #pagebody #pagebody-statistics #pagebody-statistics-text .updated { font-weight: 700; }
-html body #pagebody #pagebody-statistics #pagebody-statistics-text .entries { font-weight: 700; }
-html body #pagebody #pagebody-statistics #pagebody-statistics-text .categories { font-weight: 700; }
-html body #pagefooter { display: inline-block; width: 99%; margin: 0px; padding: 15px; float: left; clear: both; border-top: 2px solid #000; background-color: #ccc; }
+/* ==========================================================================
+   Swish-Katalogen - Modern & Responsive Stylesheet
+   ========================================================================== */
+
+/* 1. Global Reset & Typography */
+:root {
+  --primary-swish: #e30613; /* Iconic Swish Red */
+  --primary-swish-dark: #b8000b;
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius: 10px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* 2. Container & Page Structure */
+.container,
+main,
+body > div {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styling */
+header, h1 {
+  text-align: center;
+  color: var(--text-main);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+/* 3. Search & Filter Controls */
+input[type="text"],
+input[type="search"],
+select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus {
+  outline: none;
+  border-color: var(--primary-swish);
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
+}
+
+/* 4. Table & Catalog Grid Styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Highlight Swish Numbers */
+td:nth-child(2),
+.swish-number {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 600;
+  color: var(--primary-swish);
+}
+
+/* Swish Links & Action Buttons */
+a[href^="swish://"],
+.swish-btn,
+a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-swish);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+a[href^="swish://"]:hover,
+.swish-btn:hover {
+  background-color: var(--primary-swish-dark);
+}
+
+a[href^="swish://"]:active,
+.swish-btn:active {
+  transform: scale(0.98);
+}
+
+/* 5. Responsive / Mobile Card Transformation */
+@media (max-width: 640px) {
+  body > div, .container {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Transform tabular layout to card list on mobile */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none; /* Hide standard headers on mobile */
+  }
+
+  tr {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    padding: 12px 16px;
+  }
+
+  td {
+    padding: 6px 0;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  a[href^="swish://"], .swish-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+  }
+}
