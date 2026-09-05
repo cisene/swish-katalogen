@@ -1,15 +1,12 @@
 
----
+  <h2>Swish-nummer för Företag & Föreningar (123-serien): Teknisk Information</h2>
 
-<h2>Swish-nummer för Företag & Föreningar (123-serien): Teknisk Specifikation</h2>
-
-<p>Denna sida förklarar den tekniska och matematiska uppbyggnaden av Swish-nummer som tillhör företag, föreningar och organisationer, samt hur nummerserierna är uppdelade i den svenska nummerplanen.</p>
+  <p>Denna sida förklarar den tekniska och matematiska uppbyggnaden av Swish-nummer som tillhör företag, föreningar och organisationer, samt hur nummerserierna är uppdelade i den svenska nummerplanen.</p>
 
 
+  <h3>1. Nummerstruktur & Luhn-10-algoritmen</h3>
 
-<h3>1. Nummerstruktur & Luhn-10-algoritmen</h3>
-
-<p>Alla företagskopplade Swish-nummer är virtuella identifierare (saknar SIM-kort/mobilabonnemang) bestående av exakt **10 siffror**. Uppbyggnaden följer en strikt **`3 + 6 + 1`**-modell:</p>
+  <p>Alla företagskopplade Swish-nummer är virtuella identifierare (saknar SIM-kort/mobilabonnemang) bestående av exakt **10 siffror**. Uppbyggnaden följer en strikt **`3 + 6 + 1`**-modell:</p>
 
 ```
   [1 2 3]      [X X X X X X]         [C]
@@ -18,51 +15,119 @@
 
 ```
 
-<h4>Komponenter</h4>
+  <h4>Komponenter</h4>
 
-<ul>
-* **Prefix (`123`):** Reserverat i nummerplanen av Post- och telestyrelsen (PTS) för *Swish Företag & Handel*.
-* **Serienummer (6 siffror):** Löpnummer/sekvensnummer som tilldelas av bankerna.
-* **Kontrollsiffra `C` (Position 10):** Beräknas automatiskt utifrån de 9 första siffrorna med hjälp av **Luhn-algoritmen (Modulus 10)**.
-</ul>
-> **Matematisk effekt:** Eftersom Luhn-10-algoritmen ger exakt **1 unikt godkänd kontrollsiffra** för varje kombination av de 9 första siffrorna, finns det exakt lika många giltiga Swish-nummer som det finns unika 6-siffriga serienummer inom de tillåtna intervallen.
+  <ul>
+    <li>Prefix 123: Reserverat i nummerplanen av Post- och telestyrelsen (PTS) för <b>Swish Företag & Handel</b>.</li>
+    <li>Serienummer (6 siffror):** Löpnummer/sekvensnummer som tilldelas av bankerna.</li>
+    <li>Kontrollsiffra <b>C</b> (Position 10): Beräknas automatiskt utifrån de 9 första siffrorna med hjälp av <b>Luhn-algoritmen (Modulus 10)</b>.</li>
+  </ul>
 
----
+  <p>Matematisk effekt: Eftersom Luhn-10-algoritmen ger exakt <b>1 unikt godkänd kontrollsiffra</b> för varje kombination av de 9 första siffrorna, finns det exakt lika många giltiga Swish-nummer som det finns unika 6-siffriga serienummer inom de tillåtna intervallen.
 
-<h3>2. Komplett översikt över Nummerserier</h3>
 
-<p>Swish 123-rymden omfattar totalt **1 000 000 teoretiska 10-siffriga kombinationer**. Nedan är hela nummersystemet nedbrutet i jämna 100-tal utifrån de 6-siffriga serienumren (`123 XXX XXX C`).</p>
 
-<h4>Standardserier: Företag, Föreningar & Handel</h4>
+  <h3>2. Komplett översikt över Nummerserier</h3>
 
-*Aktiva serier som tilldelas löpande av bankerna för vanliga kommersiella och föreningsrelaterade betalningar.*
+  <p>Swish 123-rymden omfattar totalt <b>1 000 000 teoretiska 10-siffriga kombinationer</b>. Nedan är hela nummersystemet nedbrutet i jämna 100-tal utifrån de 6-siffriga serienumren 123 XXX XXX C.</p>
 
-| Serie (Prefix + Block) | Status / Beskrivning | Max teoretiska nummer | Antal i Swish-Katalogen |
-| --- | --- | --- | --- |
-| **`123 000` – `123 099**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 100` – `123 199**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 200` – `123 299**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 300` – `123 399**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 400` – `123 499**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 500` – `123 599**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **`123 600` – `123 699**` | Aktiv Standardserie | 100 000 | *[Fyll i]* |
-| **Subtotal (Standard)** | **Totalt aktiva standardserier** | **700 000** | **[Fyll i]** |
+  <h4>Standardserier: Företag, Föreningar & Handel</h4>
 
----
+  <p>Aktiva serier som tilldelas löpande av bankerna för vanliga kommersiella och föreningsrelaterade betalningar.</p>
 
-<h4>Oallokerade & Ogiltiga serier</h4>
+  <table>
+    <tr>
+      <th>Serie (Prefix + Block)</th>
+      <th>Status / Beskrivning</th>
+      <th>Max teoretiska nummer</th>
+      <th>Antal i Swish-Katalogen</th>
+    </tr>
+    <tr>
+      <td>123 000 xx xx</td>
+      <td>123 099 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 100 xx xx</td>
+      <td>123 199 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 200 xx xx</td>
+      <td>123 299 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 300 xx xx</td>
+      <td>123 399 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 400 xx xx</td>
+      <td>123 499 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 500 xx xx</td>
+      <td>123 599 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 600 xx xx</td>
+      <td>123 699 xx xx</td>
+      <td>Aktiv Standardserie</td>
+      <td>100000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 700 xx xx</td>
+      <td>123 799 xx xx</td>
+      <td>Ogiltig / Oallokerad</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 800 xx xx</td>
+      <td>123 899 xx xx</td>
+      <td>Ogiltig / Oallokerad</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 900 xx xx</td>
+      <td>123 909 xx xx</td>
+      <td>Skyddade 90-konton</td>
+      <td>10000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>123 910 xx xx</td>
+      <td>123 999 xx xx</td>
+      <td>Ej tilldelade</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  
 
-*Spärrade eller reserverade nummerserier som saknar aktiva kopplingar hos bankerna. Filtreras bort direkt av Swish-appens klientvalidering.*
+  | **Subtotal (Standard)** | **Totalt aktiva standardserier** | **700 000** | **[Fyll i]** |
 
-| Serie (Prefix + Block) | Status / Beskrivning | Max teoretiska nummer | Antal i Swish-Katalogen |
-| --- | --- | --- | --- |
-| **`123 700` – `123 799**` | Ogiltig / Oallokerad | 0 *(100 000 spärrade)* | 0 |
-| **`123 800` – `123 899**` | Ogiltig / Oallokerad | 0 *(100 000 spärrade)* | 0 |
-| **Subtotal (Spärrat)** | **Totalt spärrade/oallokerade nummer** | **0** | **0** |
+    </tr>
+  </table>
 
----
 
-<h4>900-blocket: Skyddade 90-konton & Övrigt</h4>
+  <h4>900-blocket: Skyddade 90-konton & Övrigt</h4>
 
 *Serier reserverade för ideella insamlingsorganisationer som granskas av Svensk Insamlingskontroll samt reserverade utrymmen.*
 
