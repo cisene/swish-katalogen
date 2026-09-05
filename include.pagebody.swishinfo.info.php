@@ -44,79 +44,79 @@
       <th>Antal i Swish-Katalogen</th>
     </tr>
     <tr>
-      <td>123 000 xx xx</td>
-      <td>123 099 xx xx</td>
+      <td>123 000 00 00</td>
+      <td>123 099 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-0">0</td>
     </tr>
     <tr>
-      <td>123 100 xx xx</td>
-      <td>123 199 xx xx</td>
+      <td>123 100 00 00</td>
+      <td>123 199 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-1">0</td>
     </tr>
     <tr>
-      <td>123 200 xx xx</td>
-      <td>123 299 xx xx</td>
+      <td>123 200 00 00</td>
+      <td>123 299 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-2">0</td>
     </tr>
     <tr>
-      <td>123 300 xx xx</td>
-      <td>123 399 xx xx</td>
+      <td>123 300 00 00</td>
+      <td>123 399 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-3">0</td>
     </tr>
     <tr>
-      <td>123 400 xx xx</td>
-      <td>123 499 xx xx</td>
+      <td>123 400 00 00</td>
+      <td>123 499 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-4">0</td>
     </tr>
     <tr>
-      <td>123 500 xx xx</td>
-      <td>123 599 xx xx</td>
+      <td>123 500 00 00</td>
+      <td>123 599 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-5">0</td>
     </tr>
     <tr>
-      <td>123 600 xx xx</td>
-      <td>123 699 xx xx</td>
+      <td>123 600 00 00</td>
+      <td>123 699 99 99</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
       <td id="swish-6">0</td>
     </tr>
     <tr>
-      <td>123 700 xx xx</td>
-      <td>123 799 xx xx</td>
-      <td>Ogiltig / Oallokerad</td>
+      <td>123 700 00 00</td>
+      <td>123 799 99 99</td>
+      <td>Oallokerad</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <td>123 800 xx xx</td>
-      <td>123 899 xx xx</td>
-      <td>Ogiltig / Oallokerad</td>
+      <td>123 800 00 00</td>
+      <td>123 899 99 99</td>
+      <td>Oallokerad</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <td>123 900 xx xx</td>
-      <td>123 909 xx xx</td>
+      <td>123 900 00 00</td>
+      <td>123 909 99 99</td>
       <td>Skyddade 90-konton</td>
       <td>10000</td>
       <td id="swish-9">0</td>
     </tr>
     <tr>
-      <td>123 910 xx xx</td>
-      <td>123 999 xx xx</td>
-      <td>Ej tilldelade</td>
+      <td>123 910 00 00</td>
+      <td>123 999 99 99</td>
+      <td>Oallokerad</td>
       <td>0</td>
       <td>0</td>
     </tr>
