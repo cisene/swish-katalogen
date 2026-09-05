@@ -6,7 +6,7 @@
 
   <h3>1. Nummerstruktur & Luhn-10-algoritmen</h3>
 
-  <p>Alla företagskopplade Swish-nummer är virtuella identifierare (saknar SIM-kort/mobilabonnemang) bestående av exakt **10 siffror**. Uppbyggnaden följer en strikt **`3 + 6 + 1`**-modell:</p>
+  <p>Alla företagskopplade Swish-nummer är virtuella identifierare (saknar SIM-kort/mobilabonnemang) bestående av exakt <b>10 siffror</b>. Uppbyggnaden följer en strikt <b>3 + 6 + 1</b>-modell:</p>
 
 ```
   [1 2 3]      [X X X X X X]         [C]
@@ -18,18 +18,18 @@
   <h4>Komponenter</h4>
 
   <ul>
-    <li>Prefix 123: Reserverat i nummerplanen av Post- och telestyrelsen (PTS) för <b>Swish Företag & Handel</b>.</li>
-    <li>Serienummer (6 siffror):** Löpnummer/sekvensnummer som tilldelas av bankerna.</li>
+    <li>Prefix &quot;123&quot;</li>
+    <li>Serienummer (6 siffror): Löpnummer/sekvensnummer som tilldelas av bankerna.</li>
     <li>Kontrollsiffra <b>C</b> (Position 10): Beräknas automatiskt utifrån de 9 första siffrorna med hjälp av <b>Luhn-algoritmen (Modulus 10)</b>.</li>
   </ul>
 
-  <p>Matematisk effekt: Eftersom Luhn-10-algoritmen ger exakt <b>1 unikt godkänd kontrollsiffra</b> för varje kombination av de 9 första siffrorna, finns det exakt lika många giltiga Swish-nummer som det finns unika 6-siffriga serienummer inom de tillåtna intervallen.
+  <p>Matematisk effekt: Eftersom Luhn-10-algoritmen ger exakt <b>1 unikt godkänd kontrollsiffra</b> för varje kombination av de 6 siffrorna i serienummret, finns det exakt lika många giltiga Swish-nummer som det finns unika 6-siffriga serienummer inom de tillåtna intervallen.
 
 
 
   <h3>2. Komplett översikt över Nummerserier</h3>
 
-  <p>Swish 123-rymden omfattar totalt <b>1 000 000 teoretiska 10-siffriga kombinationer</b>. Nedan är hela nummersystemet nedbrutet i jämna 100-tal utifrån de 6-siffriga serienumren 123 XXX XXX C.</p>
+  <p>Swish 123-rymden omfattar totalt <b>710 000 teoretiska 10-siffriga kombinationer</b>. Nedan är hela nummersystemet nedbrutet i jämna 100-tal utifrån de 6-siffriga serienumren 123 XXX XXX C.</p>
 
   <h4>Standardserier: Företag, Föreningar & Handel</h4>
 
