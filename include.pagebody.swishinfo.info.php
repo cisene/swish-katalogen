@@ -37,7 +37,8 @@
 
   <table>
     <tr>
-      <th>Serie (Prefix + Block)</th>
+      <th>Serie Start (Prefix + Block)</th>
+      <th>Serie Slut (Prefix + Block)</th>
       <th>Status / Beskrivning</th>
       <th>Max teoretiska nummer</th>
       <th>Antal i Swish-Katalogen</th>
@@ -47,49 +48,49 @@
       <td>123 099 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-0">0</td>
     </tr>
     <tr>
       <td>123 100 xx xx</td>
       <td>123 199 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-1">0</td>
     </tr>
     <tr>
       <td>123 200 xx xx</td>
       <td>123 299 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-2">0</td>
     </tr>
     <tr>
       <td>123 300 xx xx</td>
       <td>123 399 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-3">0</td>
     </tr>
     <tr>
       <td>123 400 xx xx</td>
       <td>123 499 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-4">0</td>
     </tr>
     <tr>
       <td>123 500 xx xx</td>
       <td>123 599 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-5">0</td>
     </tr>
     <tr>
       <td>123 600 xx xx</td>
       <td>123 699 xx xx</td>
       <td>Aktiv Standardserie</td>
       <td>100000</td>
-      <td>0</td>
+      <td id="swish-6">0</td>
     </tr>
     <tr>
       <td>123 700 xx xx</td>
@@ -110,7 +111,7 @@
       <td>123 909 xx xx</td>
       <td>Skyddade 90-konton</td>
       <td>10000</td>
-      <td>0</td>
+      <td id="swish-9">0</td>
     </tr>
     <tr>
       <td>123 910 xx xx</td>
@@ -120,8 +121,13 @@
       <td>0</td>
     </tr>
   
-
-  | **Subtotal (Standard)** | **Totalt aktiva standardserier** | **700 000** | **[Fyll i]** |
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>710000</td>
+      <td id="swish-total">0</td>
+    </tr>
 
     </tr>
   </table>
